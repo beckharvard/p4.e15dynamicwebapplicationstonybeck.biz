@@ -1,0 +1,113 @@
+/* -------------------------------------------------------------------
+Main pieces
+ ------------------------------------------------------------------- */
+
+html, body, div,
+h1, h2, h4, h5, h6, p, strong, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, footer, header,  nav, section, 
+time, button {
+	margin: 			0%;
+	padding: 			0%;
+	border: 			0;
+	font-size: 			100%;
+	font-family: 		Avenir, Verdana, Geneva, sans-serif	;
+	vertical-align: 	baseline;
+}
+
+#menu {
+	margin-right:		2em;
+	padding-right:		2em;
+}
+
+#menu a {
+	margin-right:		1.5em;
+	padding-right:		1.5em;
+}
+
+#main {
+	min-height:			400px;
+}
+
+body {
+	line-height: 		1;
+    margin-left:		1%;
+}
+
+h1 {
+	font-size: 			48px;
+	color:    			#000099;
+	margin-top: 		.5%;
+	margin-bottom: 		.5%;
+	text-shadow: 		0px 2px 3px #555;
+    z-index:			2147483647;
+}
+
+h2 {
+
+}
+
+h3 {
+	font-size: 			12px;
+	color:			    #000099; 
+	font-style:		    italic;
+}
+
+hr {
+	margin-right:		1%;
+}
+
+#footer_left {
+	float:				left;
+	margin-left:		1em;
+}
+
+#footer_right {
+	float:				right;
+	margin-right:       1em;
+}
+
+/* -------------------------------------------------------------------
+Forms
+ ------------------------------------------------------------------- */
+
+textarea, input {
+	border-radius: 		5px;
+}
+
+#content {
+	/*border-radius: 	5px;*/
+	background-color: 	#E8E8E8 ;
+}
+
+img {
+	border-radius:		25px;
+}
+
+html, button {
+ 	background-color:	black;
+	background-image:	url('../../images/noise.png');	
+}
+
+a:link    {
+	color: 				white;
+}
+
+a:visited {
+	color: 				white;
+}
+
+.error {
+  	color:			    #000099;
+  	font-style:		    italic;
+  	padding-left:		0.5em;
+}
+
+.buttons {
+	background-color:	#000099;
+	color:				white;
+	font-weight:		bold;
+	font-size: 			12px;
+}
+
