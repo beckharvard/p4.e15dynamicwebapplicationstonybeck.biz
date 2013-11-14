@@ -27,7 +27,14 @@ time, button {
 }
 
 #main {
-	min-height:			400px;
+	min-height:			600px;
+	border-style:		solid;
+	border-color:		#800000;
+	border-width:		2px;
+	border-radius:		15px;
+	padding:			10px;
+	margin-right:		1%;
+	
 }
 
 body {
@@ -37,7 +44,7 @@ body {
 
 h1 {
 	font-size: 			48px;
-	color:    			#000099;
+	color:    			#800000;
 	margin-top: 		.5%;
 	margin-bottom: 		.5%;
 	text-shadow: 		0px 2px 3px #555;
@@ -86,16 +93,16 @@ img {
 }
 
 html, button {
- 	background-color:	black;
-	background-image:	url('../../images/noise.png');	
+ 	background-color:	white;
+
 }
 
 a:link    {
-	color: 				white;
+	color: 				gray;
 }
 
 a:visited {
-	color: 				white;
+	color: 				gray;
 }
 
 .error {
@@ -111,3 +118,111 @@ a:visited {
 	font-size: 			12px;
 }
 
+
+/*-------------------------------------------------------------------------------------------------
+Editor Canvas
+-------------------------------------------------------------------------------------------------*/
+
+
+#wrapper {
+	width:960px;
+	height:469px;
+	/* margin:0px auto; */
+	background-color:orange;
+}
+
+/* Left column */
+#controls {
+	width:425px;
+	margin-right:50px;
+	float:left;
+
+}
+/* Right column */
+#preview {
+	width:400px;
+	float:left;
+	text-align:center;
+	
+}
+#card-background {
+	background-image:url('../images/card-background.jpg');
+	background-repeat:no-repeat;
+	height:513px;
+	width:369px;
+	margin:0px auto;
+	
+}
+
+#canvas {
+	width:338px;
+	height:469px;
+	position:relative;
+	top:33px;
+	left:16px;
+	z-index:1; /* So we can place the stickers above */
+	overflow:hidden;
+	
+			border: red;
+	border-width:	2px;
+	background-color:orange;
+}
+
+#hide-button  {
+	float: 			right;
+	margin-right: 	10px;
+
+}
+
+.tools-tray {
+	float:	right;
+	margin:	10px;
+	border:		5px;
+
+}
+/*----------------------------------------------------
+tools 
+----------------------------------------------------*/
+.colors {
+	width: 40px;
+	height:40px;
+	border:1px solid gray;
+	float:	left;
+	cursor:pointer;
+
+}
+
+#red {
+	background-color:red;
+}
+
+#orange  {
+	background-color:orange;
+}
+
+#green {
+	background-color:green;
+}
+
+#yellow {
+	background-color:yellow;
+}
+
+#blue {
+	background-color:blue;
+}
+
+#indigo {
+	background-color:indigo;
+}
+#violet {
+	background-color:violet;
+}
+
+#black {
+	background-color:black;
+}
+
+#gray {
+	background-color:gray;
+}

@@ -14,7 +14,7 @@ If you want a different default time format for this app, set it below
 */
 
 # What is the name of this app?
-	define('APP_NAME', 'SpecSpec');  
+	define('APP_NAME', '3gether');  
 
 # When email is sent out from the server, where should it come from?
 # Ideally, this should match the domain name
@@ -31,7 +31,7 @@ A email designated to receive messages from the server. Examples:
 	define('SYSTEM_EMAIL', 'beck@fas.harvard.edu'); 
 
 # Default DB name for this app
-	define('DB_NAME', "edynamic_p2_e15dynamicwebapplicationstonybeck_biz"); 
+	define('DB_NAME', "edynamic_p3_e15dynamicwebapplicationstonybeck_biz"); 
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');

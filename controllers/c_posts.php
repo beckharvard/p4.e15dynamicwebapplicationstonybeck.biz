@@ -127,7 +127,7 @@ class posts_controller extends base_controller {
     public function add()  {
 	 	# Set up the View
     	$this->template->content = View::instance('v_posts_add');
-    	# echo "This is something about adding a post";
+    	$this->template->content->moreContent = View::instance('v_toolsAccordian');
     	
     	# Render template
 		echo $this->template;
@@ -159,6 +159,7 @@ class posts_controller extends base_controller {
     public function edit($edited)  {
     	# Set up the View
     	$this->template->content = View::instance('v_posts_edit');
+    	$this->template->content->moreContent = View::instance('v_toolsAccordian');
     		
     	# Build the query to get the post
     	$q = "SELECT *

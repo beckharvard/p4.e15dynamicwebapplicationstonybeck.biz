@@ -4,7 +4,7 @@
 	<?php    	Router::redirect("/posts");  ?>
 <?php else: ?>
 	<!-- Send them back to the login page.-->
-	<h2> Welcome to SpecSpec, please Login or Sign up above! </h2>
+	<h2> Welcome to <?=APP_NAME?>, please Login or Sign up above! </h2>
 <?php endif; ?>
 
 
