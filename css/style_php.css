@@ -34,7 +34,7 @@ time, button {
 	border-radius:		15px;
 	padding:			10px;
 	margin-right:		1%;
-	
+	min-width:			900px;
 }
 
 body {
@@ -125,10 +125,14 @@ Editor Canvas
 
 
 #wrapper {
-	width:960px;
-	height:469px;
-	/* margin:0px auto; */
-	background-color:orange;
+	width:				900px;
+
+	height:				450px;
+	float:				left;
+	clear:				both;
+	margin-right:		400px;
+	/* margin:0px auto; 
+	*/
 }
 
 /* Left column */
@@ -140,46 +144,70 @@ Editor Canvas
 }
 /* Right column */
 #preview {
-	width:400px;
+	width:				400px;
 	float:left;
 	text-align:center;
 	
 }
 #card-background {
-	background-image:url('../images/card-background.jpg');
+	/* background-image:url('../images/card-background.jpg'); */
 	background-repeat:no-repeat;
 	height:513px;
 	width:369px;
-	margin:0px auto;
-	
+	/*margin:0px auto;
+	*/	
 }
 
 #canvas {
-	width:338px;
-	height:469px;
-	position:relative;
+	width:800px;
+	height:500px;
+/*	position:relative;
 	top:33px;
-	left:16px;
+	left:160px;
+	*/
 	z-index:1; /* So we can place the stickers above */
-	overflow:hidden;
+	overflow:scroll;
 	
-			border: red;
-	border-width:	2px;
-	background-color:orange;
+	border: 			red;
+	border-width:		2px;
+/* REMOVE ME LATER - for debug   */	
+	background-color:	orange;
 }
 
 #hide-button  {
-	float: 			right;
-	margin-right: 	10px;
+	float: 				right;
+	margin-right: 		10px;
 
 }
 
 .tools-tray {
-	float:	right;
-	margin:	10px;
-	border:		5px;
+	float:				right;
+	margin:				10px;
+	border:				5px;
 
 }
+
+.toggler, #accordion {
+
+	position:			absolute;
+	top:				50px;
+	right				30px;
+	margin-left:		400px;
+}
+
+#accordion {
+ 
+ 	max-width:			280px;
+ 	min-width:			280px;
+ 	
+ 
+}
+
+.accordion {
+	
+
+}
+ 
 /*----------------------------------------------------
 tools 
 ----------------------------------------------------*/

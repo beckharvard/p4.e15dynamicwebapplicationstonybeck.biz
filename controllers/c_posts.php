@@ -134,6 +134,8 @@ class posts_controller extends base_controller {
     }
     
     public function p_add()  {
+    	Upload::upload($_FILES, "/uploads/posts_pictures/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"),
+    	$this->post->post_id); 
     	# Set up the View
     	$this->template->content = View::instance('v_posts_p_add');
     	

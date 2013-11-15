@@ -1,25 +1,25 @@
-<h2>Editor Canvas</h2><h3>Maximum post length is 72 characters</h3>
+<h2>Editor Canvas</h2>
 <form method ='POST' action ='/posts/p_add'>
-	<div id='tools-tray'>	
-			<?=$moreContent;?> 	
-	</div>	
+
 	
 
 
 	<!-- the canvas area where user can preview the look of their post-->
-	<div class='preview">
+	<div id='preview'>
 	
-		<div class='card-background'>
-			<div class='canvas'>
+		<div id='card-background'>
+			<div id='canvas'>
 				<div id='message-output'></div>
 				<div id='recipient-output'></div>
 			</div>
-		
-		   
+			
+
+		</div>	
 		<!-- Buttons -->
-		<input class="buttons" type='button' id='refresh-btn' value='Clear Canvas'><input class="buttons" type='submit' value='Publish Post'>
-		</div>
-	</div>
-	
-	
+		<div id='tools-tray'>	
+			<input class="buttons" type='button' id='refresh-btn' value='Clear Canvas'><br>
+			<input class="buttons" type='submit' value='Publish Post'><br>
+			<?=$moreContent;?><br>
+		</div>	  		
+	</div>	
 </form>
