@@ -83,11 +83,6 @@ textarea, input {
 	border-radius: 		5px;
 }
 
-#content {
-	/*border-radius: 	5px;*/
-	background-color: 	#E8E8E8 ;
-}
-
 img {
 	border-radius:		25px;
 }
@@ -118,6 +113,10 @@ a:visited {
 	font-size: 			12px;
 }
 
+#hide-button  {
+
+}
+
 
 /*-------------------------------------------------------------------------------------------------
 Editor Canvas
@@ -144,18 +143,23 @@ Editor Canvas
 }
 /* Right column */
 #preview {
-	width:				400px;
+	width:				800px;			
 	float:left;
-	text-align:center;
+/*	text-align:center; */
 	
 }
 #card-background {
 	/* background-image:url('../images/card-background.jpg'); */
 	background-repeat:no-repeat;
 	height:513px;
-	width:369px;
+	width:800px;
 	/*margin:0px auto;
 	*/	
+}
+
+#content {
+	/*border-radius: 	5px;*/
+	background-color: 	#E8E8E8 ;
 }
 
 #canvas {
@@ -170,13 +174,26 @@ Editor Canvas
 	
 	border: 			red;
 	border-width:		2px;
-/* REMOVE ME LATER - for debug   */	
+/* REMOVE ME LATER - for debug   	
 	background-color:	orange;
+	*/
 }
 
-#hide-button  {
-	float: 				right;
-	margin-right: 		10px;
+
+
+#draggable { 
+	width: 				150px; 
+	height: 			150px; 
+	padding: 			0.5em; 
+}
+
+#post-text-output {
+
+	/*position: absolute;*/
+	top: 100px;
+
+	font-size:30px;
+	width: 100%;
 
 }
 
@@ -190,67 +207,92 @@ Editor Canvas
 .toggler, #accordion {
 
 	position:			absolute;
-	top:				50px;
+	top:				60px;
 	right				30px;
 	margin-left:		400px;
 }
 
-#accordion {
- 
+#accordion { 
  	max-width:			280px;
- 	min-width:			280px;
- 	
- 
+ 	min-width:			280px; 
 }
 
-.accordion {
-	
-
+.toggler { 
+	width: 				200px; 
+	height: 			200px;
 }
- 
+
+#button { 
+	padding: 			.5em 1em; 
+	text-decoration: 	none; 
+}
+
+#effect { 
+	width: 				260px; 
+	height: 			135px; 
+	padding: 			0.4em;  
+}
+
+#effect h3 { 
+	margin: 			0;
+	padding: 			0.4em; 
+	text-align: 		center; 
+	font-size: 			12px;
+}
+
 /*----------------------------------------------------
 tools 
 ----------------------------------------------------*/
-.colors {
-	width: 40px;
-	height:40px;
-	border:1px solid gray;
-	float:	left;
-	cursor:pointer;
+.colors, .text-colors {
+	width: 				36px;
+	height:				36px;
+	border:				1px solid gray;
+	float:				left;
+	cursor:				pointer;
 
 }
 
-#red {
-	background-color:red;
+
+#imagesDiv, .error {	
+	font-size:			12px;
+} 
+
+#red, #red-text {
+	background-color:	red;
 }
 
-#orange  {
-	background-color:orange;
+#orange, #orange-text  {
+	background-color:	orange;
 }
 
-#green {
-	background-color:green;
+#green, #green-text {
+	background-color:	green;
 }
 
-#yellow {
-	background-color:yellow;
+#yellow, #yellow-text {
+	background-color:	yellow;
 }
 
-#blue {
-	background-color:blue;
+#blue, #blue-text {
+	background-color:	blue;
 }
 
-#indigo {
-	background-color:indigo;
-}
-#violet {
-	background-color:violet;
+#indigo, #indigo-text {
+	background-color:	indigo;
 }
 
-#black {
-	background-color:black;
+#violet, #violet-text {
+	background-color:	violet;
 }
 
-#gray {
-	background-color:gray;
+#black, #black-text {
+	background-color:	black;
+}
+
+#gray, #gray-text {
+	background-color:	gray;
+}
+
+#white, #white-text {
+	background-color:	white;
 }

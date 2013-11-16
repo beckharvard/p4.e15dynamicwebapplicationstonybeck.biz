@@ -9,23 +9,54 @@
     $( "#accordion" ).accordion({
       collapsible: true
     });
+    $('#myPost').keyup(function() {	
+		// see also the .keydown and the .on('input' function and contrast the behavior.
+			
+		// find out what's in the field i.e. what they have typed.
+		var myPost = $(this).val();
+		
+		//take the text from the field and put it on top of the canvas
+		$('#post-text-output').html(myPost);
+		
+		// And let's make it draggable but NOT contained
+		$( '#post-text-output' ).draggable();	
+	
+		//as text grows, we need to track the length...
+		var myPost_how_many_chars = myPost.length;	
+		var how_many_left = 72 - myPost_how_many_chars;
+
+		// and give feedback to the user about how many chars left... 
+		if (how_many_left == 0) {		
+			$('#text-output-error').css('color', 'red');
+		}
+		else if (how_many_left < 72) {
+			$('#text-output-error').css('color', 'orange');		
+		}		
+		$('#text-output-error').html('You have ' + how_many_left + ' characters left');		
+
+	});
     $('.colors').click(function() {
 
 		var color_that_was_clicked = $(this).css('background-color');
 	
-		console.log(color_that_was_clicked);
+		//console.log(color_that_was_clicked);
 	
 		$('#canvas').css('background-color', color_that_was_clicked);
+
+	});	
+	$('.text-colors').click(function() {
+
+		var text_color_clicked = $(this).css('background-color');
+	
+		console.log(text_color_clicked);
+	
+		$('#post-text-output').css('color', text_color_clicked);
 
 	});
   });
   </script>
 
   <style>
-   .toggler { width: 200px; height: 200px; }
-  #button { padding: .5em 1em; text-decoration: none; }
-  #effect { width: 260px; height: 135px; padding: 0.4em;  }
-  #effect h3 { margin: 0; padding: 0.4em; text-align: center; font-size: 12px;}
   </style>
   <script>
   $(function() {
@@ -63,9 +94,24 @@
   					<h3 class="tool-header">Add your post text:</h3>
   				<div >
     				<span>
-						<textarea id='myPost' cols='15' rows='5' type='text' name='content' maxlength="72" required></textarea>
+						<input type='text' id='myPost' name='content' maxlength="72" required>
+    					<span class='error' id='text-output-error'></span>
+
     				</span>
-    				<h3>Maximum post length is 72 characters</h3>
+    				<br>
+    				<span>
+    					<div> Pick a text color:</div> 
+    				    <div class='text-colors' id='red-text'>  </div>
+						<div class='text-colors' id='orange-text'>  </div>
+						<div class='text-colors' id='green-text'>  </div>
+						<div class='text-colors' id='yellow-text'>  </div>
+						<div class='text-colors' id='blue-text'>  </div>
+						<div class='text-colors' id='white-text'>  </div>
+						<div class='text-colors' id='indigo-text'>  </div>
+						<div class='text-colors' id='violet-text'>  </div>
+						<div class='text-colors' id='black-text'>  </div>
+						<div class='text-colors' id='gray-text'>  </div>
+					</span>
   				</div>
   				<h3 class="tool-header">Background color:</h3>
   				<div>
@@ -75,6 +121,7 @@
 						<div class='colors' id='green'>  </div>
 						<div class='colors' id='yellow'>  </div>
 						<div class='colors' id='blue'>  </div>
+						<div class='colors' id='white'>  </div>
 						<div class='colors' id='indigo'>  </div>
 						<div class='colors' id='violet'>  </div>
 						<div class='colors' id='black'>  </div>
@@ -82,10 +129,13 @@
     				</span>
   				</div>
   				<h3 class="tool-header">Add Images</h3>
-				<div>
-    				<span>
-    					<input type=file></input>
-   						Tool 2
+				<div id='imagesDiv'>
+    				<span >
+    					<form action="upload_file.php" method="post" enctype="multipart/form-data">
+							<label for="file">Filename:</label>
+							<input type="file" name="file" id="file"><br>
+							<input type="submit" name="submit" value="Submit">
+						</form>
 					</span>
     					<ul>
       						<li>List item one</li>
@@ -104,5 +154,5 @@
 			</div>
 		</div>
 	</div>
-	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Tools'> 
+	
 </body>
