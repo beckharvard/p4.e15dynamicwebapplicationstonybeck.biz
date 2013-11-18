@@ -179,7 +179,24 @@ Editor Canvas
 	*/
 }
 
+#publish_post {
 
+
+}
+
+input.edgeless_fields {
+	border-radius:		0px;
+	border:				0px inset #F8F8F8;
+	border-right:		#F8F8F8;
+	border-bottom:		#FFFFFF;
+
+
+}
+
+input#edgeless_field1 {
+
+
+}
 
 #draggable { 
 	width: 				150px; 

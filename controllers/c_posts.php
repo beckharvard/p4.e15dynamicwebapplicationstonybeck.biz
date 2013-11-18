@@ -128,14 +128,18 @@ class posts_controller extends base_controller {
 	 	# Set up the View
     	$this->template->content = View::instance('v_posts_add');
     	$this->template->content->moreContent = View::instance('v_toolsAccordian');
+    	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     	
     	# Render template
 		echo $this->template;
+		
+		
     }
     
     public function p_add()  {
-    	Upload::upload($_FILES, "/uploads/posts_pictures/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"),
-    	$this->post->post_id); 
+    
+    	 //upload an image
+
     	# Set up the View
     	$this->template->content = View::instance('v_posts_p_add');
     	
@@ -149,13 +153,29 @@ class posts_controller extends base_controller {
 		# To protect against xss we remove HTMl special characters, strip tags and slashes
 		$_POST["content"] = htmlspecialchars($_POST["content"], ENT_QUOTES, 'UTF-8');
 		$_POST["content"] = strip_tags($_POST["content"]);
-		#$_POST["content"] = stripslashes($_POST["content"]);
-		
 
     	$author_user_id = DB::instance(DB_NAME)->insert("posts", $_POST);
     	
     	# Send them back
        	Router::redirect('/users/profile');    	
+    }
+    
+    public function uploadfile() {
+    
+    	# Set up the View
+    	$this->template->content = View::instance('v_posts_uploadfile');
+    
+    	Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id); 
+    
+		if ($_FILES["file"]["error"] > 0) {
+  			echo "Error: " . $_FILES["file"]["error"] . "<br>";
+  		}
+		else {
+  			echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+  			echo "Type: " . $_FILES["file"]["type"] . "<br>";
+  			echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+  			echo "Stored in: " . $_FILES["file"]["tmp_name"];
+  		}  
     }
     
     public function edit($edited)  {

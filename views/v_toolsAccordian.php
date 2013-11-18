@@ -4,7 +4,9 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-   <script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+
+<script>
   $(function() {
     $( "#accordion" ).accordion({
       collapsible: true
@@ -16,7 +18,8 @@
 		var myPost = $(this).val();
 		
 		//take the text from the field and put it on top of the canvas
-		$('#post-text-output').html(myPost);
+		//$('#edgeless_field1').html(myPost);
+		$('#edgeless_field1').attr("value", myPost);
 		
 		// And let's make it draggable but NOT contained
 		$( '#post-text-output' ).draggable();	
@@ -50,11 +53,18 @@
 	
 		console.log(text_color_clicked);
 	
-		$('#post-text-output').css('color', text_color_clicked);
+		$('#edgeless_field1').css('color', text_color_clicked);
 
 	});
+	$( ".font-selector" ).change(function() {
+  		//console.log( "Handler for .change() called." );
+  		var new_font_size = $(this).val();
+  		$('#edgeless_field1').css('font-size', new_font_size);
+  		$('#edgeless_field1').css('height', new_font_size + 6);
+	});
+
   });
-  </script>
+</script>
 
   <style>
   </style>
@@ -112,6 +122,33 @@
 						<div class='text-colors' id='black-text'>  </div>
 						<div class='text-colors' id='gray-text'>  </div>
 					</span>
+					<br>
+					<span>
+					<br>
+						<label for="fonts">Font: </label>
+							<select id="fonts" name="fonts" class="selectbar input-medium">
+    							<option value="font-arvo" class="fnt font-arvo">Arvo</option>
+    							<option value="font-courgette" class="fnt font-courgette">Courgette</option>
+    							<option value="font-handlee" class="fnt font-handlee">Handlee</option>
+    							<option value="font-oregano" class="fnt font-oregano">Oregano</option>
+    							<option value="font-homemade-apple" class="fnt font-homemade-apple">Homemade Apple</option>
+    							<option value="font-shadows-into-light" class="fnt font-shadows-into-light">Shadows Into Light</option>
+    							<option value="font-special-elite" class="fnt font-special-elite">Special Elite</option>
+							</select>
+					</span>
+					<span><div>Font Size (in canvas):
+						<select class="font-selector">
+  							<option class="content-font-size" id="10" value="10">10</option>
+  							<option class="content-font-size" id="12" value="12">12</option>
+  							<option class="content-font-size" id="14" value="14">14</option>
+  							<option class="content-font-size" id="16" value="16">16</option>
+  							<option class="content-font-size" id="18" value="18">18</option>
+  							<option class="content-font-size" id="20" value="20">20</option>
+  							<option class="content-font-size" id="24" value="24">24</option>
+  							<option class="content-font-size" id="28" value="28">28</option>
+						</select>
+						</div>
+					</span>
   				</div>
   				<h3 class="tool-header">Background color:</h3>
   				<div>
@@ -131,11 +168,14 @@
   				<h3 class="tool-header">Add Images</h3>
 				<div id='imagesDiv'>
     				<span >
-    					<form action="upload_file.php" method="post" enctype="multipart/form-data">
+    					<form action="/posts/uploadfile" method="post" enctype="multipart/form-data">
 							<label for="file">Filename:</label>
 							<input type="file" name="file" id="file"><br>
-							<input type="submit" name="submit" value="Submit">
+							<input type="submit" name="submit" value="Upload">
 						</form>
+						<div id='upload_results'>
+							<?=$uploadResults;?>
+						</div>
 					</span>
     					<ul>
       						<li>List item one</li>
@@ -143,11 +183,10 @@
  							<li>List item three</li>
 						</ul>
   				</div>
-  				<h3 class="tool-header">Section 4</h3>
+  				<h3 class="tool-header">lorem ipsum</h3>
   				<div>
     				<span>
-    					Tool 1
-   						Tool 2
+    					
     				</span>
 
 				</div>
