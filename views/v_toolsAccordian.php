@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="/resources/demos/style.css" />
 
 <script>
+
   $(function() {
+  	
     $( "#accordion" ).accordion({
       collapsible: true
     });
@@ -18,14 +20,17 @@
 		var myPost = $(this).val();
 		
 		//take the text from the field and put it on top of the canvas
-		//$('#edgeless_field1').html(myPost);
 		$('#edgeless_field1').attr("value", myPost);
 		
 		// And let's make it draggable but NOT contained
 		$( '#post-text-output' ).draggable();	
 	
 		//as text grows, we need to track the length...
-		var myPost_how_many_chars = myPost.length;	
+		var myPost_how_many_chars = myPost.length;
+		
+		//we need to to size the text input box too...
+		$('#edgeless_field1').css('width', (myPost_how_many_chars * 5) + "px");
+			
 		var how_many_left = 72 - myPost_how_many_chars;
 
 		// and give feedback to the user about how many chars left... 
@@ -58,16 +63,29 @@
 	});
 	$( ".font-selector" ).change(function() {
   		//console.log( "Handler for .change() called." );
+  		
+  		
+  		var lengthOfmyPost = $('#edgeless_field1').attr('value');
+  		var postLength = lengthOfmyPost.length;
+		console.log('postLength is now ' + postLength);
   		var new_font_size = $(this).val();
-  		$('#edgeless_field1').css('font-size', new_font_size);
-  		$('#edgeless_field1').css('height', new_font_size + 6);
+  		$('#edgeless_field1').css('font-size', new_font_size + "px");
+  		$('#post-text-output').css('height', (new_font_size * 5) + "px");
+  		$('#post-text-output').css('width', ((postLength) * new_font_size) + "px");
+  		$('#edgeless_field1').css('width', ((postLength * new_font_size) * 5) + "px");
+  				// We need the length for use in sizing the div
+
+	});
+	$("#fonts").change(function() {
+		console.log( "Handler for .change() called." );
+		var new_font = $(this).val();
+		$('#edgeless_field1').css('font', new_font);
+		
+		
 	});
 
   });
 </script>
-
-  <style>
-  </style>
   <script>
   $(function() {
     // run the currently selected effect
@@ -127,13 +145,8 @@
 					<br>
 						<label for="fonts">Font: </label>
 							<select id="fonts" name="fonts" class="selectbar input-medium">
-    							<option value="font-arvo" class="fnt font-arvo">Arvo</option>
-    							<option value="font-courgette" class="fnt font-courgette">Courgette</option>
-    							<option value="font-handlee" class="fnt font-handlee">Handlee</option>
-    							<option value="font-oregano" class="fnt font-oregano">Oregano</option>
-    							<option value="font-homemade-apple" class="fnt font-homemade-apple">Homemade Apple</option>
-    							<option value="font-shadows-into-light" class="fnt font-shadows-into-light">Shadows Into Light</option>
-    							<option value="font-special-elite" class="fnt font-special-elite">Special Elite</option>
+    							<option value="Arial, Helvetica, sans-serif" class="fnt font-arial">Arial</option>
+    							<option value="Georgia, serif" class="fnt font-Georgia">Georgia</option>
 							</select>
 					</span>
 					<span><div>Font Size (in canvas):
@@ -175,7 +188,7 @@
 						</form>
 						<div id='upload_results'>
 							<?=$uploadResults;?>
-						</div>
+							</div>
 					</span>
     					<ul>
       						<li>List item one</li>
@@ -185,13 +198,10 @@
   				</div>
   				<h3 class="tool-header">lorem ipsum</h3>
   				<div>
-    				<span>
-    					
+    				<span>    					
     				</span>
-
 				</div>
 			</div>
 		</div>
-	</div>
-	
+	</div>	
 </body>

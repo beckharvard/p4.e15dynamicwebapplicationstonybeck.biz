@@ -10,11 +10,9 @@
 		<div id='card-background'>
 			<div id='canvas'>
 				<form id="foo" method ='POST' action ='/posts/p_add'>
-				<div id='post-text-output' class='post-text-output' >
-					<!---submissions is currently an empty array. why?-->
-					
+				<div id='post-text-output' class='post-text-output' ><span class="ui-icon ui-icon-arrow-4"></span>
 					<input id="edgeless_field1" class="edgeless_fields" type='text' name='content' maxlength="72" placeholder="" required>
-										
+							
 				</div>
 				<input id="publish_post" class="buttons" type='submit' value='Publish Post'>
 				</form>

@@ -142,6 +142,8 @@ class posts_controller extends base_controller {
 
     	# Set up the View
     	$this->template->content = View::instance('v_posts_p_add');
+    	$this->template->content->moreContent = View::instance('v_toolsAccordian');
+    	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     	
     	# More data we want stored with the user
     	$_POST['created']  = Time::now();
@@ -165,16 +167,18 @@ class posts_controller extends base_controller {
     	# Set up the View
     	$this->template->content = View::instance('v_posts_uploadfile');
     
-    	Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id); 
+    	Upload::upload($_FILES, "/uploads/posts_pictures/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id); 
     
 		if ($_FILES["file"]["error"] > 0) {
   			echo "Error: " . $_FILES["file"]["error"] . "<br>";
   		}
 		else {
+			$imageName = $_FILES["file"]["name"];
   			echo "Upload: " . $_FILES["file"]["name"] . "<br>";
   			echo "Type: " . $_FILES["file"]["type"] . "<br>";
   			echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-  			echo "Stored in: " . $_FILES["file"]["tmp_name"];
+  			#echo "<img src=\"/uploads/posts_pictures/".$imageName .">";
+  			echo "<img src=\"/uploads/posts_pictures/4.JPG\"/>";
   		}  
     }
     
