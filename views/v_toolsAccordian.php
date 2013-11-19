@@ -29,8 +29,10 @@
 		var myPost_how_many_chars = myPost.length;
 		
 		//we need to to size the text input box too...
+		if (myPost_how_many_chars > 38) {
+			$('#post-text-output').css('width', (myPost_how_many_chars * 5.1) + "px");		
+		}
 		$('#edgeless_field1').css('width', (myPost_how_many_chars * 5) + "px");
-			
 		var how_many_left = 72 - myPost_how_many_chars;
 
 		// and give feedback to the user about how many chars left... 
@@ -72,7 +74,7 @@
   		$('#edgeless_field1').css('font-size', new_font_size + "px");
   		$('#post-text-output').css('height', (new_font_size * 5) + "px");
   		$('#post-text-output').css('width', ((postLength) * new_font_size) + "px");
-  		$('#edgeless_field1').css('width', ((postLength * new_font_size) * 5) + "px");
+  		$('#edgeless_field1').css('width', ((postLength * new_font_size)  * .75) + "px");
   				// We need the length for use in sizing the div
 
 	});
