@@ -2,6 +2,7 @@
   <meta charset="utf-8" />
   <title>Tools Accordion</title>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> </script>
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css" />
@@ -52,6 +53,7 @@
 		//console.log(color_that_was_clicked);
 	
 		$('#canvas').css('background-color', color_that_was_clicked);
+		$('#edgeless_field1').css('background-color', color_that_was_clicked);
 
 	});	
 	$('.text-colors').click(function() {
@@ -88,7 +90,7 @@
 
   });
 </script>
-  <script>
+<script>
   $(function() {
     // run the currently selected effect
     function runEffect() {
@@ -113,9 +115,53 @@
       runEffect();
       return false;
     });
+    // when a font is picked, style the font to the selected font using ajax
+	$("#styleFont").change(function (){
+   var id =$('#styleFont option' +':selected').val();  
+   $("#edgeless_field1").css('font-family',id);
+   console.log("the id is " + id);                             
+   
+ });
   });
+</script>
   
-  </script>
+<script>
+function SetFonts(fonts) { 
+    for (var i = 0; i < fonts.items.length; i++) {      
+     $('#styleFont')
+         .append($("<option></option>")
+         .attr("value", fonts.items[i].family)
+         .text(fonts.items[i].family));
+    }    
+}
+
+$.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB8Ua6XIfe-gqbkE8P3XL4spd0x8Ft7eWo", function(fonts){
+    for (var i = 0; i < fonts.items.length; i++) {      
+     $('#styleFont')
+         .append($("<option></option>")
+         .attr("value", fonts.items[i].family)
+         .text(fonts.items[i].family));
+    }    
+});
+var script = document.createElement('script');
+script.src = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAYJsif1PxS6-JErAwruv7woKoyMLK7HJA&callback=SetFonts';
+document.body.appendChild(script);
+
+
+ WebFontConfig = {
+   google: { families: ['ABeeZee', 'Abel', 'Abril Fatface', 'Aclonica', 'Acme', 'Actor', 'Adamina', 'Advent Pro', 'Aguafina Script', 'Akronim', 'Aladin', 'Aldrich', 'Alegreya', 'Alegreya SC', 'Alex Brush', 'Alfa Slab One', 'Alice', 'Alike', 'Alike Angular', 'Allan', 'Allerta', 'Allerta Stencil', 'Allura', 'Almendra', 'Almendra Display', 'Almendra SC', 'Amarante', 'Amaranth', 'Amatic SC', 'Amethysta', 'Anaheim', 'Andada', 'Andika', 'Angkor', 'Annie Use Your Telescope', 'Anonymous Pro', 'Antic', 'Antic Didone', 'Antic Slab', 'Anton', 'Arapey', 'Arbutus', 'Arbutus Slab', 'Architects Daughter', 'Archivo Black', 'Archivo Narrow', 'Arimo', 'Arizonia', 'Armata', 'Artifika', 'Arvo', 'Asap', 'Asset', 'Astloch', 'Asul', 'Atomic Age', 'Aubrey', 'Audiowide', 'Autour One', 'Average', 'Average Sans', 'Averia Gruesa Libre', 'Averia Libre', 'Averia Sans Libre', 'Averia Serif Libre', 'Bad Script', 'Balthazar', 'Bangers', 'Basic', 'Battambang', 'Baumans', 'Bayon', 'Belgrano', 'Belleza', 'BenchNine', 'Bentham', 'Berkshire Swash', 'Bevan', 'Bigelow Rules', 'Bigshot One', 'Bilbo', 'Bilbo Swash Caps', 'Bitter', 'Black Ops One', 'Bokor', 'Bonbon', 'Boogaloo', 'Bowlby One', 'Bowlby One SC', 'Brawler', 'Bree Serif', 'Bubblegum Sans', 'Bubbler One', 'Buda', 'Buenard', 'Butcherman', 'Butterfly Kids', 'Cabin', 'Cabin Condensed', 'Cabin Sketch', 'Caesar Dressing', 'Cagliostro', 'Calligraffitti', 'Cambo', 'Candal', 'Cantarell', 'Cantata One', 'Cantora One', 'Capriola', 'Cardo', 'Carme', 'Carrois Gothic', 'Carrois Gothic SC', 'Carter One', 'Caudex','Cedarville Cursive', 'Ceviche One', 'Changa One', 'Chango', 'Chau Philomene One', 'Chela One', 'Chelsea Market', 'Chenla', 'Cherry Cream Soda', 'Cherry Swash', 'Chewy', 'Chicle', 'Chivo', 'Cinzel', 'Cinzel Decorative', 'Clicker Script', 'Coda', 'Coda Caption', 'Codystar', 'Combo', 'Comfortaa', 'Coming Soon','Concert One', 'Condiment', 'Content', 'Contrail One', 'Convergence', 'Cookie', 'Copse', 'Corben', 'Courgette', 'Cousine', 'Coustard', 'Covered By Your Grace', 'Crafty Girls', 'Creepster', 'Crete Round', 'Crimson Text', 'Croissant One', 'Crushed', 'Cuprum', 'Cutive', 'Cutive Mono']}
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+
+</script>
 </head>
 	<body class="accordion">
 		<div class="toggler"> 
@@ -145,11 +191,8 @@
 					<br>
 					<span>
 					<br>
-						<label for="fonts">Font: </label>
-							<select id="fonts" name="fonts" class="selectbar input-medium">
-    							<option value="Arial, Helvetica, sans-serif" class="fnt font-arial">Arial</option>
-    							<option value="Georgia, serif" class="fnt font-Georgia">Georgia</option>
-							</select>
+						<select id="styleFont">
+    					</select>
 					</span>
 					<span><div>Font Size (in canvas):
 						<select class="font-selector">

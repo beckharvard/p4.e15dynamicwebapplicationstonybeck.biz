@@ -184,6 +184,10 @@ Editor Canvas
 
 }
 
+#styleFont{
+	width:				200px;
+}
+
 input.edgeless_fields {
 	border-radius:		0px;
 	border:				0px inset #F8F8F8;
@@ -196,6 +200,11 @@ input.edgeless_fields {
 input#edgeless_field1 {
 
 	font-size: 10px;
+}
+
+#edgeless_field1 {
+
+	font-family: 		Avenir;
 }
 
 #draggable { 
@@ -287,40 +296,60 @@ tools
 
 #red, #red-text {
 	background-color:	red;
+	border-radius:		5px;
+	margin:				.5px
 }
 
 #orange, #orange-text  {
 	background-color:	orange;
+	border-radius:		5px;
+	margin:				.5px
 }
 
 #green, #green-text {
 	background-color:	green;
+	border-radius:		5px;
+	margin:				.5px;
 }
 
 #yellow, #yellow-text {
 	background-color:	yellow;
+	border-radius:		5px;
+	margin:				.5px;
 }
 
 #blue, #blue-text {
 	background-color:	blue;
+	border-radius:		5px;
+	margin:				.5px;
 }
 
 #indigo, #indigo-text {
 	background-color:	indigo;
+	border-radius:		5px;
+	margin:				.5px;
 }
 
 #violet, #violet-text {
 	background-color:	violet;
+	border-radius:		5px;
+	margin:				.5px;
 }
 
 #black, #black-text {
 	background-color:	black;
+	border-radius:		5px;
+	margin:				.5px;
 }
 
 #gray, #gray-text {
 	background-color:	gray;
+	border-radius:		5px;
+	margin:				.5px;
 }
 
 #white, #white-text {
 	background-color:	white;
+	border-radius:		5px;
+	margin:				.5px;
 }
