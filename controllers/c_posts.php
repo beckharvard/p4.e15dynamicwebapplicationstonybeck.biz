@@ -18,12 +18,12 @@ class posts_controller extends base_controller {
     	$this->template->client_files_head = Utils::load_client_files($client_files_head);
     	
     	$client_files_body = Array(
-    	//	'../js/validate.js',
-        //	'../../js/validate.js',
-        //	'../js/validate_posts.js',
-        //	'../../js/validate_posts.js',
-    		'../../css/style_php.css',
-    		'../../../css/style_php.css'
+		//	'../js/validate.js',
+		//	'../../js/validate.js',
+		//	'../js/validate_posts.js',
+		//	'../../js/validate_posts.js',
+			'../../css/style_php.css',
+			'../../../css/style_php.css'
     		);
     	$this->template->client_files_body = Utils::load_client_files($client_files_body); 
     	   
@@ -155,6 +155,8 @@ class posts_controller extends base_controller {
 		# To protect against xss we remove HTMl special characters, strip tags and slashes
 		$_POST["content"] = htmlspecialchars($_POST["content"], ENT_QUOTES, 'UTF-8');
 		$_POST["content"] = strip_tags($_POST["content"]);
+		
+		#echo var_dump($_POST['field_style_and_location']);
 
     	$author_user_id = DB::instance(DB_NAME)->insert("posts", $_POST);
     	
@@ -165,22 +167,37 @@ class posts_controller extends base_controller {
     public function uploadfile() {
     
     	# Set up the View
-    	$this->template->content = View::instance('v_posts_uploadfile');
-    
-    	Upload::upload($_FILES, "/uploads/posts_pictures/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id); 
-    
-		if ($_FILES["file"]["error"] > 0) {
-  			echo "Error: " . $_FILES["file"]["error"] . "<br>";
-  		}
+    	# $this->template->content = View::instance('v_posts_uploadfile');
+    	
+    	# try to figure this out from the ajax class in order to get the image submission to show up
+    	$view = new View('v_posts_uploadfile');
+    	
+    	if ($_FILES['file']['error'] == 0)
+        {
+				$filename = $_FILES["file"]["name"];
+				$withoutExt = preg_replace("/\\.[^.\\s]{3,4}$/", "", $filename);
+	
+				Upload::upload($_FILES, "/uploads/posts_pictures/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $withoutExt ); 
+		
+				if ($_FILES["file"]["error"] > 0) {
+					echo "Error: " . $_FILES["file"]["error"] . "<br>";
+				}
+				else {
+					$imageName = $_FILES["file"]["name"];
+					echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+					echo "Type: " . $_FILES["file"]["type"] . "<br>";
+					echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+					echo "<img src=\"/uploads/posts_pictures/".$_FILES["file"]["name"]."\">";
+				}  
+		
+				echo $view;
+		}
 		else {
-			$imageName = $_FILES["file"]["name"];
-  			echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-  			echo "Type: " . $_FILES["file"]["type"] . "<br>";
-  			echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-  			#echo "<img src=\"/uploads/posts_pictures/".$imageName .">";
-  			echo "<img src=\"/uploads/posts_pictures/4.JPG\"/>";
-  		}  
-    }
+		
+			echo $error;
+		}
+		
+	}
     
     public function edit($edited)  {
     	# Set up the View

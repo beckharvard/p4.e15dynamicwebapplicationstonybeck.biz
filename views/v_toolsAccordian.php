@@ -18,111 +18,111 @@
 		// see also the .keydown and the .on('input' function and contrast the behavior.
 			
 		// find out what's in the field i.e. what they have typed.
-		var myPost = $(this).val();
-		
+			var myPost = $(this).val();		
 		//take the text from the field and put it on top of the canvas
-		$('#edgeless_field1').attr("value", myPost);
-		
+			$('#edgeless_field1').attr("value", myPost);	
 		// And let's make it draggable but NOT contained
-		$( '#post-text-output' ).draggable();	
-	
+			$( '#post-text-output' ).draggable();		
 		//as text grows, we need to track the length...
-		var myPost_how_many_chars = myPost.length;
-		
-		//we need to to size the text input box too...
-		if (myPost_how_many_chars > 38) {
-			$('#post-text-output').css('width', (myPost_how_many_chars * 5.1) + "px");		
-		}
-		$('#edgeless_field1').css('width', (myPost_how_many_chars * 5) + "px");
-		var how_many_left = 72 - myPost_how_many_chars;
-
+			var myPost_how_many_chars = myPost.length;
+		//we need to to size the div
+			if (myPost_how_many_chars > 38) {
+				$('#post-text-output').css('width', (myPost_how_many_chars * 5.1) + "px");		
+			}
+		// sizing the text input box too...
+			$('#edgeless_field1').css('width', (myPost_how_many_chars * 5) + "px");
+		//for user feedback, let's track the number of chars so far
+			var how_many_left = 72 - myPost_how_many_chars;
 		// and give feedback to the user about how many chars left... 
-		if (how_many_left == 0) {		
-			$('#text-output-error').css('color', 'red');
-		}
-		else if (how_many_left < 72) {
-			$('#text-output-error').css('color', 'orange');		
-		}		
-		$('#text-output-error').html('You have ' + how_many_left + ' characters left');		
-
+			if (how_many_left == 0) {		
+				$('#text-output-error').css('color', 'red');
+			}
+			else if (how_many_left < 72) {
+				$('#text-output-error').css('color', 'orange');		
+			}	
+		// always display the number of chars...		
+			$('#text-output-error').html('You have ' + how_many_left + ' characters left');		
 	});
     $('.colors').click(function() {
-
-		var color_that_was_clicked = $(this).css('background-color');
-	
-		//console.log(color_that_was_clicked);
-	
-		$('#canvas').css('background-color', color_that_was_clicked);
-		$('#edgeless_field1').css('background-color', color_that_was_clicked);
+		// set a variable that is the color the user clicked
+			var color_that_was_clicked = $(this).css('background-color');
+		//console.log(color_that_was_clicked);	
+			$('#canvas').css('background-color', color_that_was_clicked);
+			$('#edgeless_field1').css('background-color', color_that_was_clicked);
 
 	});	
 	$('.text-colors').click(function() {
-
-		var text_color_clicked = $(this).css('background-color');
-	
-		console.log(text_color_clicked);
-	
-		$('#edgeless_field1').css('color', text_color_clicked);
-
+			var text_color_clicked = $(this).css('background-color');
+		// console.log(text_color_clicked);
+			$('#edgeless_field1').css('color', text_color_clicked);
 	});
 	$( ".font-selector" ).change(function() {
   		//console.log( "Handler for .change() called." );
   		
-  		
-  		var lengthOfmyPost = $('#edgeless_field1').attr('value');
-  		var postLength = lengthOfmyPost.length;
-		console.log('postLength is now ' + postLength);
-  		var new_font_size = $(this).val();
-  		$('#edgeless_field1').css('font-size', new_font_size + "px");
-  		$('#post-text-output').css('height', (new_font_size * 5) + "px");
-  		$('#post-text-output').css('width', ((postLength) * new_font_size) + "px");
-  		$('#edgeless_field1').css('width', ((postLength * new_font_size)  * .75) + "px");
-  				// We need the length for use in sizing the div
-
+  		// We need the length for use in sizing the div
+  			var lengthOfmyPost = $('#edgeless_field1').attr('value');
+  			var postLength = lengthOfmyPost.length;
+		// console.log('postLength is now ' + postLength);
+  			var new_font_size = $(this).val();
+  		// sizing the div
+  			$('#edgeless_field1').css('font-size', new_font_size + "px");
+  			$('#post-text-output').css('height', (new_font_size * 5) + "px");
+  			$('#post-text-output').css('width', ((postLength) * new_font_size) + "px");
+  			$('#edgeless_field1').css('width', ((postLength * new_font_size)  * .75) + "px");
+  			if (myPost_how_many_chars > 38) {
+				$('#post-text-output').css('width', (myPost_how_many_chars * 5.1) + "px");		
+			}
 	});
 	$("#fonts").change(function() {
-		console.log( "Handler for .change() called." );
+		//console.log( "Handler for .change() called." );
 		var new_font = $(this).val();
-		$('#edgeless_field1').css('font', new_font);
-		
-		
+		$('#edgeless_field1').css('font', new_font);		
 	});
-
-  });
+});
 </script>
 <script>
   $(function() {
     // run the currently selected effect
     function runEffect() {
       // get effect type from
-      var selectedEffect = $( "#effectTypes" ).val();
+      	var selectedEffect = $( "#effectTypes" ).val();
  
       // most effect types need no options passed by default
-      var options = {};
+      	var options = {};
       // some effects have required parameters
-      if ( selectedEffect === "scale" ) {
-        options = { percent: 0 };
-      } else if ( selectedEffect === "size" ) {
-        options = { to: { width: 200, height: 60 } };
-      }
- 
-      // run the effect
-      $( "#effect" ).toggle( selectedEffect, options, 500 );
-    };
- 
+      	if ( selectedEffect === "scale" ) {
+        	options = { percent: 0 };
+      	} 
+      	else if ( selectedEffect === "size" ) {
+        	options = { to: { width: 200, height: 60 } };
+		}
+    // run the effect
+		$( "#effect" ).toggle( selectedEffect, options, 500 );
+		};
     // set effect from select menu value
-    $( "#hide-button" ).click(function() {
-      runEffect();
-      return false;
-    });
+		$( "#hide-button" ).click(function() {
+			runEffect();
+			return false;
+    	});
     // when a font is picked, style the font to the selected font using ajax
-	$("#styleFont").change(function (){
-   var id =$('#styleFont option' +':selected').val();  
-   $("#edgeless_field1").css('font-family',id);
-   console.log("the id is " + id);                             
+		$("#styleFont").change(function (){
+			var id =$('#styleFont option' +':selected').val();  
+			$("#edgeless_field1").css('font-family',id);
+			$("#field_style_and_location").val($("#edgeless_field1").css("font-family"));
+			//console.log("the id is " + id);                             
    
- });
-  });
+		});
+	});
+</script>
+
+<script>
+function doSubmit(){
+
+    $("#field_style_and_location").val($("#edgeless_field1").css("color"));
+
+
+       return true;
+}
 </script>
   
 <script>
@@ -135,7 +135,7 @@ function SetFonts(fonts) {
     }    
 }
 
-$.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB8Ua6XIfe-gqbkE8P3XL4spd0x8Ft7eWo", function(fonts){
+$.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAYJsif1PxS6-JErAwruv7woKoyMLK7HJA", function(fonts){
     for (var i = 0; i < fonts.items.length; i++) {      
      $('#styleFont')
          .append($("<option></option>")
@@ -149,7 +149,7 @@ document.body.appendChild(script);
 
 
  WebFontConfig = {
-   google: { families: ['ABeeZee', 'Abel', 'Abril Fatface', 'Aclonica', 'Acme', 'Actor', 'Adamina', 'Advent Pro', 'Aguafina Script', 'Akronim', 'Aladin', 'Aldrich', 'Alegreya', 'Alegreya SC', 'Alex Brush', 'Alfa Slab One', 'Alice', 'Alike', 'Alike Angular', 'Allan', 'Allerta', 'Allerta Stencil', 'Allura', 'Almendra', 'Almendra Display', 'Almendra SC', 'Amarante', 'Amaranth', 'Amatic SC', 'Amethysta', 'Anaheim', 'Andada', 'Andika', 'Angkor', 'Annie Use Your Telescope', 'Anonymous Pro', 'Antic', 'Antic Didone', 'Antic Slab', 'Anton', 'Arapey', 'Arbutus', 'Arbutus Slab', 'Architects Daughter', 'Archivo Black', 'Archivo Narrow', 'Arimo', 'Arizonia', 'Armata', 'Artifika', 'Arvo', 'Asap', 'Asset', 'Astloch', 'Asul', 'Atomic Age', 'Aubrey', 'Audiowide', 'Autour One', 'Average', 'Average Sans', 'Averia Gruesa Libre', 'Averia Libre', 'Averia Sans Libre', 'Averia Serif Libre', 'Bad Script', 'Balthazar', 'Bangers', 'Basic', 'Battambang', 'Baumans', 'Bayon', 'Belgrano', 'Belleza', 'BenchNine', 'Bentham', 'Berkshire Swash', 'Bevan', 'Bigelow Rules', 'Bigshot One', 'Bilbo', 'Bilbo Swash Caps', 'Bitter', 'Black Ops One', 'Bokor', 'Bonbon', 'Boogaloo', 'Bowlby One', 'Bowlby One SC', 'Brawler', 'Bree Serif', 'Bubblegum Sans', 'Bubbler One', 'Buda', 'Buenard', 'Butcherman', 'Butterfly Kids', 'Cabin', 'Cabin Condensed', 'Cabin Sketch', 'Caesar Dressing', 'Cagliostro', 'Calligraffitti', 'Cambo', 'Candal', 'Cantarell', 'Cantata One', 'Cantora One', 'Capriola', 'Cardo', 'Carme', 'Carrois Gothic', 'Carrois Gothic SC', 'Carter One', 'Caudex','Cedarville Cursive', 'Ceviche One', 'Changa One', 'Chango', 'Chau Philomene One', 'Chela One', 'Chelsea Market', 'Chenla', 'Cherry Cream Soda', 'Cherry Swash', 'Chewy', 'Chicle', 'Chivo', 'Cinzel', 'Cinzel Decorative', 'Clicker Script', 'Coda', 'Coda Caption', 'Codystar', 'Combo', 'Comfortaa', 'Coming Soon','Concert One', 'Condiment', 'Content', 'Contrail One', 'Convergence', 'Cookie', 'Copse', 'Corben', 'Courgette', 'Cousine', 'Coustard', 'Covered By Your Grace', 'Crafty Girls', 'Creepster', 'Crete Round', 'Crimson Text', 'Croissant One', 'Crushed', 'Cuprum', 'Cutive', 'Cutive Mono']}
+   google: { families: ['ABeeZee', 'Abel', 'Abril Fatface', 'Aclonica', 'Acme', 'Actor', 'Adamina', 'Advent Pro', 'Aguafina Script', 'Annie Use Your Telescope', 'Average', 'Average Sans', 'Averia Gruesa Libre', 'Averia Libre', 'Averia Sans Libre', 'Averia Serif Libre', 'Berkshire Swash', 'Bevan', 'Bigelow Rules', 'Bigshot One', 'Bilbo', 'Bilbo Swash Caps', 'Bitter', 'Black Ops One', 'Bokor', 'Bonbon', 'Caesar Dressing', 'Cagliostro', 'Calligraffitti', 'Cambo', 'Carter One', 'Caudex','Cedarville Cursive', 'Ceviche One', 'Changa One', 'Chango', 'Chau Philomene One', 'Chela One', 'Chelsea Market', 'Chenla', 'Cherry Cream Soda', 'Cherry Swash', 'Chewy', 'Chicle', 'Chivo', 'Cinzel', 'Cinzel Decorative', 'Clicker Script', 'Coda', 'Coda Caption', 'Codystar', 'Combo', 'Comfortaa', 'Coming Soon','Concert One', 'Condiment', 'Content', 'Contrail One', 'Convergence', 'Cookie', 'Copse', 'Corben', 'Courgette', 'Cousine', 'Coustard', 'Covered By Your Grace', 'Crafty Girls', 'Creepster', 'Crete Round', 'Crimson Text', 'Croissant One', 'Crushed', 'Cuprum', 'Cutive', 'Cutive Mono']}
   };
   (function() {
     var wf = document.createElement('script');
@@ -226,19 +226,26 @@ document.body.appendChild(script);
   				<h3 class="tool-header">Add Images</h3>
 				<div id='imagesDiv'>
     				<span >
-    					<form action="/posts/uploadfile" method="post" enctype="multipart/form-data">
-							<label for="file">Filename:</label>
-							<input type="file" name="file" id="file"><br>
-							<input type="submit" name="submit" value="Upload">
-						</form>
+
 						<div id='upload_results'>
+						    <form action="/posts/uploadfile" method="post" enctype="multipart/form-data">
+								<label for="file">Filename:</label>
+								<input type="file" name="file" id="file"><br>
+								<input type="submit" name="submit" value="Upload">
+							</form>
 							<?=$uploadResults;?>
+							<?php if(isset($error)): ?>
+								<div class="error">
+									<h4>Upload failed.</h4>
+									<p>Image file must be a jpg, gif, or png.</p>
+								</div>
+							<?php endif;?> 
 							</div>
 					</span>
     					<ul>
-      						<li>List item one</li>
- 							<li>List item two</li>
- 							<li>List item three</li>
+      						<li>I want to put a picture here</li>
+ 							<li>I want to put a picture here</li>
+ 							<li>I want to put a picture here</li>
 						</ul>
   				</div>
   				<h3 class="tool-header">lorem ipsum</h3>
