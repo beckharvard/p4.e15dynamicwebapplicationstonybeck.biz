@@ -54,12 +54,16 @@
 		// console.log('postLength is now ' + postLength);
   			var new_font_size = $(this).val();
   		// sizing the div
+  		var pto_field_size =  $('#post-text-output');
+  
+  		console.log("the size of pto is " + pto_field_size.innerHeight() ); 
+  		
   			$('#edgeless_field1').css('font-size', new_font_size + "px");
   			$('#post-text-output').css('height', (new_font_size * 5) + "px");
   			$('#post-text-output').css('width', ((postLength) * new_font_size) + "px");
   			$('#edgeless_field1').css('width', ((postLength * new_font_size)  * .75) + "px");
-  			if (myPost_how_many_chars > 38) {
-				$('#post-text-output').css('width', (myPost_how_many_chars * 5.1) + "px");		
+  			if (postLength > 38) {
+				$('#post-text-output').css('width', (postLength * 5.1) + "px");		
 			}
 	});
 	$("#fonts").change(function() {

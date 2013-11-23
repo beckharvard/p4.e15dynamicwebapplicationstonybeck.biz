@@ -74,21 +74,22 @@
   				<h3 class="tool-header">Add Images</h3>
 				<div id='imagesDiv'>
     				<span >
-
 						<div id='upload_results'>
 						    <form action="/posts/uploadfile" method="post" enctype="multipart/form-data">
 								<label for="file">Filename:</label>
 								<input type="file" name="file" id="file"><br>
 								<input type="submit" name="submit" value="Upload">
 							</form>
-							<?=$uploadResults;?>
-							<?php if(isset($error)): ?>
-								<div class="error">
-									<h4>Upload failed.</h4>
-									<p>Image file must be a jpg, gif, or png.</p>
-								</div>
-							<?php endif;?> 
+							<div id='display_results'>
+								<?=$uploadResults;?>
+								<?php if(isset($error)): ?>
+									<div class="error">
+										<h4>Upload failed.</h4>
+										<p>Image file must be a jpg, gif, or png.</p>
+									</div>
+								<?php endif;?> 
 							</div>
+						</div>
 					</span>
     					<ul>
       						<li>I want to put a picture here</li>

@@ -1,4 +1,4 @@
-  $(function() {
+$(function() {
     // run the currently selected effect
     function runEffect() {
       // get effect type from
@@ -26,7 +26,8 @@
 			var id =$('#styleFont option' +':selected').val();  
 			$("#edgeless_field1").css('font-family',id);
 			$("#field_style_and_location").val($("#edgeless_field1").css("font-family"));
+		
 			//console.log("the id is " + id);                             
    
-		});
 	});
+});

@@ -1,3 +1,9 @@
+/*-------------------------------------------------------------------------------------------------
+Google API Web Font picker with Ajax!
+https://developers.google.com/fonts/docs/webfont_loader
+
+-------------------------------------------------------------------------------------------------*/
+
 function SetFonts(fonts) { 
     for (var i = 0; i < fonts.items.length; i++) {      
      $('#styleFont')
@@ -31,5 +37,5 @@ document.body.appendChild(script);
     wf.async = 'true';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wf, s);
-  })();
+})();
 
