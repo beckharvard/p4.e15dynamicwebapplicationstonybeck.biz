@@ -25,7 +25,8 @@ $(function() {
 		$("#styleFont").change(function (){
 			var id =$('#styleFont option' +':selected').val();  
 			$("#edgeless_field1").css('font-family',id);
-			$("#field_style_and_location").val($("#edgeless_field1").css("font-family"));
+			$("#fields_chosen_font").val($("#edgeless_field1").css("font-family"));
+			$("#fields_chosen_font").html($("#edgeless_field1").css("font-family"));
 		
 			//console.log("the id is " + id);                             
    

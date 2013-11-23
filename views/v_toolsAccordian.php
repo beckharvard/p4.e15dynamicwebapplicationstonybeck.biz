@@ -8,7 +8,6 @@
   <script src="/js/tools.js"></script>
   <script src="/js/fonts.js"></script>
   <script src="/js/font_ajax.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
 
 </head>
 	<body class="accordion">
@@ -43,7 +42,7 @@
     					</select>
 					</span>
 					<span><div>Font Size (in canvas):
-						<select class="font-selector">
+						<select class="font-size-selector">
   							<option class="content-font-size" id="10" value="10">10</option>
   							<option class="content-font-size" id="12" value="12">12</option>
   							<option class="content-font-size" id="14" value="14">14</option>

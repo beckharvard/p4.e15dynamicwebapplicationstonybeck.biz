@@ -145,7 +145,7 @@ class posts_controller extends base_controller {
     	$this->template->content->moreContent = View::instance('v_toolsAccordian');
     	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     	
-    	# More data we want stored with the user
+    	# More data we want stored with the post
     	$_POST['created']  = Time::now();
     	$_POST['modified'] = Time::now();
     	
