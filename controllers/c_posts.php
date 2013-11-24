@@ -155,8 +155,6 @@ class posts_controller extends base_controller {
 		# To protect against xss we remove HTMl special characters, strip tags and slashes
 		$_POST["content"] = htmlspecialchars($_POST["content"], ENT_QUOTES, 'UTF-8');
 		$_POST["content"] = strip_tags($_POST["content"]);
-		
-		#echo var_dump($_POST['field_style_and_location']);
 
     	$author_user_id = DB::instance(DB_NAME)->insert("posts", $_POST);
     	
@@ -203,6 +201,11 @@ class posts_controller extends base_controller {
     	# Set up the View
     	$this->template->content = View::instance('v_posts_edit');
     	$this->template->content->moreContent = View::instance('v_toolsAccordian');
+    	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
+    		
+    	# ???  Do i need to setup a view for the data? 
+    	# ???  do i need to add a controller for the Accordion?
+    		
     		
     	# Build the query to get the post
     	$q = "SELECT *
@@ -210,12 +213,13 @@ class posts_controller extends base_controller {
     	    WHERE user_id = ".$this->user->user_id. " AND 
     	    post_id = ".$edited;
 
-    	# Execute the query to get all the users. 
+    	# Execute the query to get the post. 
     	# Store the result array in the variable $post
     	$_POST["editable"] = DB::instance(DB_NAME)->select_row($q);
-
+    	
     	# Pass data to the view
     	$this->template->content->post = $_POST['editable'];
+    	$this->template->content->moreContent->post = $_POST['editable'];
     	
     	# Render template
 		echo $this->template;  	 

@@ -43,7 +43,7 @@ class index_controller extends base_controller {
 			$this->template->content = View::instance('v_index_index');
 
 		# Now set the <title> tag
-			$this->template->title = "SpecSpec";
+			$this->template->title = "3gether";
 			
 		# Render the view
 			echo $this->template;
