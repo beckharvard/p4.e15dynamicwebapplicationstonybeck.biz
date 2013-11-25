@@ -17,9 +17,8 @@
   					<h3 class="tool-header">Add your post text:</h3>
   				<div >
     				<span>
-						<input type='text' id='myPost' name='content' maxlength="72" value="<?=$post['content'] = trim($post['content'], " \t\n\r" )?>" required>
+						<input type='text' id='myPost' name='content' maxlength="72" value="<? if(isset($post)) echo $post['content'] = trim($post['content'], " \t\n\r" )?>" required>
     					<span class='error' id='text-output-error'></span>
-
     				</span>
     				<br>
     				<span>
