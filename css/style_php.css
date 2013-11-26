@@ -34,12 +34,14 @@ time, button {
 	border-radius:		15px;
 	padding:			10px;
 	margin-right:		1%;
+	margin-bottom:		1%;
 	min-width:			900px;
 }
 
 body {
 	line-height: 		1;
     margin-left:		1%;
+    margin-bottom:		30px;
 }
 
 h1 {
@@ -73,6 +75,12 @@ hr {
 #footer_right {
 	float:				right;
 	margin-right:       1em;
+}
+
+footer {
+
+	padding-top:		15px;
+	margin-top:			15px;			
 }
 
 /* -------------------------------------------------------------------

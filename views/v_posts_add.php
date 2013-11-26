@@ -10,7 +10,7 @@
 		<div id='canvas-background'>
 			<div id='canvas'>
 				<form id="save_post" method ='POST' onsubmit="doSubmit()"  action ='/posts/p_add'>
-				<div id='post-text-output' class='post-text-output' >
+				<div id='post-text-output' class="post-text-output">
 					<span class="ui-icon ui-icon-arrow-4 "></span>
 					<span class="ui-icon ui-icon-trash "></span>  
 					<input id="edgeless_field1" class="edgeless_fields" type='text' name='content' maxlength="72" placeholder="" required>

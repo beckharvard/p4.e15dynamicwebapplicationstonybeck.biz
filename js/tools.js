@@ -5,7 +5,7 @@ The Tools in the accordion and their style
  
 	// add the accordion
     $( "#accordion" ).accordion({
-      collapsible: true
+      collapsible: false
     });
 
     // for the text box, we track what the user types and add it to the field on the canvas
@@ -63,7 +63,7 @@ The Tools in the accordion and their style
 			$('#text_color_for_post').val(text_color_clicked);
 	});
 	
-// HEY I DOn'T THIN THIS IS EVEN USED!!! apply the selected font to the text field
+	// apply the selected font to the text field
 	$("#fonts").change(function() {
 		console.log( "Hey this fonts things was called." );
 			var new_font = $(this).val();
@@ -81,8 +81,9 @@ The Tools in the accordion and their style
   	
 			$('#font_size_for_post').html(new_font_size);
 			$('#font_size_for_post').val(new_font_size);
-			$('#post-text-output').css('font-size', new_font_size + "px;");
-			$('#edgeless_field1').css('font-size', new_font_size + "px;");
+		//	$('#post-text-output').css('font-size', new_font_size);
+		//	$('#edgeless_field1').css('font-size', new_font_size);
+			$('#edgeless_field1').css('font-size', new_font_size + "px");
 			
 			sizeTextDiv(new_font_size);
 	});
@@ -108,6 +109,8 @@ The Tools in the accordion and their style
     		$('#edgeless_field1').attr("value", LoadMyPost);	
     	// and make it draggable
     		$( '#post-text-output' ).draggable();
+    	// size it	
+    		sizeTextDiv();
 
     });
     
@@ -115,34 +118,29 @@ The Tools in the accordion and their style
     	// We need the length for use in sizing the div
   			var lengthOfmyPost = $('#edgeless_field1').attr('value');
   			var postLength = lengthOfmyPost.length;
+  			
+  		console.log("post is " + postLength + " characters long");
 
-  		// sizing the div
-  			var pto_field_height =  $('#post-text-output').innerHeight();
-  			var pto_field_width =  $('#post-text-output').innerWidth();
-  			var e_field_height =  $('#edgeless_field1').innerHeight();
-  			var e_field_width =  $('#edgeless_field1').innerWidth();
-  
- // HEYEYEYEYEY I want to use innerHeight to better size these beasts And above, too. 
- 		console.log("post is " + postLength + " characters long");
-  		console.log("the height of pto is " + pto_field_height ); 
-  		console.log("the width of pto is " + pto_field_width );
-  		console.log("the height of efield is " + e_field_height ); 
-  		console.log("the width of efield is " + e_field_width );
-  		
-  		//	$('#edgeless_field1').css('font-size', new_font_size + "px");
-  			$('#post-text-output').css('height', (new_font_size + 5) + "px");
-  			
-  			
-  			while  ( e_field_width >= $('#post-text-output').innerWidth() ) {
+  		// sizing the div we get current widths
+  			while  ( $('#edgeless_field1').outerWidth() >= $('#post-text-output').innerWidth() ) {
   				var new_width = $('#post-text-output').innerWidth();
   				new_width++;
+  				console.log("width is now " + new_width);
   				$('#post-text-output').css('width', ( new_width + "px"));
   			}
-  			$('#edgeless_field1').attr('size', postLength   + 1);
-  			if (postLength > 30) {
-				$('#post-text-output').css('width', (postLength * 5.1) + "px");		
+  		//for short texts, we don't need or want to do this
+  			if (postLength > 30) {	
+  				$('#edgeless_field1').attr('size', postLength - 3);	
 			}
     
     };
+    
+ 	$('#refresh-btn').on("click", function () {
+
+		$('#canvas').css('background-color', "");
+		$('#edgeless_field1').css('background-color', "");
+		$('#edgeless_field1').html("");
+	
+	});
 
 });
