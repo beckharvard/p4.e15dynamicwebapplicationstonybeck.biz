@@ -78,9 +78,10 @@ The Tools in the accordion and their style
   			var new_font_size = $(this).val();
   			
   			  		console.log( "Handler for .change() called. font size is now " + new_font_size);
-  	
+  		// save is to a hidden input for later retrieval
 			$('#font_size_for_post').html(new_font_size);
 			$('#font_size_for_post').val(new_font_size);
+		// update the css with this style
 			$('#edgeless_field1').css('font-size', new_font_size + "px");
 			
 			sizeTextDiv(new_font_size);
@@ -109,13 +110,31 @@ The Tools in the accordion and their style
     	// and make it draggable
     		$( '#post_text_output' ).draggable();
     	// and put it where it belongs?
-    		var post_pos = $( '#post_text_output' ).val('style');
+    		var post_pos = $( '#post_text_output' ).attr('style');
     		console.log("the css says it should be at: " + post_pos);
+    		
+    		console.log($( '#post_text_output' ).attr('style'));
     			
     	// size it	
     		sizeTextDiv();
 
     });
+    
+    window.onload=function(){
+    
+    //	$('#post_text_output').animate({
+      //      "top": $( '#post_text_output' ).css('style', function("top") {
+        //    return "top";
+     //   }, "slow");
+     //   toggle = false;
+    	
+    	$( '#post_text_output' ).attr('style');
+    	
+    	alert("Window onload!");
+   // });
+    
+    };
+    
     
     function sizeTextDiv(new_font_size) {
     	// We need the length for use in sizing the div
@@ -139,7 +158,7 @@ The Tools in the accordion and their style
     };
     
  	$('#refresh-btn').on("click", function () {
-
+ 	
 		$('#canvas').css('background-color', "");
 		$('#edgeless_field1').css('background-color', "");
 		$('#edgeless_field1').html("");
