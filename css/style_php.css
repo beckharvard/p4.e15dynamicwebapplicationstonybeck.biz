@@ -173,18 +173,12 @@ Editor Canvas
 #canvas {
 	width:800px;
 	height:500px;
-/*	position:relative;
-	top:33px;
-	left:160px;
-	*/
-	z-index:1; /* So we can place the stickers above */
+	z-index:1; /* So we can place the stuff above */
 	overflow:scroll;
 	
 	border: 			red;
 	border-width:		2px;
-/* REMOVE ME LATER - for debug   	
-	background-color:	orange;
-	*/
+
 }
 
 #publish_post {
@@ -221,7 +215,7 @@ input#edgeless_field1 {
 	padding: 			0.5em; 
 }
 
-#post-text-output {
+#post_text_output {
 	top: 100px;
 	font-size:30px;
 	width: 200px;
