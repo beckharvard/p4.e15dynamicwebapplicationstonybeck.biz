@@ -18,7 +18,7 @@ The Tools in the accordion and their style
 			$('#edgeless_field1').attr("value", myPost);	
 		// And let's make it draggable but NOT contained 
 		// because we're ok with growing the canvas
-			$( '#post_text_output' ).draggable();
+		//	$( '#post_text_output' ).draggable();
 					
 		//as text grows, we need to update the length...
 			sizeTextDiv();
@@ -108,7 +108,7 @@ The Tools in the accordion and their style
     	// and add that to the field on the canvas
     		$('#edgeless_field1').attr("value", LoadMyPost);	
     	// and make it draggable
-    		$( '#post_text_output' ).draggable();
+   // 		$( '#post_text_output' ).draggable();
     	// and put it where it belongs?
     		var post_pos = $( '#post_text_output' ).attr('style');
     		console.log("the css says it should be at: " + post_pos);
@@ -120,28 +120,29 @@ The Tools in the accordion and their style
 
     });
     
-    window.onload=function(){
+    $(document).ready(function(){
     
-    //	$('#post_text_output').animate({
-      //      "top": $( '#post_text_output' ).css('style', function("top") {
-        //    return "top";
-     //   }, "slow");
-     //   toggle = false;
+
+    console.log("this was called!");
     	
-    	$( '#post_text_output' ).attr('style');
     	
-    	alert("Window onload!");
-   // });
+    	$( '#post_text_output' ).draggable().css( "position", $( '#post_text_output' ).attr('style') );
+		//$( '#post_text_output' ).attr('style');
     
-    };
+    });
     
     
     function sizeTextDiv(new_font_size) {
+    
     	// We need the length for use in sizing the div
   			var lengthOfmyPost = $('#edgeless_field1').attr('value');
   			var post_length = lengthOfmyPost.length;
   			
-  		console.log("post is " + post_length + " characters long");
+  		if (post_length < 34 ) {
+  			return;
+  		}
+  			
+  		//console.log("post is " + post_length + " characters long");
 
   		// sizing the div we get current widths
   			while  ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
@@ -150,11 +151,20 @@ The Tools in the accordion and their style
   				console.log("width is now " + new_width);
   				$('#post_text_output').css('width', ( new_width ));
   			}
-  			
-  		//for short texts, we don't need or want to do this
-  			if (post_length > 30) {	
-  				$('#edgeless_field1').attr('size', post_length);	
-			}  
+  		// and we need to add some padding, so we set a variable for the div width now
+  		var a_pinch_more = $('#post_text_output').width();
+  		
+  		//add ten pixels
+  		for (var i=0;i<10;i++) {
+  			a_pinch_more += 1;
+  		}
+  		// set that as the new width
+  		$('#post_text_output').css('width', ( a_pinch_more ));
+  		
+		//for short texts, we don't need or want to do this
+			if (post_length > 34) {	
+				$('#edgeless_field1').attr('size', post_length);
+			}  	
     };
     
  	$('#refresh-btn').on("click", function () {

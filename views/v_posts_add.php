@@ -13,7 +13,7 @@
 				<div id='post_text_output' class="post_text_output">
 					<span class="ui-icon ui-icon-arrow-4 "></span>
 					<span class="ui-icon ui-icon-trash "></span>  
-					<input id="edgeless_field1" class="edgeless_fields" type='text' name='content' maxlength="72" placeholder="" required>
+					<input id="edgeless_field1" class="edgeless_fields" type='text' name='content' maxlength="72" placeholder="" size ="34" required>
 					<input id="fields_chosen_font" type="hidden" name='fields_chosen_font'/>
 					<input id="text_color_for_post"	type="hidden" name='text_color_for_post' />
 					<input id="post_output_text_location" type="hidden" name='post_output_text_location' />

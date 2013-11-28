@@ -168,25 +168,34 @@ class posts_controller extends base_controller {
     	# $this->template->content = View::instance('v_posts_uploadfile');
     	
     	# try to figure this out from the ajax class in order to get the image submission to show up
-    	$view = new View('v_posts_uploadfile');
+    	$view = new View('v_toolsAccordian');
     	
     	if ($_FILES['file']['error'] == 0)
         {
 				$filename = $_FILES["file"]["name"];
 				$withoutExt = preg_replace("/\\.[^.\\s]{3,4}$/", "", $filename);
+				$allowedExts = array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG");
+				$ext = pathinfo($filename, PATHINFO_EXTENSION);
+				if ( in_array($ext, $allowedExts) ) {				
+					
 	
-				Upload::upload($_FILES, "/uploads/posts_pictures/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $withoutExt ); 
+					Upload::upload($_FILES, "/uploads/posts_pictures/", $allowedExts , $withoutExt ); 
 		
-				if ($_FILES["file"]["error"] > 0) {
-					echo "Error: " . $_FILES["file"]["error"] . "<br>";
+					if ($_FILES["file"]["error"] > 0) {
+						echo "Error: " . $_FILES["file"]["error"] . "<br>";
+					}
+					else {
+						$imageName = $_FILES["file"]["name"];
+						
+						echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+						echo "Type: " . $_FILES["file"]["type"] . "<br>";
+						echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+						echo "<img src=\"/uploads/posts_pictures/".$_FILES["file"]["name"]."\">";
+					}  
 				}
 				else {
-					$imageName = $_FILES["file"]["name"];
-					echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-					echo "Type: " . $_FILES["file"]["type"] . "<br>";
-					echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-					echo "<img src=\"/uploads/posts_pictures/".$_FILES["file"]["name"]."\">";
-				}  
+					   echo "That is not an accepted file type. We cna only accept the following: \"JPG\", \"JPEG\", \"jpg\", \"jpeg\", \"gif\", \"GIF\", \"png\", \"PNG\"";
+				}
 		
 				echo $view;
 		}
@@ -200,26 +209,32 @@ class posts_controller extends base_controller {
     public function edit($edited)  {
     	# Set up the View
     	$this->template->content = View::instance('v_posts_edit');
+    	$this->template->content->location = View::instance('v_posts_edit');
     	$this->template->content->moreContent = View::instance('v_toolsAccordian');
     	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
-    		
-    	# ???  Do i need to setup a view for the data? 
-    	# ???  do i need to add a controller for the Accordion?
-    		
     		
     	# Build the query to get the post
     	$q = "SELECT *
     	    FROM posts 
     	    WHERE user_id = ".$this->user->user_id. " AND 
     	    post_id = ".$edited;
+    	    
+    	$position = "SELECT post_output_text_location
+    				FROM posts
+    				WHERE user_id = ".$this->user->user_id. " AND 
+    	    		post_id = ".$edited;
 
     	# Execute the query to get the post. 
     	# Store the result array in the variable $post
     	$_POST["editable"] = DB::instance(DB_NAME)->select_row($q);
+    	$_POST["location"] = DB::instance(DB_NAME)->select_row($position);
+    	
+    	print_r($_POST["location"]);
     	
     	# Pass data to the view
     	$this->template->content->post = $_POST['editable'];
     	$this->template->content->moreContent->post = $_POST['editable'];
+    	$this->template->content->location->post = $_POST['location'];
     	
     	# Render template
 		echo $this->template;  	 
@@ -248,6 +263,6 @@ class posts_controller extends base_controller {
 		# Send them back
        	Router::redirect('/users/profile');
     }
-
+	  
 } # eoc
     
