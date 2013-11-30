@@ -40,7 +40,7 @@
 			<?=$moreContent;?><br>
 		</div>
 		<div id='image-tray'>
-			<?=$images;?>
+	<!--		<?=$images;?>
 			<?=$imageContent;?>
-			
+	-->		
 		</div>

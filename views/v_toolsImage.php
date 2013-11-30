@@ -39,7 +39,7 @@
 			<a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-trash">Delete image</a>
 		  </li>
 		  
-		  	<?php foreach($images as $image ): ?>
+	<!--	  	<?php foreach($images as $image ): ?>
 				<li>
 					<h5 class="ui-widget-header"><?=$image['image_name'] ?></h5>
 					<img src="images/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="96" height="72">
@@ -50,7 +50,7 @@
 			<?php endforeach; ?>
 		</ul>
 		
-
+	-->
  
 	</div>
 
