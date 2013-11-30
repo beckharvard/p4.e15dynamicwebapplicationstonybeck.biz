@@ -14,14 +14,12 @@ The Tools in the accordion and their style
 					
 		// find out what's in the field i.e. what they have typed.
 			var myPost = $(this).val();		
+			
 		//take the text from the field and put it on top of the canvas
 			$('#edgeless_field1').attr("value", myPost);	
-		// And let's make it draggable but NOT contained 
-		// because we're ok with growing the canvas
-		//	$( '#post_text_output' ).draggable();
 					
 		//as text grows, we need to update the length...
-			sizeTextDiv();
+			sizeTextDiv(myPost);
 			
 		// how many char so far?
 		var myPost_how_many_chars = myPost.length;
@@ -37,6 +35,8 @@ The Tools in the accordion and their style
 			}	
 		// always display the number of chars...		
 			$('#text-output-error').html('You have ' + how_many_left + ' characters left');	
+			
+		textEntryFieldSize();
 		
 	});
 	
@@ -63,10 +63,21 @@ The Tools in the accordion and their style
 			$('#text_color_for_post').val(text_color_clicked);
 	});
 	
+	// add the border color that the user has selected
+	$('.border-colors').click(function() {
+			var border_color_clicked = $(this).css('background-color');
+		
+			$('#post_text_output').css('border', "1px inset " + border_color_clicked);
+			$('#border_color_for_post').html(border_color_clicked);
+			$('#border_color_for_post').val(border_color_clicked);
+	});
+	
+	
 	// apply the selected font to the text field
 	$("#fonts").change(function() {
-		console.log( "Hey this fonts things was called." );
+		
 			var new_font = $(this).val();
+			
 			$('#edgeless_field1').css('font', new_font);
 				
 	});
@@ -74,77 +85,130 @@ The Tools in the accordion and their style
 	//  Sets the font size and resizes the text field enclosing div when the font size is changed 
 	$( ".font-size-selector" ).change(function() {
 
+		// variable for the current font size
+			var old_font_size = $('#font_size_for_post').val();
+			
+		// we have to handle the case where we are using the default css value, which returns NaN
+			if ( old_font_size < 1) {
+		// the default font size is 11, and that's a pain to get, so, we hardwire to 11 for now	
+				old_font_size = 11;
+			}
+		
   		// set the font size
   			var new_font_size = $(this).val();
   			
-  			  		console.log( "Handler for .change() called. font size is now " + new_font_size);
+  			old_font_size = parseInt( old_font_size);
+  			new_font_size = parseInt( new_font_size); 
+  			
+  		// the new font size is larger		
+  			if ( old_font_size < new_font_size ) {
+ 		// widen the enclosing div #post_text_output		
+  				increaseOutputDiv(new_font_size);
+  		// set the input fields to store that value and change the rendered font size
+  				setCssFontSize(new_font_size);
+
+  			}
+  			
+  		// the new font size is smaller. Let's decrease the size of the div.
+  			else {
+  		// make the enclosing div '#post_text_output' more narrow			
+  				decreaseOutputDiv(new_font_size);
+  		// set the input fields to store that value and change the rendered font size
+  				setCssFontSize(new_font_size);
+  				
+  			}
+  		
+  		if ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
+  		
+  		  		// and size the  enclosing div by some other rules, too.
+  				sizeTextDiv(new_font_size);	
+  		}
+	
+	});
+		
+	function increaseOutputDiv(new_font_size) {
+    	
+    	// divide the font size by 25 - we want a rational number
+    	var multiple = new_font_size / 25;
+    	  	
+    	// we are going to multiply by 1 plus the rational number above  	
+    	var multiplier = 1 + multiple;
+    	
+    	console.log('multiplier for increase is:' + multiplier);
+    	
+    	// set our new width to be the existing width times that value (1 + (font size / 40))
+    	var new_width =  ($('#post_text_output').width()) * multiplier;
+    	
+    	
+    	console.log("Increase: new width is now " + new_width);
+    	
+		setNewWidth(new_width);
+    
+    };
+        
+    function decreaseOutputDiv(new_font_size) {
+    
+    	console.log("decrease  called!");
+    	
+    	// get the contents of the post
+    	var the_post = $('#edgeless_field1').val();
+    	
+    	// set a variable to the length
+    	var post_size = the_post.length;
+    	
+    	// set the size of the text entry field to that variable.
+    	$('#edgeless_field1').attr('size', post_size);
+    	
+    	// divide the font size by 25 - we want a rational number
+    	var multiple = new_font_size / 25;
+    	  	
+    	// we are going to multiply by 1 plus the rational number above  	
+    	var multiplier = multiple;
+    	
+    	console.log('multiplier for decrease is:' + multiplier);
+    	
+    	// set our new width to be the existing width times that value (1 + (font size / 40))
+    	var new_width =  ($('#post_text_output').width()) * multiplier;
+    	
+    	console.log("Decrease: new width is now " + new_width);
+    	
+		setNewWidth(new_width);
+    	
+    };
+    
+    function setCssFontSize (new_font_size) {
+		  			
   		// save is to a hidden input for later retrieval
 			$('#font_size_for_post').html(new_font_size);
 			$('#font_size_for_post').val(new_font_size);
 		// update the css with this style
 			$('#edgeless_field1').css('font-size', new_font_size + "px");
-			
-			sizeTextDiv(new_font_size);
-	});
+				
+	};
 	
-	// on mouse up add the location to which the field was moved to a hiddenfield
-	$( '#post_text_output' ).mouseup(function() {
-
-    		// and we will need the location to which the text was dragged...
-			var p = $( '#post_text_output' );
-			var position = p.position();
-			// console.log( "left: " + position.left + ", top: " + position.top );
-			// add it to a input field so that we can save it for later use
-			$( '#post_output_text_location' ).html( "position: relative; left: " + position.left + "; top: " + position.top + ";");
-			$( '#post_output_text_location' ).val( "position: relative; left: " + position.left + "; top: " + position.top + ";");
-  		});
-  		
-  	    // if we are editing, we populate the text box and make it draggable
-    $(window).load(function populateTextBox() {	
+	function setNewWidth(new_width) {
+        // set new width to the css
+  			$('#post_text_output').css('width', ( new_width));
+  		// add new width to the hidden input field
+  			$('#post_text_output_width').val( new_width );
+  			$('#post_text_output_width').html( new_width);
     
-    	
-    	// We can grab the text which loaded into the accordion input field
-    		var LoadMyPost = $('#myPost').val();	
-    	// and add that to the field on the canvas
-    		$('#edgeless_field1').attr("value", LoadMyPost);	
-    	// and make it draggable
-   // 		$( '#post_text_output' ).draggable();
-    	// and put it where it belongs?
-    		var post_pos = $( '#post_text_output' ).attr('style');
-    		console.log("the css says it should be at: " + post_pos);
-    		
-    		console.log($( '#post_text_output' ).attr('style'));
-    			
-    	// size it	
-    		sizeTextDiv();
-
-    });
-    
-    $(document).ready(function(){
-    
-
-    console.log("this was called!");
-    	
-    	
-    	$( '#post_text_output' ).draggable().css( "position", $( '#post_text_output' ).attr('style') );
-		//$( '#post_text_output' ).attr('style');
-    
-    });
-    
+    console.log("Final new width is now " + new_width);
+    };
     
     function sizeTextDiv(new_font_size) {
     
     	// We need the length for use in sizing the div
-  			var lengthOfmyPost = $('#edgeless_field1').attr('value');
-  			var post_length = lengthOfmyPost.length;
-  			
+  			var length_of_my_post = $('#edgeless_field1').attr('value');
+  			var post_length = length_of_my_post.length;
+  		
+  		// let's not grow the div for small posts.	
   		if (post_length < 34 ) {
-  			return;
+  		
+			return;
   		}
-  			
-  		//console.log("post is " + post_length + " characters long");
 
-  		// sizing the div we get current widths
+  		// sizing the div we get current widths and increase the width of the outer div
   			while  ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
   				var new_width = $('#post_text_output').innerWidth();
   				new_width++;
@@ -152,20 +216,103 @@ The Tools in the accordion and their style
   				$('#post_text_output').css('width', ( new_width ));
   			}
   		// and we need to add some padding, so we set a variable for the div width now
-  		var a_pinch_more = $('#post_text_output').width();
+  			var a_pinch_more = $('#post_text_output').width();
   		
-  		//add ten pixels
-  		for (var i=0;i<10;i++) {
-  			a_pinch_more += 1;
-  		}
-  		// set that as the new width
-  		$('#post_text_output').css('width', ( a_pinch_more ));
-  		
-		//for short texts, we don't need or want to do this
-			if (post_length > 34) {	
-				$('#edgeless_field1').attr('size', post_length);
-			}  	
+			for (var i=0;i<10;i++) {
+				a_pinch_more += 1;
+			}
+  		// set new width to the css
+  			$('#post_text_output').css('width', ( a_pinch_more));
+  		// add new width to the hidden input field
+  			$('#post_text_output_width').val( a_pinch_more );
+  			$('#post_text_output_width').html( a_pinch_more);
+
     };
+    
+    function textEntryFieldSize() {
+    
+    // we want to restrict the size of the text field size, always.
+    
+    	if ( $('#edgeless_field1').val().length < $('#edgeless_field1').attr('maxlength')) {
+    	// get the contents of the post
+    		var the_post = $('#edgeless_field1').val();
+    	
+    	// set a variable to the length
+    		var post_size = the_post.length;
+    	
+    	// set the size of the text entry field to that variable.
+    		$('#edgeless_field1').attr('size', post_size);
+    		
+    	}
+    	else {
+    		return;
+    	}
+    };
+    
+	
+	// on mouse up add the location to which the field was moved to a hiddenfield
+	$( '#post_text_output' ).mouseup(function() {
+
+		// and we will need the location to which the text was dragged...start with a var for the div
+			var p = $( '#post_text_output' );
+		// need to also get the position of the containing div, so set a var for that div
+			var c = $( '#preview' );
+		// set new variables be the positons of those divs
+			var position = p.position();
+			var container = c.position();
+		
+		// some math to subtract out the container positions so that we are now geting positon relative to the preview area
+			var left_pos = position.left - container.left;
+			var top_pos = position.top - container.top;
+
+		// add those to an input field so that we can save it to the db for later use
+			$( '#post_output_text_location' ).html( "position: relative; left: " + left_pos + "; top: " + top_pos + ";");
+			$( '#post_output_text_location' ).val( "position: relative; left: " + left_pos + "; top: " + top_pos + ";");
+		
+  		});
+  		
+  	// if we are editing, we populate the text box and make it draggable
+    $(window).load(function populateTextBox() {	
+    	
+    	// We can grab the text which loaded into the accordion input field
+    		var load_my_post = $('#myPost').val();	
+    		
+    	// and add that to the field on the canvas
+    		$('#edgeless_field1').attr("value", load_my_post);	
+    			
+    	// size it	
+    		sizeTextDiv(load_my_post);
+
+    });
+  
+  
+// >>>>     This is an attempt to get things to persist automatically if they are not edited but it doesn't yet work.
+    $(window).load(function () {
+    
+    		// we need to populate all input values in order to ensure they are persisted
+			$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
+	//		console.log( $('#font_size_for_post').val($('#font_size_for_post').css('size')));
+			$('#text_color_for_post').val($('#text_color_for_post').css('text_color_for_post'));
+			$("#post_background").val($("#post_background").css('post_background'));
+    
+    });
+
+// get the above working....
+    
+    
+    $(document).ready(function(){
+    
+    	// we need to grab the position and apply it to the div  	
+    	// And let's make it draggable but NOT contained 
+		// because we're ok with growing the canvas
+  		  	$( '#post_text_output' ).draggable().css( "position", $( '#post_text_output' ).attr('style') );
+  		  	
+
+    });
+    
+ 
+    
+  
     
  	$('#refresh-btn').on("click", function () {
  	

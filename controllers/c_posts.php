@@ -40,6 +40,7 @@ class posts_controller extends base_controller {
     	$q = 'SELECT
                 posts.content,
                 posts.created,
+                posts.post_id,
                 posts.user_id AS post_user_id,
                 users_users.user_id AS follower_id,
                 users.first_name,
@@ -170,6 +171,7 @@ class posts_controller extends base_controller {
     	# try to figure this out from the ajax class in order to get the image submission to show up
     	$view = new View('v_toolsAccordian');
     	
+    	
     	if ($_FILES['file']['error'] == 0)
         {
 				$filename = $_FILES["file"]["name"];
@@ -218,7 +220,8 @@ class posts_controller extends base_controller {
     	    FROM posts 
     	    WHERE user_id = ".$this->user->user_id. " AND 
     	    post_id = ".$edited;
-    	    
+    	
+    	# Build the query to get the post's location
     	$position = "SELECT post_output_text_location
     				FROM posts
     				WHERE user_id = ".$this->user->user_id. " AND 
@@ -234,7 +237,7 @@ class posts_controller extends base_controller {
     	# Pass data to the view
     	$this->template->content->post = $_POST['editable'];
     	$this->template->content->moreContent->post = $_POST['editable'];
-    	$this->template->content->location->post = $_POST['location'];
+    	$this->template->content->location = $_POST["location"];
     	
     	# Render template
 		echo $this->template;  	 

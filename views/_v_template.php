@@ -14,6 +14,9 @@
 	<link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
+	<!--JQuery pagination (I MAY need to add a link to the latest version of JQuery again-->
+	<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
+	<link type="text/css" rel="stylesheet" href="/css/simplePagination.css"/>
 	<style>    
 	#post_text_output {
 		<?php $post["location"]?>

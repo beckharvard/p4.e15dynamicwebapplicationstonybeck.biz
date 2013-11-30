@@ -1,3 +1,5 @@
+<script type="text/javascript" src="/js/paginate_posts.js"></script>
+
 <?php if($user): ?>
 <!-- display the welcome message -->
 <h2>Welcome to <?=APP_NAME?><?php if($user) echo ', '.$user->first_name; ?></h2>
@@ -5,7 +7,7 @@
 	<?php foreach($posts as $post): ?>
 		<article>
 			<?=$post['content'] = trim($post['content'], " \x00\t\n\r" ) ?>
-    		<p><?=nl2br($post['content'])?></p>
+    		<p class="selection" id="page-<?=$post['content']['post_id']?>"><?=nl2br($post['content'])?></p>
     		<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
         		<?=Time::display($post['created'])?>
     		</time>

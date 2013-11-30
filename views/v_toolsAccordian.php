@@ -42,7 +42,7 @@
 					</span>
 					<span><div>Font Size (in canvas):
 						<select class="font-size-selector">
-  							<option class="content-font-size" id="10" value="10">10</option>
+  							<option class="content-font-size" id="11" value="11">11</option>
   							<option class="content-font-size" id="12" value="12">12</option>
   							<option class="content-font-size" id="14" value="14">14</option>
   							<option class="content-font-size" id="16" value="16">16</option>
@@ -69,7 +69,24 @@
 						<div class='colors' id='gray'>  </div>
     				</span>
   				</div>
-  				<h3 class="tool-header">Add Images</h3>
+
+  				<h3 class="tool-header">Border Color</h3>
+  				<div>
+    				<span>
+    					<div> Pick a border color:</div> 
+    				    <div class='border-colors' id='red-border'>  </div>
+						<div class='border-colors' id='orange-border'>  </div>
+						<div class='border-colors' id='green-border'>  </div>
+						<div class='border-colors' id='yellow-border'>  </div>
+						<div class='border-colors' id='blue-border'>  </div>
+						<div class='border-colors' id='white-border'>  </div>
+						<div class='border-colors' id='indigo-border'>  </div>
+						<div class='border-colors' id='violet-border'>  </div>
+						<div class='border-colors' id='black-border'>  </div>
+						<div class='border-colors' id='gray-border'>  </div>
+					</span>
+				</div>
+				<h3 class="tool-header">Add Images</h3>
 				<div id='imagesDiv'>
     				<span >
 						<div id='upload_results'>
@@ -95,11 +112,6 @@
  							<li>I want to put a picture here</li>
 						</ul>
   				</div>
-  				<h3 class="tool-header">lorem ipsum</h3>
-  				<div>
-    				<span>    					
-    				</span>
-				</div>
 			</div>
 		</div>
 	</div>	

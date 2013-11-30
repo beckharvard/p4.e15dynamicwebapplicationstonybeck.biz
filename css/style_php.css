@@ -223,7 +223,7 @@ input#edgeless_field1 {
 
 	font-size:			30px;
 	width: 				200px;
-	border:				1px inset black;
+	border:				2px solid black;
 	border-radius:		5px;
 }
 
@@ -259,8 +259,8 @@ input#edgeless_field1 {
 }
 
 .toggler { 
-	width: 				200px; 
-	height: 			200px;
+	width: 				20px; 
+	height: 			20px;
 }
 
 #button { 
@@ -269,9 +269,10 @@ input#edgeless_field1 {
 }
 
 #effect { 
-	width: 				260px; 
-	height: 			135px; 
+	width: 				20px; 
+	height: 			20px; 
 	padding: 			0.4em;  
+	
 }
 
 #effect h3 { 
@@ -284,7 +285,7 @@ input#edgeless_field1 {
 /*----------------------------------------------------
 tools 
 ----------------------------------------------------*/
-.colors, .text-colors {
+.colors, .text-colors, .border-colors {
 	width: 				36px;
 	height:				36px;
 	border:				1px solid gray;
@@ -298,55 +299,55 @@ tools
 	font-size:			12px;
 } 
 
-#red, #red-text {
+#red, #red-text, #red-border {
 	background-color:	red;
 	border-radius:		5px;
 	margin:				.5px
 }
 
-#orange, #orange-text  {
+#orange, #orange-text, #orange-border  {
 	background-color:	orange;
 	border-radius:		5px;
 	margin:				.5px
 }
 
-#green, #green-text {
+#green, #green-text, #green-border {
 	background-color:	green;
 	border-radius:		5px;
 	margin:				.5px;
 }
 
-#yellow, #yellow-text {
+#yellow, #yellow-text, #yellow-border {
 	background-color:	yellow;
 	border-radius:		5px;
 	margin:				.5px;
 }
 
-#blue, #blue-text {
+#blue, #blue-text, #blue-border {
 	background-color:	blue;
 	border-radius:		5px;
 	margin:				.5px;
 }
 
-#indigo, #indigo-text {
+#indigo, #indigo-text, #indigo-border {
 	background-color:	indigo;
 	border-radius:		5px;
 	margin:				.5px;
 }
 
-#violet, #violet-text {
+#violet, #violet-text, #violet-border {
 	background-color:	violet;
 	border-radius:		5px;
 	margin:				.5px;
 }
 
-#black, #black-text {
+#black, #black-text, #black-border {
 	background-color:	black;
 	border-radius:		5px;
 	margin:				.5px;
 }
 
-#gray, #gray-text {
+#gray, #gray-text, #gray-border {
 	background-color:	gray;
 	border-radius:		5px;
 	margin:				.5px;

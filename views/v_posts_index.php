@@ -3,7 +3,7 @@
 	<hr/>
     	<h2><?=$post['first_name']?> <?=$post['last_name']?> posted:</h2>
 
-    	<p><?=$post['content']?></p>
+    	<p class="selection" id="page-<?=$post['content']['post_id']?>"><?=$post['content']?></p>
     	
 		<h3>This post was created on:
 		

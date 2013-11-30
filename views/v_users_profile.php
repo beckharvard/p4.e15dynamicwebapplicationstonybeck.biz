@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/js/paginate_posts.js"></script>
 <?php if(!$user): ?>
 	<?php Router::redirect("/users/login");  ?>
 <?php else: ?>
@@ -27,7 +28,7 @@
 <?php foreach($posts as $post): ?>
 	
 	<article>
-    	<p><?=nl2br($post['content'])?></p> 
+    	<p class="selection" id="page-<?=$post['content']['post_id']?>"><?=nl2br($post['content'])?></p> 
 		<h3>This post was created on:
 		
     		<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">

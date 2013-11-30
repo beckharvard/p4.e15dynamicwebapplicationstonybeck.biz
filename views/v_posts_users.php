@@ -1,3 +1,4 @@
+<script type="text/javascript" src="js/paginate_posts.js"></script>
 <hr/>
 <br/>
 <?php foreach($users as $user): ?>
