@@ -3,7 +3,10 @@
 <!-- Buttons -->
 	<input class="buttons" type='button' id='refresh-btn' value='Clear Canvas'>
 	
-	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Tools'> 	
+	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Text Tools'> 	
+	
+	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Image Gallery'> 	
+
 
 	<!-- the canvas area where user can preview the look of their post-->
 	<div id='preview'>	
@@ -22,7 +25,11 @@
 					<input id="border_color_for_post" type="hidden" name='border_color_for_post' />
 					<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value=''>
 							
-				</div>			
+				</div>
+				<div id="trash" class="ui-widget-content ui-state-default">
+  					<h4 class="ui-widget-header"><span class="ui-icon ui-icon-trash">Trash</span> Trash</h4>
+				</div>
+ 			
 				</form>
 			</div>
 		</div>	
@@ -31,4 +38,9 @@
 	<!-- the tools tray where the user adds content to their post -->	
 		<div id='tools-tray'>			
 			<?=$moreContent;?><br>
+		</div>
+		<div id='image-tray'>
+			<?=$images;?>
+			<?=$imageContent;?>
+			
 		</div>

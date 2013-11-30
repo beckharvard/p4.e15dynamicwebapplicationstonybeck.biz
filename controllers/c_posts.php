@@ -59,6 +59,8 @@ class posts_controller extends base_controller {
 
     	# Pass data to the View
     	$this->template->content->posts = $posts;
+    	
+    //	var_dump($posts);
 
     	# Render the View
 		echo $this->template;
@@ -127,13 +129,23 @@ class posts_controller extends base_controller {
     
     public function add()  {
 	 	# Set up the View
-    	$this->template->content = View::instance('v_posts_add');
-    	$this->template->content->moreContent = View::instance('v_toolsAccordian');
-    	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
+    	$this->template->content = 								View::instance('v_posts_add');
+    	$this->template->content->moreContent = 				View::instance('v_toolsAccordian');
+    	$this->template->content->imageContent = 				View::instance('v_toolsImage');
+    	$this->template->content->images = 						View::instance('v_toolsImage');
+    	$this->template->content->moreContent->uploadResults = 	View::instance('v_posts_uploadfile');
+    	
+    	$user = $this->user->user_id;
+    	
+		$images = Image::get_images_by_user($user);
+		
+		# var_dump($images);
+		
+		# Pass data to the View
+    	$this->template->content->images = $images;
     	
     	# Render template
 		echo $this->template;
-		
 		
     }
     
@@ -163,13 +175,30 @@ class posts_controller extends base_controller {
        	Router::redirect('/users/profile');    	
     }
     
+    public function add_image()  {
+    
+    
+    }
+    
+    public function p_add_image()  {
+    
+    	# More data we want stored with the post
+    	$_POST['created']  = Time::now();
+    	
+    	# Associate this post with this user
+		$_POST['user_id'] = $this->user->user_id;
+		
+		$image_user_id = DB::instance(DB_NAME)->insert("images", $_POST);
+    
+    }
+    
     public function uploadfile() {
     
     	# Set up the View
     	# $this->template->content = View::instance('v_posts_uploadfile');
     	
     	# try to figure this out from the ajax class in order to get the image submission to show up
-    	$view = new View('v_toolsAccordian');
+    	$view = new View('v_posts_uploadfile');
     	
     	
     	if ($_FILES['file']['error'] == 0)
@@ -213,6 +242,7 @@ class posts_controller extends base_controller {
     	$this->template->content = View::instance('v_posts_edit');
     	$this->template->content->location = View::instance('v_posts_edit');
     	$this->template->content->moreContent = View::instance('v_toolsAccordian');
+    	$this->template->content->imageContent = View::instance('v_toolsImage');
     	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     		
     	# Build the query to get the post
@@ -226,17 +256,35 @@ class posts_controller extends base_controller {
     				FROM posts
     				WHERE user_id = ".$this->user->user_id. " AND 
     	    		post_id = ".$edited;
+    	    	
+    # pretty sure I won't need this once I get Image.php feeding data to the view	
+    	# Build the query to get the users image(s)
+    	#$img = "SELECT image_name
+    	#		FROM images
+    	#		WHERE user_id = ".$this->user->user_id;
 
     	# Execute the query to get the post. 
     	# Store the result array in the variable $post
     	$_POST["editable"] = DB::instance(DB_NAME)->select_row($q);
     	$_POST["location"] = DB::instance(DB_NAME)->select_row($position);
     	
+    # pretty sure I won't need this once I get Image.php feeding data to the view	
+    	#$_POST['image']    = DB::instance(DB_NAME)->select_row($img);
+    	
+    # these should be put in their proper places once I get Image.php feeding data to the view		
+    	$user = $this->user->user_id;
+    	
+		$this->template->content->images = Image::get_images_by_user($user);
+    	
+
+    	
+    	
     	print_r($_POST["location"]);
     	
     	# Pass data to the view
     	$this->template->content->post = $_POST['editable'];
     	$this->template->content->moreContent->post = $_POST['editable'];
+    	$this->template->content->imageContent = $_POST['image'];
     	$this->template->content->location = $_POST["location"];
     	
     	# Render template

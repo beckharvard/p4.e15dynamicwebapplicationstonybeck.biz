@@ -106,11 +106,6 @@
 							</div>
 						</div>
 					</span>
-    					<ul>
-      						<li>I want to put a picture here</li>
- 							<li>I want to put a picture here</li>
- 							<li>I want to put a picture here</li>
-						</ul>
   				</div>
 			</div>
 		</div>

@@ -95,9 +95,6 @@ textarea, input {
 	border-radius: 		5px;
 }
 
-img {
-	border-radius:		25px;
-}
 
 html, button {
  	background-color:	white;
@@ -233,6 +230,15 @@ input#edgeless_field1 {
 	border:				5px;
 
 }
+
+.image-tray {
+
+	float:				right;
+	margin:				10px;
+	border:				5px;
+
+}
+
 #grabber {
 
 	height:				100%;
@@ -283,7 +289,7 @@ input#edgeless_field1 {
 }
 
 /*----------------------------------------------------
-tools 
+text tools 
 ----------------------------------------------------*/
 .colors, .text-colors, .border-colors {
 	width: 				36px;
@@ -357,4 +363,46 @@ tools
 	background-color:	white;
 	border-radius:		5px;
 	margin:				.5px;
+}
+
+/*----------------------------------------------------
+image gallery
+----------------------------------------------------*/
+#gallery { 
+
+	float: right; 
+	width: 65%; 
+	min-height: 12em; 
+}
+
+.gallery.custom-state-active { background: #eee; }
+.gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+.gallery li h5 { margin: 0 0 0.4em; cursor: move; }
+.gallery li a { float: right; }
+.gallery li a.ui-icon-zoomin { float: left; }
+.gallery li img { width: 100%; cursor: move; }
+ 
+#trash { 
+
+	float: left; 
+	width: 32%; 
+	min-height: 18em; 
+	padding: 8px; 
+	margin-top:	 10px;
+}
+
+#trash h4 { 
+
+	line-height: 16px; 
+	margin: 0 0 0.4em; 
+}
+
+#trash h4 .ui-icon { 
+
+	float: left; 
+}
+
+#trash .gallery h5 { 
+
+	display: none; 
 }

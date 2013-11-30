@@ -17,12 +17,6 @@
 	<!--JQuery pagination (I MAY need to add a link to the latest version of JQuery again-->
 	<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
 	<link type="text/css" rel="stylesheet" href="/css/simplePagination.css"/>
-	<style>    
-	#post_text_output {
-		<?php $post["location"]?>
-	}
-	
-	</style>	
 			
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
