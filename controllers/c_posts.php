@@ -274,7 +274,7 @@ class posts_controller extends base_controller {
     # these should be put in their proper places once I get Image.php feeding data to the view		
     	$user = $this->user->user_id;
     	
-		$this->template->content->images = Image::get_images_by_user($user);
+	#	$this->template->content->images = Image::get_images_by_user($user);
     	
 
     	
