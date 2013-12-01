@@ -137,12 +137,12 @@ class posts_controller extends base_controller {
     	
     	$user = $this->user->user_id;
     	
-		$images = Image::get_images_by_user($user);
+	#	$images = Image::get_images_by_user($user);
 		
 		# var_dump($images);
 		
 		# Pass data to the View
-    	$this->template->content->images = $images;
+    #	$this->template->content->images = $images;
     	
     	# Render template
 		echo $this->template;
