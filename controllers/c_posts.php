@@ -137,14 +137,16 @@ class posts_controller extends base_controller {
     	
     	$user = $this->user->user_id;
  
- 		# the query to execute is has been added to the Images Library of the core (probably a bad idea...)   	
-		$images = Image::get_images_by_user($user);
+ 		# the query to execute is has been added to the Images Library of the core (probably a bad idea...)  
+ 		
+ 		#had to comment out these images lines becuase they are referring to a file that does not exist on live. 	
+		#$images = Image::get_images_by_user($user);
 		
 		# var_dump($images);
 		
 		# Pass data to the View
-    	$this->template->content->images = $images;
-    	$this->template->content->images = 						View::instance('v_posts_images');
+    	#$this->template->content->images = $images;
+    	#$this->template->content->images = 						View::instance('v_posts_images');
     	
     	# Render template
 		echo $this->template;
