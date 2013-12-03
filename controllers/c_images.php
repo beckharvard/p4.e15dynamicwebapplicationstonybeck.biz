@@ -6,12 +6,15 @@ class images_controller extends base_controller {
         
     }
     
-     public function index() {
-    	 # Set up the View
+     public function index() { 
+    	# Set up the View
+    	$this->template->content = View::instance('v_posts_index');
+    	
+    	$this->template->title   = "Images";
     	
     }
     
-    public static function get_images_by_user($user_id) {
+    public function get_images_by_user($user_id) {
 		
 		# Build the query to get the image(s)
     	$img = "SELECT *
@@ -28,6 +31,8 @@ class images_controller extends base_controller {
 		
 		
 	}
+	
+	
 
 
 } # eoc

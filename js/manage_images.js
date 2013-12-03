@@ -1,7 +1,7 @@
 $(function() {
-    // there's the gallery and the trash
+    // there's the gallery and the imagecanvas
     var $gallery = $( "#gallery" ),
-      $trash = $( "#trash" );
+      $imagecanvas = $( "#imagecanvas" );
  
     // let the gallery items be draggable
     $( "li", $gallery ).draggable({
@@ -12,8 +12,8 @@ $(function() {
       cursor: "move"
     });
  
-    // let the trash be droppable, accepting the gallery items
-    $trash.droppable({
+    // let the imagecanvas be droppable, accepting the gallery items
+    $imagecanvas.droppable({
       accept: "#gallery > li",
       activeClass: "ui-state-highlight",
       drop: function( event, ui ) {
@@ -21,9 +21,9 @@ $(function() {
       }
     });
  
-    // let the gallery be droppable as well, accepting items from the trash
+    // let the gallery be droppable as well, accepting items from the imagecanvas
     $gallery.droppable({
-      accept: "#trash li",
+      accept: "#imagecanvas li",
       activeClass: "custom-state-active",
       drop: function( event, ui ) {
         recycleImage( ui.draggable );
@@ -34,9 +34,9 @@ $(function() {
     var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
     function deleteImage( $item ) {
       $item.fadeOut(function() {
-        var $list = $( "ul", $trash ).length ?
-          $( "ul", $trash ) :
-          $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $trash );
+        var $list = $( "ul", $imagecanvas ).length ?
+          $( "ul", $imagecanvas ) :
+          $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $imagecanvas );
  
         $item.find( "a.ui-icon-trash" ).remove();
         $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
@@ -49,7 +49,7 @@ $(function() {
     }
  
     // image recycle function
-    var trash_icon = "<a href='link/to/trash/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-trash'>Delete image</a>";
+    var imagecanvas_icon = "<a href='link/to/imagecanvas/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-trash'>Delete image</a>";
     function recycleImage( $item ) {
       $item.fadeOut(function() {
         $item
@@ -57,7 +57,7 @@ $(function() {
             .remove()
           .end()
           .css( "width", "96px")
-          .append( trash_icon )
+          .append( imagecanvas_icon )
           .find( "img" )
             .css( "height", "72px" )
           .end()

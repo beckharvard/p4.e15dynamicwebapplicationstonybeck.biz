@@ -131,18 +131,20 @@ class posts_controller extends base_controller {
 	 	# Set up the View
     	$this->template->content = 								View::instance('v_posts_add');
     	$this->template->content->moreContent = 				View::instance('v_toolsAccordian');
-    	$this->template->content->imageContent = 				View::instance('v_toolsImage');
-    	$this->template->content->images = 						View::instance('v_toolsImage');
+ #   	$this->template->content->imageContent = 				View::instance('v_posts_images');
+
     	$this->template->content->moreContent->uploadResults = 	View::instance('v_posts_uploadfile');
     	
     	$user = $this->user->user_id;
-    	
-	#	$images = Image::get_images_by_user($user);
+ 
+ 		# the query to execute is has been added to the Images Library of the core (probably a bad idea...)   	
+		$images = Image::get_images_by_user($user);
 		
 		# var_dump($images);
 		
 		# Pass data to the View
-    #	$this->template->content->images = $images;
+    	$this->template->content->images = $images;
+    	$this->template->content->images = 						View::instance('v_posts_images');
     	
     	# Render template
 		echo $this->template;
@@ -217,8 +219,8 @@ class posts_controller extends base_controller {
 					}
 					else {
 						$imageName = $_FILES["file"]["name"];
-						
-						echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+
+						echo "Upload: " . $imageName . "<br>";
 						echo "Type: " . $_FILES["file"]["type"] . "<br>";
 						echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
 						echo "<img src=\"/uploads/posts_pictures/".$_FILES["file"]["name"]."\">";
@@ -228,6 +230,7 @@ class posts_controller extends base_controller {
 					   echo "That is not an accepted file type. We cna only accept the following: \"JPG\", \"JPEG\", \"jpg\", \"jpeg\", \"gif\", \"GIF\", \"png\", \"PNG\"";
 				}
 		
+				
 				echo $view;
 		}
 		else {
@@ -242,7 +245,7 @@ class posts_controller extends base_controller {
     	$this->template->content = View::instance('v_posts_edit');
     	$this->template->content->location = View::instance('v_posts_edit');
     	$this->template->content->moreContent = View::instance('v_toolsAccordian');
-    	$this->template->content->imageContent = View::instance('v_toolsImage');
+    	$this->template->content->imageContent = View::instance('v_posts_images');
     	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     		
     	# Build the query to get the post
@@ -266,7 +269,7 @@ class posts_controller extends base_controller {
     	# Execute the query to get the post. 
     	# Store the result array in the variable $post
     	$_POST["editable"] = DB::instance(DB_NAME)->select_row($q);
-    	$_POST["location"] = DB::instance(DB_NAME)->select_row($position);
+    	$location = DB::instance(DB_NAME)->select_field($position);
     	
     # pretty sure I won't need this once I get Image.php feeding data to the view	
     	#$_POST['image']    = DB::instance(DB_NAME)->select_row($img);
@@ -274,18 +277,15 @@ class posts_controller extends base_controller {
     # these should be put in their proper places once I get Image.php feeding data to the view		
     	$user = $this->user->user_id;
     	
-	#	$this->template->content->images = Image::get_images_by_user($user);
+		$this->template->content->images = Image::get_images_by_user($user);
     	
-
-    	
-    	
-    	print_r($_POST["location"]);
+    	print_r($location);
     	
     	# Pass data to the view
     	$this->template->content->post = $_POST['editable'];
     	$this->template->content->moreContent->post = $_POST['editable'];
     	$this->template->content->imageContent = $_POST['image'];
-    	$this->template->content->location = $_POST["location"];
+    	$this->template->content->location = $location;
     	
     	# Render template
 		echo $this->template;  	 

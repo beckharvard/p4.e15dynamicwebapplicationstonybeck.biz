@@ -10,15 +10,16 @@
 			<form method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
 			Edit your post
 				<br>
-				<div id='post_text_output' class='post_text_output' style="<?=$post['post_output_text_location']?>  border-color: <?=$post['border_color_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
+				<div id='post_text_output' class='post_text_output' style="<?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
 					<span class="ui-icon ui-icon-arrow-4 "></span>
 					<span class="ui-icon ui-icon-trash "></span>  
 					<!-- the next lines have the PHP necessary to style the editable version of the post --->
 					<input id="edgeless_field1" class="edgeless_fields" type='text' name='content' maxlength="72" 
-							
+							size="<?=$post['edgeless_field_size']?>"
 							<?php echo "style=\"background-color: " ?><?=$post['post_background']?><?php echo "; color: " ?><?=$post['text_color_for_post']?><?php echo "; font-size: " ?>
 							<?=$post['font_size_for_post']?><?php echo "px" ?><?php echo "; font-family: " ?><?=$post['fields_chosen_font']?><?php echo"\"; required>" ?>
-							
+						
+						<input id="edgeless_field_size" class="edgeless_field_size" type='hidden' name="edgeless_field_size" />
 						<input id="fields_chosen_font" type="hidden" name='fields_chosen_font' style="font-family: <?=$post['fields_chosen_font']?>" />
 						<input id="text_color_for_post"	type="hidden" name='text_color_for_post' />
 						<input id="post_output_text_location" type="hidden" name='post_output_text_location' />

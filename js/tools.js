@@ -67,18 +67,23 @@ The Tools in the accordion and their style
 	$('.border-colors').click(function() {
 			var border_color_clicked = $(this).css('background-color');
 		
-			$('#post_text_output').css('border', "1px inset " + border_color_clicked);
+			$('#post_text_output').css('border', "1px solid " + border_color_clicked);
 			$('#border_color_for_post').html(border_color_clicked);
 			$('#border_color_for_post').val(border_color_clicked);
 	});
 	
 	
 	// apply the selected font to the text field
-	$("#fonts").change(function() {
+	$("#styleFont").change(function() {
+	
+			console.log(" Font style was changed!");
 		
 			var new_font = $(this).val();
 			
 			$('#edgeless_field1').css('font', new_font);
+			
+			textEntryFieldSize();
+			sizeTextDiv();
 				
 	});
 	
@@ -121,7 +126,7 @@ The Tools in the accordion and their style
   		if ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
   		
   		  		// and size the  enclosing div by some other rules, too.
-  				sizeTextDiv(new_font_size);	
+  				sizeTextDiv();	
   		}
 	
 	});
@@ -193,10 +198,10 @@ The Tools in the accordion and their style
   			$('#post_text_output_width').val( new_width );
   			$('#post_text_output_width').html( new_width);
     
-    console.log("Final new width is now " + new_width);
+   // console.log("Final new width is now " + new_width);
     };
     
-    function sizeTextDiv(new_font_size) {
+    function sizeTextDiv() {
     
     	// We need the length for use in sizing the div
   			var length_of_my_post = $('#edgeless_field1').attr('value');
@@ -242,7 +247,8 @@ The Tools in the accordion and their style
     	
     	// set the size of the text entry field to that variable.
     		$('#edgeless_field1').attr('size', post_size);
-    		
+    		$('#edgeless_field_size').html( post_size);
+    		$('#edgeless_field_size').val( post_size);
     	}
     	else {
     		return;
@@ -281,7 +287,7 @@ The Tools in the accordion and their style
     		$('#edgeless_field1').attr("value", load_my_post);	
     			
     	// size it	
-    		sizeTextDiv(load_my_post);
+    		sizeTextDiv();
 
     });
   
@@ -306,7 +312,7 @@ The Tools in the accordion and their style
     	// And let's make it draggable but NOT contained 
 		// because we're ok with growing the canvas
   		  	$( '#post_text_output' ).draggable().css( "position", $( '#post_text_output' ).attr('style') );
-  		  	
+  		  	$( '#imagecanvas' ).draggable().css( "position", $( '#imagecanvas' ).attr('style') );
 
     });
     
