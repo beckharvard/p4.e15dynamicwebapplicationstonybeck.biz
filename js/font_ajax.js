@@ -13,7 +13,7 @@ function SetFonts(fonts) {
     }    
 }
 
-$.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAYJsif1PxS6-JErAwruv7woKoyMLK7HJA", function(fonts){
+$.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCCZ-wB-KGYW3h7foZbwQqB6L8kSQV0Sa4", function(fonts){
     for (var i = 0; i < fonts.items.length; i++) {      
      $('#styleFont')
          .append($("<option></option>")
@@ -22,7 +22,7 @@ $.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAYJsif1PxS6
     }    
 });
 var script = document.createElement('script');
-script.src = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAYJsif1PxS6-JErAwruv7woKoyMLK7HJA&callback=SetFonts';
+script.src = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCCZ-wB-KGYW3h7foZbwQqB6L8kSQV0Sa4&callback=SetFonts';
 document.body.appendChild(script);
 
 
