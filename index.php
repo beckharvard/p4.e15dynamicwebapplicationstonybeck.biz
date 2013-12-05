@@ -31,5 +31,5 @@
     
 # Display environment details
 	require CORE_PATH."environment-details.php";
-	//test for github
+
 ?>
