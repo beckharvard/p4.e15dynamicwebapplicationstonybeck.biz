@@ -66,7 +66,7 @@ class images_controller extends base_controller {
     	# Build the query to get the image(s)
     	$img = "SELECT *
     			FROM images
-    			WHERE user_id = ".$this->user->user_id;
+    			WHERE user_id = ".$this->user->user_id. "INNER JOIN users ON images.user_id = users.user_id";
     	
     	# Execute the query to getthe users images. 
     	$_POST['image'] = DB::instance(DB_NAME)->sanitize($img);
