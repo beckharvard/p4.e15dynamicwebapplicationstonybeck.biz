@@ -45,8 +45,6 @@ time, button {
 body {
 	line-height: 		1;
     margin-left:		1%;
-    margin-bottom:		30px;
-
 }
 
 h1 {
@@ -72,6 +70,15 @@ hr {
 	margin-right:		1%;
 }
 
+footer {
+	clear:		both;
+	padding-top:		105px;
+	margin-top:			105px;	
+  	bottom: 			0;
+  	left: 				0;
+  	height: 			50px;		
+}
+
 #footer_left {
 	float:				left;
 	margin-left:		1em;
@@ -82,14 +89,7 @@ hr {
 	margin-right:       1em;
 }
 
-footer {
 
-	padding-top:		15px;
-	margin-top:			15px;	
-  	bottom: 			0;
-  	left: 				0;
-  	height: 			50px;		
-}
 
 /* -------------------------------------------------------------------
 Forms
@@ -389,7 +389,7 @@ image gallery
 #imagecanvas { 
 
 	float: left; 
-	width: 203px;
+	width: 214px;
 	min-height: 18em; 
 	padding: 8px; 
 	margin-top:	 10px;

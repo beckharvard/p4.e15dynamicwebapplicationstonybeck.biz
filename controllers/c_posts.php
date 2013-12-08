@@ -27,6 +27,7 @@ class posts_controller extends base_controller {
     		);
     	$this->template->client_files_body = Utils::load_client_files($client_files_body); 
     	   
+    	$this->template->title   = "Posts";
     } 
     
    public function index() {
@@ -132,7 +133,10 @@ class posts_controller extends base_controller {
     	$this->template->content = 								View::instance('v_posts_add');
     	$this->template->content->moreContent = 				View::instance('v_toolsAccordian');
     	$this->template->content->imageContent = 				View::instance('v_posts_images');
-    	$this->template->content->images = View::instance('v_posts_images');
+    	
+    	$this->template->content->images = View::instance('v_toolsAccordian');
+  #  	$this->template->content->images = View::instance('v_posts_images');
+    	
     	$user = $this->user->user_id;
  
  	# Build the query to get the users image(s)

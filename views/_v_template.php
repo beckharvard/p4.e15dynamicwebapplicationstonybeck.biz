@@ -32,6 +32,7 @@
         		<a href='/users/profile'>Profile</a>
 				<a href='/posts/add'>Add Post</a>
 				<a href='/images/add_image'>Add Images</a>
+				<a href='/images/index'>Image Gallery</a>
 				<a href='/posts/'>View Posts</a>
 				<a href='/posts/users'>Follow users</a>
 

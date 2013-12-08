@@ -27,15 +27,14 @@ class images_controller extends base_controller {
     		);
     	$this->template->client_files_body = Utils::load_client_files($client_files_body); 
     	   
-        
+        $this->template->title = "Images";
     }
     
      public function index() { 
     	# Set up the View
     	$this->template->content = View::instance('v_images_index');
     	$this->template->content = View::instance('v_posts_images');
-    	
-    	$this->template->title = "Images";
+    #	$this->template->content->images = View::instance('v_toolsAccordian');	
     	
     	# Build the query to get the image(s)
     	$img = "SELECT *
@@ -58,6 +57,26 @@ class images_controller extends base_controller {
     	
     	return $images;	
 		
+	}
+	
+	public function images() {
+	# Set up the View
+    	$this->template->content = View::instance('v_images_image');
+	
+    	# Build the query to get the image(s)
+    	$img = "SELECT *
+    			FROM images
+    			WHERE user_id = ".$this->user->user_id;
+    	
+    	# Execute the query to getthe users images. 
+    	$_POST['image'] = DB::instance(DB_NAME)->sanitize($img);
+    	$images = DB::instance(DB_NAME)->select_rows($img);	
+    	
+    	# Pass data to the View
+    	$this->template->content->images = $images;
+		
+		# Render the View
+		echo $this->template;
 	}
 	
 	public function add_image()  {

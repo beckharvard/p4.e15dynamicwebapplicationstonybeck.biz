@@ -67,7 +67,7 @@ The Tools in the accordion and their style
 	$('.border-colors').click(function() {
 			var border_color_clicked = $(this).css('background-color');
 		
-			$('#post_text_output').css('border', "1px solid " + border_color_clicked);
+			$('#post_text_output').css('border', "2px solid " + border_color_clicked);
 			$('#border_color_for_post').html(border_color_clicked);
 			$('#border_color_for_post').val(border_color_clicked);
 	});
@@ -289,7 +289,7 @@ The Tools in the accordion and their style
     	// size it	
     		sizeTextDiv(load_my_post);
 
-    		textEntryFieldSize();
+    	//	textEntryFieldSize();
 
     });
   
@@ -306,15 +306,15 @@ The Tools in the accordion and their style
 		//	textEntryFieldSize();
     	//	sizeTextDiv();
     	
-    	var saved_font = $('#edgeless_field1').attr("Style");
-    	console.log(saved_font);
-    	$.trim(saved_font);
-    	console.log(saved_font);
+    	var saved_font = $('#edgeless_field1').css('font-family');
     	
-    	if ($('#styleFont').val() === 'foo') {
+    	
+    	
+    	if ($('#styleFont').val() === saved_font) {
     	
     		$('#styleFont').attr("value", "selected=\"selected\"");
     		console.log("Font Style Loaded and should be default for font selector");
+    		console.log($('#styleFont').attr("value", "selected=\"selected\""));
     	}
     });
 
@@ -327,9 +327,8 @@ The Tools in the accordion and their style
     	// And let's make it draggable but NOT contained 
 		// because we're ok with growing the canvas
 		$( '#post_text_output' ).draggable().css( "position", $( '#post_text_output' ).attr('style') );
-			$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
-  		  	
-  		  	$( '#imagecanvas' ).draggable().css( "position", $( '#imagecanvas' ).attr('style') );
+		$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
+  	  	$( '#imagecanvas' ).draggable().css( "position", $( '#imagecanvas' ).attr('style') );
 
     });
     
