@@ -16,6 +16,8 @@ time, button {
 	vertical-align: 	baseline;
 }
 
+
+
 #menu {
 	margin:				1em;
 	padding-left:		2em;
@@ -32,10 +34,7 @@ time, button {
 
 #main {
 	min-height:			550px;
-	border-style:		solid;
-	border-color:		#800000;
-	border-width:		2px;
-	border-radius:		15px;
+
 	padding:			10px;
 	padding-bottom:		50px;
 	margin-bottom:		50px;
@@ -47,6 +46,7 @@ body {
 	line-height: 		1;
     margin-left:		1%;
     margin-bottom:		30px;
+
 }
 
 h1 {
@@ -223,7 +223,7 @@ input#edgeless_field1 {
 #post_text_output {
 
 	font-size:			30px;
-	width: 				200px;
+	width: 				220px;
 	border:				2px solid black;
 	border-radius:		5px;
 }
@@ -389,7 +389,7 @@ image gallery
 #imagecanvas { 
 
 	float: left; 
-	width: 200px;
+	width: 203px;
 	min-height: 18em; 
 	padding: 8px; 
 	margin-top:	 10px;

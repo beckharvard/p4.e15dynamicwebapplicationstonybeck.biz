@@ -208,18 +208,18 @@ The Tools in the accordion and their style
   			var post_length = length_of_my_post.length;
   		
   		// let's not grow the div for small posts.	
-  		if (post_length < 34 ) {
-  		
+ /*		if (post_length < 34 ) {
+  		add font size to the conditional above if this is necessary.
 			return;
   		}
-
+*/
   		// sizing the div we get current widths and increase the width of the outer div
-  			while  ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
-  				var new_width = $('#post_text_output').innerWidth();
-  				new_width++;
-  				console.log("width is now " + new_width);
-  				$('#post_text_output').css('width', ( new_width ));
-  			}
+		while  ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
+			var new_width = $('#post_text_output').innerWidth();
+			new_width++;
+			console.log("width is now " + new_width);
+			$('#post_text_output').css('width', ( new_width ));
+		}
   		// and we need to add some padding, so we set a variable for the div width now
   			var a_pinch_more = $('#post_text_output').width();
   		
@@ -275,7 +275,7 @@ The Tools in the accordion and their style
 			$( '#post_output_text_location' ).html( "position: relative; left: " + left_pos + "; top: " + top_pos + ";");
 			$( '#post_output_text_location' ).val( "position: relative; left: " + left_pos + "; top: " + top_pos + ";");
 		
-  		});
+  	});
   		
   	// if we are editing, we populate the text box and make it draggable
     $(window).load(function populateTextBox() {	
@@ -287,7 +287,9 @@ The Tools in the accordion and their style
     		$('#edgeless_field1').attr("value", load_my_post);	
     			
     	// size it	
-    		sizeTextDiv();
+    		sizeTextDiv(load_my_post);
+
+    		textEntryFieldSize();
 
     });
   
@@ -296,11 +298,24 @@ The Tools in the accordion and their style
     $(window).load(function () {
     
     		// we need to populate all input values in order to ensure they are persisted
-			$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
+	//		$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
 	//		console.log( $('#font_size_for_post').val($('#font_size_for_post').css('size')));
-			$('#text_color_for_post').val($('#text_color_for_post').css('text_color_for_post'));
-			$("#post_background").val($("#post_background").css('post_background'));
-    
+	//		$('#text_color_for_post').val($('#text_color_for_post').css('text_color_for_post'));
+	//		$("#post_background").val($("#post_background").css('post_background'));
+			
+		//	textEntryFieldSize();
+    	//	sizeTextDiv();
+    	
+    	var saved_font = $('#edgeless_field1').attr("Style");
+    	console.log(saved_font);
+    	$.trim(saved_font);
+    	console.log(saved_font);
+    	
+    	if ($('#styleFont').val() === 'foo') {
+    	
+    		$('#styleFont').attr("value", "selected=\"selected\"");
+    		console.log("Font Style Loaded and should be default for font selector");
+    	}
     });
 
 // get the above working....
@@ -311,7 +326,9 @@ The Tools in the accordion and their style
     	// we need to grab the position and apply it to the div  	
     	// And let's make it draggable but NOT contained 
 		// because we're ok with growing the canvas
-  		  	$( '#post_text_output' ).draggable().css( "position", $( '#post_text_output' ).attr('style') );
+		$( '#post_text_output' ).draggable().css( "position", $( '#post_text_output' ).attr('style') );
+			$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
+  		  	
   		  	$( '#imagecanvas' ).draggable().css( "position", $( '#imagecanvas' ).attr('style') );
 
     });

@@ -17,6 +17,7 @@
 	<!--JQuery pagination (I MAY need to add a link to the latest version of JQuery again-->
 	<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
 	<link type="text/css" rel="stylesheet" href="/css/simplePagination.css"/>
+
 			
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
@@ -30,6 +31,7 @@
 				<a href='/users/logout'>Logout</a>
         		<a href='/users/profile'>Profile</a>
 				<a href='/posts/add'>Add Post</a>
+				<a href='/images/add_image'>Add Images</a>
 				<a href='/posts/'>View Posts</a>
 				<a href='/posts/users'>Follow users</a>
 

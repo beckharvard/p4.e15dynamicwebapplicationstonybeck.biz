@@ -10,16 +10,20 @@
   <script src="/js/font_ajax.js"></script>
 
 </head>
+	
 	<body class="accordion">
 		<div class="toggler"> 
 			<div id="effect" ui-widget-content ui-corner-all">
+				
 				<div id="accordion">
-  					<h3 class="tool-header">Add your post text:</h3>
+  					<h3 class="tool-header">Style your content with these tools</h3>
   				<div >
     				<span>
+    					<h3>Add your post text:</h3>
 						<input type='text' id='myPost' name='content' maxlength="72" value="<? if(isset($post)) echo $post['content'] = trim($post['content'], " \t\n\r" )?>" required>
     					<span class='error' id='text-output-error'></span>
     				</span>
+    				
     				<br>
     				<span>
     					<div> Pick a text color:</div> 
@@ -89,22 +93,7 @@
 				<h3 class="tool-header">Add Images</h3>
 				<div id='imagesDiv'>
     				<span >
-						<div id='upload_results'>
-						    <form action="/posts/uploadfile" method="post" enctype="multipart/form-data">
-								<label for="file">Filename:</label>
-								<input type="file" name="file" id="file"><br>
-								<input type="submit" name="submit" value="Upload">
-							</form>
-							<div id='display_results'>
-								<?=$uploadResults;?>
-								<?php if(isset($error)): ?>
-									<div class="error">
-										<h4>Upload failed.</h4>
-										<p>Image file must be a jpg, gif, or png.</p>
-									</div>
-								<?php endif;?> 
-							</div>
-						</div>
+					
 					</span>
   				</div>
 			</div>

@@ -131,22 +131,26 @@ class posts_controller extends base_controller {
 	 	# Set up the View
     	$this->template->content = 								View::instance('v_posts_add');
     	$this->template->content->moreContent = 				View::instance('v_toolsAccordian');
- #   	$this->template->content->imageContent = 				View::instance('v_posts_images');
-
-    	$this->template->content->moreContent->uploadResults = 	View::instance('v_posts_uploadfile');
-    	
+    	$this->template->content->imageContent = 				View::instance('v_posts_images');
+    	$this->template->content->images = View::instance('v_posts_images');
     	$user = $this->user->user_id;
  
- 		# the query to execute is has been added to the Images Library of the core (probably a bad idea...)  
- 		
- 		#had to comment out these images lines becuase they are referring to a file that does not exist on live. 	
-		#$images = Image::get_images_by_user($user);
-		
-		# var_dump($images);
+ 	# Build the query to get the users image(s)
+    	$img = "SELECT image_name
+    			FROM images
+    			WHERE user_id = ".$this->user->user_id;
+    			
+    # Run the query
+    	$images = DB::instance(DB_NAME)->select_array($img, 'image_name');
+
+    	
+    	# var_dump($images);
+
 		
 		# Pass data to the View
-    	#$this->template->content->images = $images;
-    	#$this->template->content->images = 						View::instance('v_posts_images');
+    #	$this->template->content->images = $images;
+    	$this->template->content->imageContent = $images;
+   # 	$this->template->content->imageContent = 						View::instance('v_images_index');
     	
     	# Render template
 		echo $this->template;
@@ -160,7 +164,7 @@ class posts_controller extends base_controller {
     	# Set up the View
     	$this->template->content = View::instance('v_posts_p_add');
     	$this->template->content->moreContent = View::instance('v_toolsAccordian');
-    	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
+   # 	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     	
     	# More data we want stored with the post
     	$_POST['created']  = Time::now();
@@ -178,77 +182,14 @@ class posts_controller extends base_controller {
     	# Send them back
        	Router::redirect('/users/profile');    	
     }
-    
-    public function add_image()  {
-    
-    
-    }
-    
-    public function p_add_image()  {
-    
-    	# More data we want stored with the post
-    	$_POST['created']  = Time::now();
-    	
-    	# Associate this post with this user
-		$_POST['user_id'] = $this->user->user_id;
-		
-		$image_user_id = DB::instance(DB_NAME)->insert("images", $_POST);
-    
-    }
-    
-    public function uploadfile() {
-    
-    	# Set up the View
-    	# $this->template->content = View::instance('v_posts_uploadfile');
-    	
-    	# try to figure this out from the ajax class in order to get the image submission to show up
-    	$view = new View('v_posts_uploadfile');
-    	
-    	
-    	if ($_FILES['file']['error'] == 0)
-        {
-				$filename = $_FILES["file"]["name"];
-				$withoutExt = preg_replace("/\\.[^.\\s]{3,4}$/", "", $filename);
-				$allowedExts = array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG");
-				$ext = pathinfo($filename, PATHINFO_EXTENSION);
-				if ( in_array($ext, $allowedExts) ) {				
-					
-	
-					Upload::upload($_FILES, "/uploads/posts_pictures/", $allowedExts , $withoutExt ); 
-		
-					if ($_FILES["file"]["error"] > 0) {
-						echo "Error: " . $_FILES["file"]["error"] . "<br>";
-					}
-					else {
-						$imageName = $_FILES["file"]["name"];
 
-						echo "Upload: " . $imageName . "<br>";
-						echo "Type: " . $_FILES["file"]["type"] . "<br>";
-						echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-						echo "<img src=\"/uploads/posts_pictures/".$_FILES["file"]["name"]."\">";
-					}  
-				}
-				else {
-					   echo "That is not an accepted file type. We cna only accept the following: \"JPG\", \"JPEG\", \"jpg\", \"jpeg\", \"gif\", \"GIF\", \"png\", \"PNG\"";
-				}
-		
-				
-				echo $view;
-		}
-		else {
-		
-			echo $error;
-		}
-		
-	}
-    
     public function edit($edited)  {
     	# Set up the View
     	$this->template->content = View::instance('v_posts_edit');
     	$this->template->content->location = View::instance('v_posts_edit');
     	$this->template->content->moreContent = View::instance('v_toolsAccordian');
     	$this->template->content->imageContent = View::instance('v_posts_images');
-    	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
+   # 	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     		
     	# Build the query to get the post
     	$q = "SELECT *
@@ -264,9 +205,9 @@ class posts_controller extends base_controller {
     	    	
     # pretty sure I won't need this once I get Image.php feeding data to the view	
     	# Build the query to get the users image(s)
-    	#$img = "SELECT image_name
-    	#		FROM images
-    	#		WHERE user_id = ".$this->user->user_id;
+    	$img = "SELECT image_name
+    			FROM images
+    			WHERE user_id = ".$this->user->user_id;
 
     	# Execute the query to get the post. 
     	# Store the result array in the variable $post
@@ -274,7 +215,7 @@ class posts_controller extends base_controller {
     	$location = DB::instance(DB_NAME)->select_field($position);
     	
     # pretty sure I won't need this once I get Image.php feeding data to the view	
-    	#$_POST['image']    = DB::instance(DB_NAME)->select_row($img);
+    	$_POST['image']    = DB::instance(DB_NAME)->select_row($img);
     	
     # these should be put in their proper places once I get Image.php feeding data to the view		
     	$user = $this->user->user_id;

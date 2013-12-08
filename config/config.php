@@ -31,7 +31,7 @@ A email designated to receive messages from the server. Examples:
 	define('SYSTEM_EMAIL', 'beck@fas.harvard.edu'); 
 
 # Default DB name for this app
-	define('DB_NAME', "edynamic_p3_e15dynamicwebapplicationstonybeck_biz"); 
+	define('DB_NAME', "edynamic_p4_e15dynamicwebapplicationstonybeck_biz"); 
 
 # Timezone
 	define('TIMEZONE', 'America/New_York');

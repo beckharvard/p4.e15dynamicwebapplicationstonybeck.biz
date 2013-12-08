@@ -1,9 +1,10 @@
+
 <h2>Editor Canvas</h2>
 
 <!-- Buttons -->
 	<input class="buttons" type='button' id='refresh-btn' value='Clear Canvas'>
 	
-	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Text Tools'> 	
+	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Show/Hide Tools'> 	
 	
 	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Image Gallery'> 	
 
@@ -16,7 +17,7 @@
 				<div id='post_text_output' class="post_text_output">
 					<span class="ui-icon ui-icon-arrow-4 "></span>
 					<span class="ui-icon ui-icon-trash "></span>  
-					<input id="edgeless_field1" class="edgeless_fields" type='text' name='content' maxlength="72" placeholder="" >
+					<input id="edgeless_field1" class="edgeless_fields" type='text' name='content' size= "40" maxlength="72" placeholder="Use the tools at right to add your post" >
 					<input id="edgeless_field_size" class="edgeless_field_size" type='hidden' name="edgeless_field_size" />
 					<input id="fields_chosen_font" type="hidden" name='fields_chosen_font'/>
 					<input id="text_color_for_post"	type="hidden" name='text_color_for_post' />
@@ -40,7 +41,8 @@
 			<?=$moreContent;?><br>
 		</div>
 		<div id='image-tray'>
-			<?=$images;?>
+		
+	<!--		<?=$images;?> -->
 			<?=$imageContent;?>
 		
 		</div>
