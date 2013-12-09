@@ -223,11 +223,6 @@ class posts_controller extends base_controller {
     	
     # these should be put in their proper places once I get Image.php feeding data to the view		
     	$user = $this->user->user_id;
-    
-    #commenting out for live core issue	
-	#	$this->template->content->images = Image::get_images_by_user($user);
-    	
-    	print_r($location);
     	
     	# Pass data to the view
     	$this->template->content->post = $_POST['editable'];

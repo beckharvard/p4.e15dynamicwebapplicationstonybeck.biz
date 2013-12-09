@@ -172,7 +172,7 @@ The Tools in the accordion and their style
     	
     	console.log('multiplier for decrease is:' + multiplier);
     	
-    	// set our new width to be the existing width times that value (1 + (font size / 40))
+    	// set our new width to be the existing width times that value
     	var new_width =  ($('#post_text_output').width()) * multiplier;
     	
     	console.log("Decrease: new width is now " + new_width);
@@ -206,13 +206,19 @@ The Tools in the accordion and their style
     	// We need the length for use in sizing the div
   			var length_of_my_post = $('#edgeless_field1').attr('value');
   			var post_length = length_of_my_post.length;
+  			var font_size = $('#edgeless_field1').css('font-size');
+  			
+  			font_size = parseInt(font_size); 
+  			console.log('font isze is ' + font_size); 
   		
-  		// let's not grow the div for small posts.	
- /*		if (post_length < 34 ) {
-  		add font size to the conditional above if this is necessary.
+  		// let's not grow the div for small posts with small font sizes.
+// I might need to revisit this and handle it above with a conditional for calling
+// sizeTextDiv only in certain circumstances...
+ 		if (post_length < 34 && font_size < 12) {
+ 		
 			return;
   		}
-*/
+
   		// sizing the div we get current widths and increase the width of the outer div
 		while  ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
 			var new_width = $('#post_text_output').innerWidth();
@@ -272,8 +278,8 @@ The Tools in the accordion and their style
 			var top_pos = position.top - container.top;
 
 		// add those to an input field so that we can save it to the db for later use
-			$( '#post_output_text_location' ).html( "position: relative; left: " + left_pos + "; top: " + top_pos + ";");
-			$( '#post_output_text_location' ).val( "position: relative; left: " + left_pos + "; top: " + top_pos + ";");
+			$( '#post_output_text_location' ).html( "position: relative; left: " + left_pos + "px; top: " + top_pos + "px;");
+			$( '#post_output_text_location' ).val( "position: relative; left: " + left_pos + "px; top: " + top_pos + "px;");
 		
   	});
   		
@@ -306,9 +312,7 @@ The Tools in the accordion and their style
 		//	textEntryFieldSize();
     	//	sizeTextDiv();
     	
-    	var saved_font = $('#edgeless_field1').css('font-family');
-    	
-    	
+    	var saved_font = $('#edgeless_field1').css('font-family');	
     	
     	if ($('#styleFont').val() === saved_font) {
     	
@@ -330,11 +334,7 @@ The Tools in the accordion and their style
 		$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
   	  	$( '#imagecanvas' ).draggable().css( "position", $( '#imagecanvas' ).attr('style') );
 
-    });
-    
- 
-    
-  
+    });  
     
  	$('#refresh-btn').on("click", function () {
  	
