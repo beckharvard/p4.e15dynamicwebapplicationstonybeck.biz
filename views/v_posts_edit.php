@@ -1,3 +1,4 @@
+Edit your post
 <!-- Buttons -->
 	<input class="buttons" type='button' id='refresh-btn' value='Clear Canvas'>
 	
@@ -5,10 +6,12 @@
 
 	<!-- the canvas area where user can preview the look of their post-->
 	<div id='preview'>	
+	
 		<div id='canvas-background' style="background-color: <?=$post['post_background']?>">
 			<div id='canvas'>
+			
 			<form method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
-			Edit your post
+			
 				<br>
 				<div id='post_text_output' class='post_text_output' style="<?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
 					<span class="ui-icon ui-icon-arrow-4 "></span>

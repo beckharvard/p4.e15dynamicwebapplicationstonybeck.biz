@@ -17,7 +17,10 @@
 	<!--JQuery pagination (I MAY need to add a link to the latest version of JQuery again-->
 	<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
 	<link type="text/css" rel="stylesheet" href="/css/simplePagination.css"/>
-
+	<!--Table Sorter-->
+	<link rel="stylesheet" href="../__jquery.tablesorter/themes/blue/style.css" type="text/css" media="print, projection, screen" />
+	<script type="text/javascript" src="../__jquery.tablesorter/jquery.tablesorter.js"> <!--working--> </script>
+	<script type="text/javascript" src="js/table.js ></script>
 			
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
@@ -30,10 +33,10 @@
        		<?php if($user): ?>
 				<a href='/users/logout'>Logout</a>
         		<a href='/users/profile'>Profile</a>
-				<a href='/posts/add'>Add Post</a>
+				<a href='/posts/add'>Add Content</a>
 				<a href='/images/add_image'>Add Images</a>
 				<a href='/images/index'>Image Gallery</a>
-				<a href='/posts/'>View Posts</a>
+				<a href='/posts/'>View Content List</a>
 				<a href='/posts/users'>Follow users</a>
 
         	<!-- Menu options for users who are not logged in -->

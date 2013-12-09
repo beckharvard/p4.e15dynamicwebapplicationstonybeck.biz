@@ -22,24 +22,40 @@
 		<a href='/users/editProfile' >Edit my profile</a>
 	</h3>
 
-<hr/>
 <br/>
-
-<?php foreach($posts as $post): ?>
-	
-	<article>
-    	<p class="selection" id="page-<?=$post['content']['post_id']?>"><?=nl2br($post['content'])?></p> 
-		<h3>This post was created on:
-		
-    		<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-				<?=Time::display($post['created'])?>
-    		</time>
-    	
-    		<a href='/posts/edit/<?=$post['post_id']; ?>' >Edit this post</a>
-    	</h3>
-	</article>
-	<br/>
-<?php endforeach; ?>
+<table id="myTable" class="tablesorter">
+	<thead>
+		<tr>
+		  <th>Content Text</th>
+		  <th><strong> Created: </strong></th>
+		  <th><strong> Modified: </strong></th>
+		  <th>Edit</th>
+		</tr>
+  	</thead>
+  	<tbody>
+	<?php foreach($posts as $post): ?>	
+		<tr>
+			<td class="selection" id="page-<?=$post['content']['post_id']?>"><?=nl2br($post['content'])?> 
+			</td>
+			<td class="left-align"> 
+			
+				<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+					<?=Time::display($post['created'])?>
+				</time>
+			</td>
+			<td class="right-align">
+			
+				<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+					<?=Time::display($post['modified'])?>
+				</time>		
+			</td>
+			<td>
+			<a href='/posts/edit/<?=$post['post_id']; ?>' data-prefetch >Edit</a> 
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</tbody>
+</table>
 	<br/>
 	
 	<h2> 

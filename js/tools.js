@@ -1,6 +1,8 @@
 /*-------------------------------------------------------------------------------------------------
 The Tools in the accordion and their style
 -------------------------------------------------------------------------------------------------*/
+var last_post_length = 0;
+
  $(function() {
  
 	// add the accordion
@@ -20,6 +22,7 @@ The Tools in the accordion and their style
 					
 		//as text grows, we need to update the length...
 			sizeTextDiv(myPost);
+			last_post_length = myPost.length;
 			
 		// how many char so far?
 		var myPost_how_many_chars = myPost.length;
@@ -203,10 +206,16 @@ The Tools in the accordion and their style
     
     function sizeTextDiv() {
     
+    
     	// We need the length for use in sizing the div
   			var length_of_my_post = $('#edgeless_field1').attr('value');
   			var post_length = length_of_my_post.length;
   			var font_size = $('#edgeless_field1').css('font-size');
+  			
+  			if(post_length < last_post_length) {
+  				
+  				return;
+  			}
   			
   			font_size = parseInt(font_size); 
   			console.log('font isze is ' + font_size); 

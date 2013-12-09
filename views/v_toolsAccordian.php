@@ -93,6 +93,7 @@
 				<h3 class="tool-header">Add Images</h3>
 				<div id='imagesDiv'>
     				<span >
+    				
     				<?php if(isset($images)): ?>
 						<?php foreach( $images as $image ): ?>			
 							<h5 class="ui-widget-header"><?=$image['image_name'] ?></h5>

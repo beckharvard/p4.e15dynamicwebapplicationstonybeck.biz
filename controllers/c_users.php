@@ -210,6 +210,7 @@ class users_controller extends base_controller {
     	$q = 'SELECT
             posts.content,
             posts.created,
+            posts.modified,
             posts.post_id
 		FROM posts
         WHERE posts.user_id = '.$this->user->user_id.' 

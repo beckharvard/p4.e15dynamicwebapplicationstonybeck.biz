@@ -131,20 +131,20 @@ class posts_controller extends base_controller {
     public function add()  {
 	 	# Set up the View
     	$this->template->content = 								View::instance('v_posts_add');
+    	$this->template->content->images = 						View::instance('v_posts_add');
+    	$this->template->content->images = 						View::instance('v_toolsAccordian');
     	$this->template->content->moreContent = 				View::instance('v_toolsAccordian');
     	$this->template->content->imageContent = 				View::instance('v_posts_images');
     	
-    	$this->template->content->images = View::instance('v_toolsAccordian');
-  #  	$this->template->content->images = View::instance('v_posts_images');
-    	
     	$user = $this->user->user_id;
  
- 	# Build the query to get the users image(s)
-    	$img = "SELECT image_name
+ 		# Build the query to get the users image(s)
+		$img = "SELECT images.image_name
     			FROM images
-    			WHERE user_id = ".$this->user->user_id;
+    			INNER JOIN users 
+    			ON images.user_id = users.user_id";
     			
-    # Run the query
+    	# Run the query
     	$images = DB::instance(DB_NAME)->select_array($img, 'image_name');
 
     	
@@ -152,7 +152,7 @@ class posts_controller extends base_controller {
 
 		
 		# Pass data to the View
-    #	$this->template->content->images = $images;
+    	$this->template->content->images = $images;
     	$this->template->content->imageContent = $images;
    # 	$this->template->content->imageContent = 						View::instance('v_images_index');
     	
@@ -209,9 +209,11 @@ class posts_controller extends base_controller {
     	    	
     # pretty sure I won't need this once I get Image.php feeding data to the view	
     	# Build the query to get the users image(s)
-    	$img = "SELECT image_name
+		$img = "SELECT image_name
     			FROM images
-    			WHERE user_id = ".$this->user->user_id;
+    			INNER JOIN users 
+    			ON images.user_id = users.user_id";
+    
 
     	# Execute the query to get the post. 
     	# Store the result array in the variable $post

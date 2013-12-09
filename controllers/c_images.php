@@ -64,10 +64,11 @@ class images_controller extends base_controller {
     	$this->template->content = View::instance('v_images_image');
 	
     	# Build the query to get the image(s)
-    	$img = "SELECT *
-    			FROM images
-    			WHERE user_id = ".$this->user->user_id. "INNER JOIN users ON images.user_id = users.user_id";
-    	
+		$img = "SELECT image_name
+			FROM images
+			INNER JOIN users 
+			ON images.user_id = users.user_id";
+    			
     	# Execute the query to getthe users images. 
     	$_POST['image'] = DB::instance(DB_NAME)->sanitize($img);
     	$images = DB::instance(DB_NAME)->select_rows($img);	

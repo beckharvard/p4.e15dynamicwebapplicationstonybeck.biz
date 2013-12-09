@@ -66,8 +66,37 @@ h3 {
 	font-style:		    italic;
 }
 
+.right-align {
+	text-align:			right;
+/*	display:			inline;
+	font-size:			.75em;   */
+
+}
+.left-align {
+/*	display:			inline;
+	font-size:			.75em;   */
+	
+}
+
 hr {
 	margin-right:		1%;
+}
+
+table {
+/*	table-layout: 		fixed; */
+	width: 				100%;
+	border-collapse: 	collapse;
+}
+
+td {
+	padding-left:			1em;
+	padding-right:			1em;
+	padding-top:			.25em;
+	padding-bottom:			.25em;
+}
+
+table td, table th {
+	border: thin solid black;
 }
 
 footer {
