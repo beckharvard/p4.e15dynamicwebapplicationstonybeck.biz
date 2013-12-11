@@ -1,4 +1,4 @@
-Edit your post
+<h2>Edit Content</h2>
 <!-- Buttons -->
 	<input class="buttons" type='button' id='refresh-btn' value='Clear Canvas'>
 	
@@ -35,13 +35,26 @@ Edit your post
 						<input id="font_size_for_post" type="hidden" name='font_size_for_post' value="<?=$post['font_size_for_post']; ?>" />
 						<input id="border_color_for_post" type="hidden" name='border_color_for_post' value="<?=$post['border_color_for_post']; ?>"/>
 						<input id="post_text_output_width" type="hidden" name='post_text_output_width' value="<?=$post['post_text_output_width']; ?>"/>
-						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value=''>		
+						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value=''>	
+						 
 					</div>		
 			</form>
 	<!-- the tools tray where the user adds content to their post -->	
-		<div id='tools-tray'>	
-				
+		<div id='tools-tray'>					
 			<?=$moreContent;?><br>
 		</div>
-		
+		<div id='image-tray'>
+			<?php if(isset($images)): ?>
+				<?php foreach( $images as $image ): ?>	
+					<div class="draggable_image">		
+						<h5 class="ui-widget-header"><?=$image['image_name'] ?></h5>
+						<img src="../../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="200" height="150">
+						<a href="../../images/posts_pictures/<?=$image['image_name'] ?>" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>		
+					</div>
+				<?php endforeach; ?>
+					<?php else: ?>
+				<h2>No Images have been uploaded. Click on <a href='/images/add_image'>Add Images</a>
+				to upload images </h2>
+			<?php endif; ?>	
+		</div>
 		

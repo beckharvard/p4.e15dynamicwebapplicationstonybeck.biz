@@ -1,4 +1,3 @@
-<script type="text/javascript" src="/js/paginate_posts.js"></script>
 <?php if(!$user): ?>
 	<?php Router::redirect("/users/login");  ?>
 <?php else: ?>
@@ -24,6 +23,7 @@
 
 <br/>
 <table id="myTable" class="tablesorter">
+	<caption></caption>
 	<thead>
 		<tr>
 		  <th>Content Text</th>
@@ -34,17 +34,15 @@
   	</thead>
   	<tbody>
 	<?php foreach($posts as $post): ?>	
-		<tr>
+		<tr >
 			<td class="selection" id="page-<?=$post['content']['post_id']?>"><?=nl2br($post['content'])?> 
 			</td>
-			<td class="left-align"> 
-			
+			<td class="left-align"> 		
 				<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
 					<?=Time::display($post['created'])?>
 				</time>
 			</td>
 			<td class="right-align">
-			
 				<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
 					<?=Time::display($post['modified'])?>
 				</time>		

@@ -1,7 +1,32 @@
+/* this is mine and I wrote it
+
+$( '.draggable_image' ).mouseup(function() {
+
+	// and we will need the location to which the text was dragged...start with a var for the div
+		var p = $( '.draggable_image ui-draggable' );
+	// need to also get the position of the containing div, so set a var for that div
+		var c = $( '#preview' );
+	// set new variables be the positons of those divs
+		var position = p.position();
+		var container = c.position();
+	
+	// some math to subtract out the container positions so that we are now geting positon relative to the preview area
+		var left_pos = position.left - container.left;
+		var top_pos = position.top - container.top;
+
+	// add those to an input field so that we can save it to the db for later use
+		$( '.draggable_image' ).html( "position: relative; left: " + left_pos + "px; top: " + top_pos + "px;");
+		$( '.draggable_image' ).val( "position: relative; left: " + left_pos + "px; top: " + top_pos + "px;");
+	
+		console.log("this got called in image manager!");
+});
+
+*/
+
 $(function() {
     // there's the gallery and the imagecanvas
-    var $gallery = $( "#gallery" ),
-      $imagecanvas = $( "#imagecanvas" );
+    var $gallery = $( "#image-tray" ),
+      $imagecanvas = $( "#preview" );
  
     // let the gallery items be draggable
     $( "li", $gallery ).draggable({

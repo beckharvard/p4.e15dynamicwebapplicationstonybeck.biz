@@ -7,13 +7,14 @@ class posts_controller extends base_controller {
         if(!$this->user) {
             die("Members only. <a href='/users/login'>Login</a>");
         }
-                $client_files_head = Array(
+        $client_files_head = Array(
         //	'../js/validate.js',
         //	'../../js/validate.js',
         //	'../js/validate_posts.js',
         //	'../../js/validate_posts.js',
     		'../../css/style_php.css',
-    		'../../../css/style_php.css'
+    		'../../../css/style_php.css',
+    		'../../js/manage_images.js'
     		);
     	$this->template->client_files_head = Utils::load_client_files($client_files_head);
     	
@@ -23,7 +24,8 @@ class posts_controller extends base_controller {
 		//	'../js/validate_posts.js',
 		//	'../../js/validate_posts.js',
 			'../../css/style_php.css',
-			'../../../css/style_php.css'
+			'../../../css/style_php.css',
+    		'../../js/manage_images.js'
     		);
     	$this->template->client_files_body = Utils::load_client_files($client_files_body); 
     	   
@@ -132,30 +134,25 @@ class posts_controller extends base_controller {
 	 	# Set up the View
     	$this->template->content = 								View::instance('v_posts_add');
     	$this->template->content->images = 						View::instance('v_posts_add');
-    	$this->template->content->images = 						View::instance('v_toolsAccordian');
-    	$this->template->content->moreContent = 				View::instance('v_toolsAccordian');
+    	$this->template->content->images = 						View::instance('v_posts_accordion');
+    	$this->template->content->moreContent = 				View::instance('v_posts_accordion');
     	$this->template->content->imageContent = 				View::instance('v_posts_images');
     	
     	$user = $this->user->user_id;
  
- 		# Build the query to get the users image(s)
-		$img = "SELECT images.image_name
+    	# Build the query to get the image(s)
+    	$img = "SELECT *
     			FROM images
-    			INNER JOIN users 
-    			ON images.user_id = users.user_id";
-    			
-    	# Run the query
-    	$images = DB::instance(DB_NAME)->select_array($img, 'image_name');
-
+    			WHERE user_id = ".$this->user->user_id;
     	
-    	# var_dump($images);
-
+    	# Execute the query to getthe users images. 
+    	$_POST['image'] = DB::instance(DB_NAME)->sanitize($img);
+    	$images = DB::instance(DB_NAME)->select_rows($img);	
 		
 		# Pass data to the View
     	$this->template->content->images = $images;
-    	$this->template->content->imageContent = $images;
-   # 	$this->template->content->imageContent = 						View::instance('v_images_index');
     	
+  
     	# Render template
 		echo $this->template;
 		
@@ -167,7 +164,7 @@ class posts_controller extends base_controller {
 
     	# Set up the View
     	$this->template->content = View::instance('v_posts_p_add');
-    	$this->template->content->moreContent = View::instance('v_toolsAccordian');
+    	$this->template->content->moreContent = View::instance('v_posts_accordion');
    # 	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     	
     	# More data we want stored with the post
@@ -191,7 +188,7 @@ class posts_controller extends base_controller {
     	# Set up the View
     	$this->template->content = View::instance('v_posts_edit');
     	$this->template->content->location = View::instance('v_posts_edit');
-    	$this->template->content->moreContent = View::instance('v_toolsAccordian');
+    	$this->template->content->moreContent = View::instance('v_posts_accordion');
     	$this->template->content->imageContent = View::instance('v_posts_images');
    # 	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     		
@@ -207,30 +204,27 @@ class posts_controller extends base_controller {
     				WHERE user_id = ".$this->user->user_id. " AND 
     	    		post_id = ".$edited;
     	    	
-    # pretty sure I won't need this once I get Image.php feeding data to the view	
-    	# Build the query to get the users image(s)
-		$img = "SELECT image_name
+    	# Build the query to get the image(s)
+    	$img = "SELECT *
     			FROM images
-    			INNER JOIN users 
-    			ON images.user_id = users.user_id";
-    
+    			WHERE user_id = ".$this->user->user_id;
+    	
+    	# Execute the query to getthe users images. 
+    	$_POST['image'] = DB::instance(DB_NAME)->sanitize($img);
+    	$images = DB::instance(DB_NAME)->select_rows($img);	
 
     	# Execute the query to get the post. 
     	# Store the result array in the variable $post
     	$_POST["editable"] = DB::instance(DB_NAME)->select_row($q);
     	$location = DB::instance(DB_NAME)->select_field($position);
     	
-    # pretty sure I won't need this once I get Image.php feeding data to the view	
-    	$_POST['image']    = DB::instance(DB_NAME)->select_row($img);
-    	
     # these should be put in their proper places once I get Image.php feeding data to the view		
     	$user = $this->user->user_id;
     	
-    	# Pass data to the view
+    	# Pass data to the View
+    	$this->template->content->images = $images;
     	$this->template->content->post = $_POST['editable'];
     	$this->template->content->moreContent->post = $_POST['editable'];
-        #commenting out for live core issue	
-    	# $this->template->content->imageContent = $_POST['image'];
     	$this->template->content->location = $location;
     	
     	# Render template

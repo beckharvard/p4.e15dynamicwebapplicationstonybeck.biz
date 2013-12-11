@@ -218,11 +218,8 @@ var last_post_length = 0;
   			}
   			
   			font_size = parseInt(font_size); 
-  			console.log('font isze is ' + font_size); 
   		
-  		// let's not grow the div for small posts with small font sizes.
-// I might need to revisit this and handle it above with a conditional for calling
-// sizeTextDiv only in certain circumstances...
+  		// only grow the div for small posts with small font sizes.
  		if (post_length < 34 && font_size < 12) {
  		
 			return;
@@ -341,7 +338,8 @@ var last_post_length = 0;
 		// because we're ok with growing the canvas
 		$( '#post_text_output' ).draggable().css( "position", $( '#post_text_output' ).attr('style') );
 		$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
-  	  	$( '#imagecanvas' ).draggable().css( "position", $( '#imagecanvas' ).attr('style') );
+  	  //	$( '#imagecanvas' ).draggable().css( "position", $( '#imagecanvas' ).attr('style') );
+  	  	$('.draggable_image').draggable().css( "position", $( '#imagecanvas' ).attr('style') );
 
     });  
     

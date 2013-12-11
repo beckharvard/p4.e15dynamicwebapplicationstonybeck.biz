@@ -15,13 +15,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="https://rawgithub.com/hayageek/jquery-upload-file/master/js/jquery.uploadfile.min.js"></script>
 	<!--JQuery pagination (I MAY need to add a link to the latest version of JQuery again-->
-	<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
-	<link type="text/css" rel="stylesheet" href="/css/simplePagination.css"/>
-	<!--Table Sorter-->
-	<link rel="stylesheet" href="../__jquery.tablesorter/themes/blue/style.css" type="text/css" media="print, projection, screen" />
-	<script type="text/javascript" src="../__jquery.tablesorter/jquery.tablesorter.js"> <!--working--> </script>
-	<script type="text/javascript" src="js/table.js ></script>
-			
+
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 </head>

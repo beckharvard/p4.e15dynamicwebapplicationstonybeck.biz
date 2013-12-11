@@ -34,7 +34,7 @@ class images_controller extends base_controller {
     	# Set up the View
     	$this->template->content = View::instance('v_images_index');
     	$this->template->content = View::instance('v_posts_images');
-    #	$this->template->content->images = View::instance('v_toolsAccordian');	
+    #	$this->template->content->images = View::instance('v_posts_accordion');	
     	
     	# Build the query to get the image(s)
     	$img = "SELECT *
@@ -153,7 +153,7 @@ class images_controller extends base_controller {
 					}  
 				}
 				else {
-					   echo "That is not an accepted file type. We cna only accept the following: \"JPG\", \"JPEG\", \"jpg\", \"jpeg\", \"gif\", \"GIF\", \"png\", \"PNG\"";
+					   echo "That is not an accepted file type. We can only accept the following: \"JPG\", \"JPEG\", \"jpg\", \"jpeg\", \"gif\", \"GIF\", \"png\", \"PNG\"";
 				}
 		
 				

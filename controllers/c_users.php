@@ -5,14 +5,18 @@ class users_controller extends base_controller {
         parent::__construct();
              
         $client_files_head = Array(
-        	'../js/validate.js',
+    		'../js/validate.js',
         	'../../js/validate.js',
         	'../js/validate_posts.js',
         	'../../js/validate_posts.js',
         	'../../../js/validate_posts.js',
-    		'../../../css/style_php.css'
+    		'../../../css/style_php.css',
+    		'../jquery/__jquery.tablesorter/themes/blue/style.css',
+    		'../jquery/__jquery.tablesorter/jquery.tablesorter.js',
+    		'../js/table.js'
     		);
     	$this->template->client_files_head = Utils::load_client_files($client_files_head);
+    	
     	
     	
     	
@@ -22,7 +26,10 @@ class users_controller extends base_controller {
         	'../js/validate_posts.js',
         	'../../js/validate_posts.js',
         	'../../../js/validate_posts.js',
-    		'../../../css/style_php.css'
+    		'../../../css/style_php.css',
+    		'../jquery/__jquery.tablesorter/themes/blue/style.css',
+    		'../jquery/__jquery.tablesorter/jquery.tablesorter.js',
+    		'../js/table.js'
     		);
     	$this->template->client_files_body = Utils::load_client_files($client_files_body); 
     	   
