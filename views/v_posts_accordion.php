@@ -11,7 +11,7 @@
 
 </head>
 	
-	<body class="accordion">
+	<body >
 		<div class="toggler"> 
 			<div id="effect" ui-widget-content ui-corner-all">
 				
@@ -20,7 +20,7 @@
   				<div >
     				<span>
     					<h3>Add your post text:</h3>
-						<input type='text' id='myPost' name='content' maxlength="72" value="<? if(isset($post)) echo $post['content'] = trim($post['content'], " \t\n\r" )?>" required>
+						<input id="myPost" type='text' id='myPost' siz="72" name='content' maxlength="72" value="<? if(isset($post)) echo $post['content'] = trim($post['content'], " \t\n\r" )?>" required>
     					<span class='error' id='text-output-error'></span>
     				</span>
     				
@@ -41,6 +41,7 @@
 					<br>
 					<span>
 					<br>
+						Font:
 						<select id="styleFont">
     					</select>
 					</span>
@@ -55,41 +56,40 @@
   							<option class="content-font-size" id="24" value="24">24</option>
   							<option class="content-font-size" id="28" value="28">28</option>
 						</select>
-						</div>
-					</span>
-  				</div>
-  				<h3 class="tool-header">Background color:</h3>
-  				<div>
-  					<span>  	
-						<div class='colors' id='red'>  </div>
-						<div class='colors' id='orange'>  </div>
-						<div class='colors' id='green'>  </div>
-						<div class='colors' id='yellow'>  </div>
-						<div class='colors' id='blue'>  </div>
-						<div class='colors' id='white'>  </div>
-						<div class='colors' id='indigo'>  </div>
-						<div class='colors' id='violet'>  </div>
-						<div class='colors' id='black'>  </div>
-						<div class='colors' id='gray'>  </div>
-    				</span>
-  				</div>
 
-  				<h3 class="tool-header">Border Color</h3>
-  				<div>
-    				<span>
-    					<div> Pick a border color:</div> 
-    				    <div class='border-colors' id='red-border'>  </div>
-						<div class='border-colors' id='orange-border'>  </div>
-						<div class='border-colors' id='green-border'>  </div>
-						<div class='border-colors' id='yellow-border'>  </div>
-						<div class='border-colors' id='blue-border'>  </div>
-						<div class='border-colors' id='white-border'>  </div>
-						<div class='border-colors' id='indigo-border'>  </div>
-						<div class='border-colors' id='violet-border'>  </div>
-						<div class='border-colors' id='black-border'>  </div>
-						<div class='border-colors' id='gray-border'>  </div>
+						</div>
+						<br>
+						Background Color:
+						<br>
+						<span>  
+								
+							<div class='colors' id='red'>  </div>
+							<div class='colors' id='orange'>  </div>
+							<div class='colors' id='green'>  </div>
+							<div class='colors' id='yellow'>  </div>
+							<div class='colors' id='blue'>  </div>
+							<div class='colors' id='white'>  </div>
+							<div class='colors' id='indigo'>  </div>
+							<div class='colors' id='violet'>  </div>
+							<div class='colors' id='black'>  </div>
+							<div class='colors' id='gray'>  </div>
+						</span>
+						<span>
+							<div> Pick a border color:</div> 
+							<div class='border-colors' id='red-border'>  </div>
+							<div class='border-colors' id='orange-border'>  </div>
+							<div class='border-colors' id='green-border'>  </div>
+							<div class='border-colors' id='yellow-border'>  </div>
+							<div class='border-colors' id='blue-border'>  </div>
+							<div class='border-colors' id='white-border'>  </div>
+							<div class='border-colors' id='indigo-border'>  </div>
+							<div class='border-colors' id='violet-border'>  </div>
+							<div class='border-colors' id='black-border'>  </div>
+							<div class='border-colors' id='gray-border'>  </div>
+						</span>
 					</span>
-				</div>
+  				</div>
+  				
 				<h3 class="tool-header">Add Images</h3>
 				<div id='image-tray'>
     				<span >					
@@ -97,8 +97,8 @@
 							<?php foreach( $images as $image ): ?>	
 								<div class="draggable_image">		
 									<h5 class="ui-widget-header"><?=$image['image_name'] ?></h5>
-									<img src="../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="97" height="74">
-									<a href="../images/posts_pictures/<?=$image['image_name'] ?>" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>		
+									<img src="../../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="97" height="74">
+									<a href="../../images/posts_pictures/<?=$image['image_name'] ?>" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>		
 								</div>
 							<?php endforeach; ?>
 								<?php else: ?>

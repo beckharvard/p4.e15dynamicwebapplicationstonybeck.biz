@@ -133,9 +133,7 @@ class posts_controller extends base_controller {
     public function add()  {
 	 	# Set up the View
     	$this->template->content = 								View::instance('v_posts_add');
-    	$this->template->content->images = 						View::instance('v_posts_add');
-    	$this->template->content->images = 						View::instance('v_posts_accordion');
-    	$this->template->content->moreContent = 				View::instance('v_posts_accordion');
+    	$this->template->content->moreContent = 				View::instance('v_posts_accordion');   	
     	$this->template->content->imageContent = 				View::instance('v_posts_images');
     	
     	$user = $this->user->user_id;
@@ -151,7 +149,7 @@ class posts_controller extends base_controller {
 		
 		# Pass data to the View
     	$this->template->content->images = $images;
-    	
+    	$this->template->content->moreContent->images = $images;
   
     	# Render template
 		echo $this->template;
@@ -165,7 +163,6 @@ class posts_controller extends base_controller {
     	# Set up the View
     	$this->template->content = View::instance('v_posts_p_add');
     	$this->template->content->moreContent = View::instance('v_posts_accordion');
-   # 	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     	
     	# More data we want stored with the post
     	$_POST['created']  = Time::now();
@@ -223,6 +220,7 @@ class posts_controller extends base_controller {
     	
     	# Pass data to the View
     	$this->template->content->images = $images;
+    	$this->template->content->moreContent->images = $images;
     	$this->template->content->post = $_POST['editable'];
     	$this->template->content->moreContent->post = $_POST['editable'];
     	$this->template->content->location = $location;

@@ -16,8 +16,6 @@ time, button {
 	vertical-align: 	baseline;
 }
 
-
-
 #menu {
 	margin:				1em;
 	padding-left:		2em;
@@ -73,13 +71,10 @@ h5 {
 
 .right-align {
 	text-align:			right;
-/*	display:			inline;
-	font-size:			.75em;   */
 
 }
 .left-align {
-/*	display:			inline;
-	font-size:			.75em;   */
+
 	
 }
 
@@ -177,6 +172,7 @@ Editor Canvas
 	float:				left;
 	clear:				both;
 	margin-right:		400px;
+
 	/* margin:0px auto; 
 	*/
 }
@@ -192,16 +188,19 @@ Editor Canvas
 #preview {
 	width:				800px;			
 	float:left;
+	
+	z-index:-1;
 /*	text-align:center; */
 	
 }
 #canvas-background {
 	/* background-image:url('../images/card-background.jpg'); */
 	background-repeat:no-repeat;
-	height:513px;
+	height:600px;
 	width:800px;
 	/*margin:0px auto;
 	*/	
+	z-index:-1;
 }
 
 #content {
@@ -211,9 +210,10 @@ Editor Canvas
 
 #canvas {
 	width:800px;
-	height:500px;
-	z-index:1; /* So we can place the stuff above */
-	overflow:scroll;
+	height:600px;
+	
+	z-index:-1; /* So we can place the stuff above */
+	overflow:			scroll;
 	
 	border: 			red;
 	border-width:		2px;
@@ -227,8 +227,17 @@ Editor Canvas
 
 
 .draggable_image, .image_gallery {
+	position:	relative;
 	float:		left;
 	clear:		right;
+	z-index:	100;
+	
+}
+
+.draggable_image {
+	z-index:	100;
+	padding:	1px;
+	margin:		1px;
 
 }
 
@@ -281,9 +290,10 @@ input#edgeless_field1 {
 	float:				right;
 	margin:				10px;
 	border:				5px;
-	width:				200px;
+	width:				180px;
 	
-		position:			absolute;
+	position:			absolute;
+		
 	top:				60px;
 	right				30px;
 /*	margin-left:		400px;   */
@@ -305,9 +315,14 @@ img .image-tray {
 
 }
 
+.draggable_image ui-draggable {
+	padding:			15 px;
+}
+
 .ui-widget-header {
 
-	width:				200px;
+	width:				97px;
+/*  width:				200px; */	
 	height:				13px;
 }
 
@@ -332,8 +347,8 @@ img .image-tray {
 }
 
 #accordion { 
- 	max-width:			280px;
- 	min-width:			280px; 
+ 	max-width:			480px;
+ 	min-width:			480px; 
 }
 
 .toggler { 
@@ -372,6 +387,9 @@ text tools
 
 }
 
+#myPost {
+	width:			   390px;
+}
 
 #imagesDiv, .error {	
 	font-size:			12px;

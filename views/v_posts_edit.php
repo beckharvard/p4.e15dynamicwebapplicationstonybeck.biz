@@ -43,6 +43,7 @@
 		<div id='tools-tray'>					
 			<?=$moreContent;?><br>
 		</div>
+<!--
 		<div id='image-tray'>
 			<?php if(isset($images)): ?>
 				<?php foreach( $images as $image ): ?>	
@@ -57,4 +58,4 @@
 				to upload images </h2>
 			<?php endif; ?>	
 		</div>
-		
+-->		

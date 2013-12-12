@@ -39,12 +39,13 @@
 		<div id='tools-tray'>			
 			<?=$moreContent;?><br>
 		</div>
+<!--
 		<div id='image-tray'>
 			<?php if(isset($images)): ?>
 				<?php foreach( $images as $image ): ?>	
 					<div class="draggable_image">		
 						<h5 class="ui-widget-header"><?=$image['image_name'] ?></h5>
-						<img src="../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="200" height="150">
+						<img src="../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="97" height="72">
 						<a href="../images/posts_pictures/<?=$image['image_name'] ?>" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>		
 					</div>
 				<?php endforeach; ?>
@@ -53,3 +54,4 @@
 				to upload images </h2>
 			<?php endif; ?>	
 		</div>
+-->
