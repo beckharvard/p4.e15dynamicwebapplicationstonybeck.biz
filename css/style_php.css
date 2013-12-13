@@ -159,6 +159,12 @@ a:visited {
 
 }
 
+#myForm {
+
+	margin-left:		5%;
+
+}
+
 
 /*-------------------------------------------------------------------------------------------------
 Editor Canvas
@@ -296,7 +302,7 @@ input#edgeless_field1 {
 		
 	top:				60px;
 	right				30px;
-/*	margin-left:		400px;   */
+
 
 }
 
@@ -457,46 +463,12 @@ text tools
 
 /*----------------------------------------------------
 image gallery
-
-#gallery { 
-
-	float: right; 
-	width: 65%; 
-	min-height: 12em; 
-}
-
-.gallery.custom-state-active { background: #eee; }
-.gallery li { float: left; width: 96px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
-.gallery li h5 { margin: 0 0 0.4em; cursor: move; }
-.gallery li a { float: right; }
-.gallery li a.ui-icon-zoomin { float: left; }
-.gallery li img { width: 100%; cursor: move; }
- 
-#imagecanvas { 
-
-	float: left; 
-	width: 214px;
-	min-height: 18em; 
-	padding: 8px; 
-	margin-top:	 10px;
-	border:				2px solid black;
-	border-radius:		5px;
-}
-
-#imagecanvas h4 { 
-
-	line-height: 16px; 
-	margin: 0 0 0.4em; 
-}
-
-#imagecanvas h4 .ui-icon { 
-
-	float: left; 
-}
-
-#imagecanvas .gallery h5 { 
-
-	display: none; 
-}
-
 ----------------------------------------------------*/
+
+.ui-widget ui-helper-clearfix  {
+
+	float:			left;
+	clear:			right;
+	
+}
+

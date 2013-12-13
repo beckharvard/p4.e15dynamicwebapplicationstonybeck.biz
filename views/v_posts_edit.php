@@ -9,7 +9,8 @@
 	
 		<div id='canvas-background' style="background-color: <?=$post['post_background']?>">
 			<div id='canvas'>
-			
+			<?php echo "<img class=\"draggable_image\" src=\""?><?php echo $post['image_location']?> <?php echo "\" alt=\"\""?> <?php echo  "width=\"97\" height=\"74\">" ?>
+				
 			<form method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
 			
 				<br>
@@ -36,7 +37,6 @@
 						<input id="border_color_for_post" type="hidden" name='border_color_for_post' value="<?=$post['border_color_for_post']; ?>"/>
 						<input id="post_text_output_width" type="hidden" name='post_text_output_width' value="<?=$post['post_text_output_width']; ?>"/>
 						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value=''>	
-						 
 					</div>		
 			</form>
 	<!-- the tools tray where the user adds content to their post -->	

@@ -300,23 +300,11 @@ var last_post_length = 0;
     			
     	// size it	
     		sizeTextDiv(load_my_post);
-
-    	//	textEntryFieldSize();
-
     });
   
   
-// >>>>     This is an attempt to get things to persist automatically if they are not edited but it doesn't yet work.
+	// persist automatically the fonts if they are not edited but I am not confident that it works yet work.
     $(window).load(function () {
-    
-    		// we need to populate all input values in order to ensure they are persisted
-	//		$('#post_output_text_location').val($('#post_output_text_location').css('post_output_text_location'));
-	//		console.log( $('#font_size_for_post').val($('#font_size_for_post').css('size')));
-	//		$('#text_color_for_post').val($('#text_color_for_post').css('text_color_for_post'));
-	//		$("#post_background").val($("#post_background").css('post_background'));
-			
-		//	textEntryFieldSize();
-    	//	sizeTextDiv();
     	
     	var saved_font = $('#edgeless_field1').css('font-family');	
     	
@@ -342,7 +330,7 @@ var last_post_length = 0;
   	  	$('.draggable_image').draggable().css( "position", $( '#imagecanvas' ).attr('style') );
 
     });  
-    
+// this ain't fully working!	    
  	$('#refresh-btn').on("click", function () {
  	
 		$('#canvas').css('background-color', "");
@@ -350,5 +338,40 @@ var last_post_length = 0;
 		$('#edgeless_field1').html("");
 	
 	});
+	
+/*----------------------------------------------------------------------------------------
+
+	Images
+
+----------------------------------------------------------------------------------------*/	
+	
+	$('.user_images').on("click", function () {
+	
+		// Clone the sticker that was clicked
+		var new_canvas_image = $(this).clone();
+	
+		// A class so we can position stickers on the
+		new_canvas_image.addClass('image_on_canvas');
+	
+		// Inject the new image into the canvas
+		$('#canvas').prepend(new_canvas_image);
+	
+		// Make that puppy draggable
+		new_canvas_image.draggable({containment: '#canvas', opacity:.35});
+	
+	
+		console.log("User image added to the canvas");
+		console.log("this is " + new_canvas_image.attr('src'));
+		
+		$('#image_location').html(new_canvas_image.attr('src'));
+		$('#image_location').val(new_canvas_image.attr('src'));
+	});
+// this ain't working!	
+	$(function() {
+    	$( 'img.user_images.ui-resizable.image_on_canvas.ui-draggable').resizable({
+		  animate: true
+		});
+  	});
+  	
 
 });

@@ -97,7 +97,7 @@
 							<?php foreach( $images as $image ): ?>	
 								<div class="draggable_image">		
 									<h5 class="ui-widget-header"><?=$image['image_name'] ?></h5>
-									<img src="../../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="97" height="74">
+									<img class="user_images" src="../../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="97" height="74">
 									<a href="../../images/posts_pictures/<?=$image['image_name'] ?>" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>		
 								</div>
 							<?php endforeach; ?>
