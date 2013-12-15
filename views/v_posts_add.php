@@ -1,12 +1,10 @@
 <h2>Add Content</h2>
 
 <!-- Buttons -->
+	
 	<input class="buttons" type='button' id='refresh-btn' value='Clear Canvas'>
 	
-	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Show/Hide Tools'> 	
-	
-	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Image Gallery'> 	
-
+	<input type='button'class="buttons" id="hide-button" class="buttons ui-state-default ui-corner-all" value='Show/Hide Tools'> 		
 
 	<!-- the canvas area where user can preview the look of their post-->
 	<div id='preview'>	
@@ -14,8 +12,7 @@
 			<div id='canvas'>
 				<form id="save_post" method ='POST' onsubmit="doSubmit()"  action ='/posts/p_add'>
 					<div id='post_text_output' class="post_text_output">
-						<span class="ui-icon ui-icon-arrow-4 "></span>
-						<span class="ui-icon ui-icon-trash "></span>  
+						<span class="ui-icon ui-icon-arrow-4 "></span> 
 						<input id="edgeless_field1" class="edgeless_fields" type='text' name='content' size= "40" maxlength="72" placeholder="Use the tools at right to add your post" >
 						<input id="edgeless_field_size" class="edgeless_field_size" type='hidden' name="edgeless_field_size" />
 						<input id="fields_chosen_font" type="hidden" name='fields_chosen_font'/>
@@ -25,6 +22,7 @@
 						<input id="font_size_for_post" type="hidden" name='font_size_for_post' />
 						<input id="border_color_for_post" type="hidden" name='border_color_for_post' />
 						<input id="image_location" type="hidden" name='image_location' />	
+						<input id="image_position" type="hidden" name='image_position' />
 						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value='Save'>
 							
 					</div>
@@ -34,7 +32,7 @@
 		</div>	
 			
 	</div>	
-
+	
 	<!-- the tools tray where the user adds content to their post -->	
 		<div id='tools-tray'>			
 			<?=$moreContent;?><br>

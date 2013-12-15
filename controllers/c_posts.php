@@ -14,7 +14,10 @@ class posts_controller extends base_controller {
         //	'../../js/validate_posts.js',
     		'../../css/style_php.css',
     		'../../../css/style_php.css',
-    		'../../js/manage_images.js'
+    		'../../js/manage_images.js',
+    		'../jquery/__jquery.tablesorter/themes/blue/style.css',
+    		'../jquery/__jquery.tablesorter/jquery.tablesorter.js',
+    		'../js/table.js'
     		);
     	$this->template->client_files_head = Utils::load_client_files($client_files_head);
     	
@@ -25,7 +28,10 @@ class posts_controller extends base_controller {
 		//	'../../js/validate_posts.js',
 			'../../css/style_php.css',
 			'../../../css/style_php.css',
-    		'../../js/manage_images.js'
+    		'../../js/manage_images.js',
+    	    '../jquery/__jquery.tablesorter/themes/blue/style.css',
+    		'../jquery/__jquery.tablesorter/jquery.tablesorter.js',
+    		'../js/table.js'
     		);
     	$this->template->client_files_body = Utils::load_client_files($client_files_body); 
     	   
@@ -156,7 +162,7 @@ class posts_controller extends base_controller {
 		
     }
     
-    public function p_add()  {
+	public function p_add()  {
     
     	 //upload an image
 
@@ -180,6 +186,52 @@ class posts_controller extends base_controller {
     	# Send them back
        	Router::redirect('/users/profile');    	
     }
+    
+    public function view($viewed)  {
+    	$this->template->content = View::instance('v_posts_view');
+    	$this->template->content->location = View::instance('v_posts_view');
+    	$this->template->content->moreContent = View::instance('v_posts_view');
+    	$this->template->content->imageContent = View::instance('v_posts_images');
+    	
+    	# Build the query to get the post
+    	$q = "SELECT *
+    	    FROM posts 
+    	    WHERE user_id = ".$this->user->user_id. " AND 
+    	    post_id = ".$viewed;
+    	
+    	# Build the query to get the post's location
+    	$position = "SELECT post_output_text_location
+    				FROM posts
+    				WHERE user_id = ".$this->user->user_id. " AND 
+    	    		post_id = ".$viewed;
+    	    	
+    	# Build the query to get the image(s)
+    	$img = "SELECT *
+    			FROM images
+    			WHERE user_id = ".$this->user->user_id;
+    	
+    	# Execute the query to getthe users images. 
+    	$_POST['image'] = DB::instance(DB_NAME)->sanitize($img);
+    	$images = DB::instance(DB_NAME)->select_rows($img);	
+
+    	# Execute the query to get the post. 
+    	# Store the result array in the variable $post
+    	$_POST["editable"] = DB::instance(DB_NAME)->select_row($q);
+    	$location = DB::instance(DB_NAME)->select_field($position);
+    	
+    # these should be put in their proper places once I get Image.php feeding data to the view		
+    	$user = $this->user->user_id;
+    	
+    	# Pass data to the View
+    	$this->template->content->images = $images;
+    	$this->template->content->moreContent->images = $images;
+    	$this->template->content->post = $_POST['editable'];
+    	$this->template->content->moreContent->post = $_POST['editable'];
+    	$this->template->content->location = $location;
+    	
+    	# Render template
+		echo $this->template;  	 
+    }
 
     public function edit($edited)  {
     	# Set up the View
@@ -187,7 +239,6 @@ class posts_controller extends base_controller {
     	$this->template->content->location = View::instance('v_posts_edit');
     	$this->template->content->moreContent = View::instance('v_posts_accordion');
     	$this->template->content->imageContent = View::instance('v_posts_images');
-   # 	$this->template->content->moreContent->uploadResults = View::instance('v_posts_uploadfile');
     		
     	# Build the query to get the post
     	$q = "SELECT *

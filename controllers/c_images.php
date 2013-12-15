@@ -33,8 +33,7 @@ class images_controller extends base_controller {
      public function index() { 
     	# Set up the View
     	$this->template->content = View::instance('v_images_index');
-    	$this->template->content = View::instance('v_posts_images');
-    #	$this->template->content->images = View::instance('v_posts_accordion');	
+  #  	$this->template->content = View::instance('v_posts_images');
     	
     	# Build the query to get the image(s)
     	$img = "SELECT *
@@ -93,8 +92,7 @@ class images_controller extends base_controller {
  		$this->template->content->uploadResults = View::instance('v_images_uploadfile');
  			  	
     	# Render template
-		echo $this->template;
-    
+		echo $this->template;   
     
     }
     

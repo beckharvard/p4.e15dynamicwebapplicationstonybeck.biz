@@ -9,14 +9,13 @@
 	
 		<div id='canvas-background' style="background-color: <?=$post['post_background']?>">
 			<div id='canvas'>
-			<?php echo "<img class=\"draggable_image\" src=\""?><?php echo $post['image_location']?> <?php echo "\" alt=\"\""?> <?php echo  "width=\"97\" height=\"74\">" ?>
-				
+
+			
 			<form method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
 			
 				<br>
 				<div id='post_text_output' class='post_text_output' style="<?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
-					<span class="ui-icon ui-icon-arrow-4 "></span>
-					<span class="ui-icon ui-icon-trash "></span>  
+					<span class="ui-icon ui-icon-arrow-4 "></span>  
 					<!-- the next lines have the PHP necessary to style the editable version of the post --->
 					<?php echo "<input id='edgeless_field1' class='edgeless_fields' type='text' name='content' maxlength='72' "?>
 							
@@ -36,26 +35,24 @@
 						<input id="font_size_for_post" type="hidden" name='font_size_for_post' value="<?=$post['font_size_for_post']; ?>" />
 						<input id="border_color_for_post" type="hidden" name='border_color_for_post' value="<?=$post['border_color_for_post']; ?>"/>
 						<input id="post_text_output_width" type="hidden" name='post_text_output_width' value="<?=$post['post_text_output_width']; ?>"/>
+						<input id="image_location" type="hidden" name='image_location' value="<?=$post['image_location']; ?>"/>	
+						<input id="image_position" type="hidden" name='image_position' value="<?=$post['image_position']; ?>" />
 						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value=''>	
 					</div>		
 			</form>
+			
+			<!--- $images for now, I will to change to use posts_images -->
+			<?php if(isset($images)): ?>
+				<?php echo "<img class=\"draggable_image\" src=\""?>
+				<?php echo $post['image_location']?> 
+				<?php echo "\" alt=\"\""?>
+				<?php echo "style=\"" ?>
+				<?php echo $post['image_position']?>
+				<?php echo "\"" ?>
+				<?php echo  "width=\"97\" height=\"74\">" ?>		
+			<?php else: ?>
+			<?php endif; ?>	
 	<!-- the tools tray where the user adds content to their post -->	
 		<div id='tools-tray'>					
 			<?=$moreContent;?><br>
 		</div>
-<!--
-		<div id='image-tray'>
-			<?php if(isset($images)): ?>
-				<?php foreach( $images as $image ): ?>	
-					<div class="draggable_image">		
-						<h5 class="ui-widget-header"><?=$image['image_name'] ?></h5>
-						<img src="../../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="200" height="150">
-						<a href="../../images/posts_pictures/<?=$image['image_name'] ?>" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>		
-					</div>
-				<?php endforeach; ?>
-					<?php else: ?>
-				<h2>No Images have been uploaded. Click on <a href='/images/add_image'>Add Images</a>
-				to upload images </h2>
-			<?php endif; ?>	
-		</div>
--->		

@@ -30,41 +30,43 @@ $(document).ready(function()
 	</h3>
 
 <br/>
-<table id="myTable" class="tablesorter">
-	<caption></caption>
-	<thead>
-		<tr>
-		  <th class="header" >Content Text</th>
-		  <th class="header" ><strong> Created: </strong></th>
-		  <th class="header" ><strong> Modified: </strong></th>
-		  <th class="header" >Edit</th>
-		</tr>
-  	</thead>
-  	<tbody>
-  	<?php $count = 0; ?>
-	<?php foreach($posts as $post): ?>	
-		<?php if ( $count % 2 > 0 ) {  $even_odd = "even"; } else { $even_odd = "odd"; } ?>	
-		<tr class="<?=$even_odd ?>" >	
-			<td class="selection" id="page-<?=$post['content']?>"><?=nl2br($post['content'])?> 
-			</td>
-			<td class="left-align"> 		
-				<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-					<?=Time::display($post['created'])?>
-				</time>
-			</td>
-			<td class="left-align">
-				<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-					<?=Time::display($post['modified'])?>
-				</time>		
-			</td>
-			<td>
-			<a href='/posts/edit/<?=$post['post_id']; ?>' data-prefetch >Edit</a> 
-			</td>
-		</tr>
-		<?php $count = $count + 1; ?>
-	<?php endforeach; ?>
-	</tbody>
-</table>
+<div class="table_container">
+	<table id="myTable" class="tablesorter">
+		<caption></caption>
+		<thead>
+			<tr>
+			  <th class="header" >Content Text</th>
+			  <th class="header" ><strong> Created: </strong></th>
+			  <th class="header" ><strong> Modified: </strong></th>
+			  <th class="header" >Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php $count = 0; ?>
+		<?php foreach($posts as $post): ?>	
+			<?php if ( $count % 2 > 0 ) {  $even_odd = "even"; } else { $even_odd = "odd"; } ?>	
+			<tr class="<?=$even_odd ?>" >	
+				<td class="selection" id="page-<?=$post['content']?>"><?=nl2br($post['content'])?> 
+				</td>
+				<td class="left-align"> 		
+					<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+						<?=Time::display($post['created'])?>
+					</time>
+				</td>
+				<td class="left-align">
+					<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+						<?=Time::display($post['modified'])?>
+					</time>		
+				</td>
+				<td>
+				<a href='/posts/edit/<?=$post['post_id']; ?>' data-prefetch >Edit</a> 
+				</td>
+			</tr>
+			<?php $count = $count + 1; ?>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
 	<br/>
 	
 	<h2> 

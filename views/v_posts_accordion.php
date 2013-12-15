@@ -92,16 +92,17 @@
   				
 				<h3 class="tool-header">Add Images</h3>
 				<div id='image-tray'>
+					Click any image to add it to the canvas.
     				<span >					
 						<?php if(isset($images)): ?>
 							<?php foreach( $images as $image ): ?>	
-								<div class="draggable_image">		
+								<div class="clickable_image">		
 									<h5 class="ui-widget-header"><?=$image['image_name'] ?></h5>
 									<img class="user_images" src="../../images/posts_pictures/<?=$image['image_name'] ?>" alt="<?=$image['image_name'] ?>"  width="97" height="74">
-									<a href="../../images/posts_pictures/<?=$image['image_name'] ?>" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>		
+								<!--	<a href="../../images/posts_pictures/<?=$image['image_name'] ?>" title="View larger image" class="ui-icon ui-icon-zoomin">View larger</a>		-->
 								</div>
 							<?php endforeach; ?>
-								<?php else: ?>
+						<?php else: ?>
 							<h2>No Images have been uploaded. Click on <a href='/images/add_image'>Add Images</a>
 							to upload images </h2>
 						<?php endif; ?>	

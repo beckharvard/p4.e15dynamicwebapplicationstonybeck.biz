@@ -29,32 +29,32 @@ $(function() {
       $imagecanvas = $( "#preview" );
  
     // let the gallery items be draggable
-    $( "li", $gallery ).draggable({
+/*    $( "li", $gallery ).draggable({
       cancel: "a.ui-icon", // clicking an icon won't initiate dragging
       revert: "invalid", // when not dropped, the item will revert back to its initial position
       containment: "document",
       helper: "clone",
       cursor: "move"
     });
- 
+ */
     // let the imagecanvas be droppable, accepting the gallery items
-    $imagecanvas.droppable({
+/*    $imagecanvas.droppable({
       accept: "#gallery > li",
       activeClass: "ui-state-highlight",
       drop: function( event, ui ) {
         deleteImage( ui.draggable );
       }
     });
- 
+*/ 
     // let the gallery be droppable as well, accepting items from the imagecanvas
-    $gallery.droppable({
+/*    $gallery.droppable({
       accept: "#imagecanvas li",
       activeClass: "custom-state-active",
       drop: function( event, ui ) {
         recycleImage( ui.draggable );
       }
     });
- 
+*/ 
     // image deletion function
     var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
     function deleteImage( $item ) {

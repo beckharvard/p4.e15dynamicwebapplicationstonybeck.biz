@@ -16,7 +16,7 @@ time, button {
 	vertical-align: 	baseline;
 }
 
-#menu {
+#menu, .image_container, .tablesorter {
 	margin:				1em;
 	padding-left:		2em;
 	padding-right:		2em;
@@ -24,7 +24,7 @@ time, button {
 
 }
 
-#menu a {
+#menu a, .image_container   {
 	margin-right:		1.5em;
 	padding-right:		1.5em;
 	
@@ -51,7 +51,7 @@ h1 {
 	margin-top: 		.5%;
 	margin-bottom: 		.5%;
 	text-shadow: 		0px 2px 3px #555;
-    z-index:			2147483647;
+ /*   z-index:			2147483647; */
 }
 
 h2 {
@@ -88,6 +88,12 @@ table {
 	border-collapse: 	collapse;
 }
 
+.table_container {
+	margin-left:		auto;
+	margin-right:		auto;
+	width:				650px;
+}
+
 td {
 	padding-left:			1em;
 	padding-right:			1em;
@@ -95,7 +101,7 @@ td {
 	padding-bottom:			.25em;
 }
 
-table td, table th {
+table td, table th, thead,  {
 	border: thin solid black;
 }
 
@@ -195,7 +201,7 @@ Editor Canvas
 	width:				800px;			
 	float:left;
 	
-	z-index:-1;
+/*	z-index:-1;			*/
 /*	text-align:center; */
 	
 }
@@ -206,7 +212,7 @@ Editor Canvas
 	width:800px;
 	/*margin:0px auto;
 	*/	
-	z-index:-1;
+/*	z-index:-1; 	*/
 }
 
 #content {
@@ -218,7 +224,7 @@ Editor Canvas
 	width:800px;
 	height:600px;
 	
-	z-index:-1; /* So we can place the stuff above */
+/*	z-index:-1; /* So we can place the stuff above */
 	overflow:			scroll;
 	
 	border: 			red;
@@ -232,16 +238,16 @@ Editor Canvas
 }
 
 
-.draggable_image, .image_gallery {
+.draggable_image, .image_gallery, .clickable_image {
 	position:	relative;
 	float:		left;
 	clear:		right;
-	z-index:	100;
+/*	z-index:	100;		*/
 	
 }
 
 .draggable_image {
-	z-index:	100;
+/*	z-index:	100;			*/
 	padding:	1px;
 	margin:		1px;
 
@@ -261,8 +267,8 @@ input.edgeless_fields {
 }
 
 input#edgeless_field1 {
-
-	font-size: 10px;
+	margin-left:		15px;
+	font-size: 			10px;
 }
 
 #edgeless_field1 {
@@ -279,7 +285,7 @@ input#edgeless_field1 {
 #post_text_output {
 
 	font-size:			30px;
-	width: 				220px;
+	width: 				225px;
 	border:				2px solid black;
 	border-radius:		5px;
 }
@@ -465,10 +471,23 @@ text tools
 image gallery
 ----------------------------------------------------*/
 
-.ui-widget ui-helper-clearfix  {
-
-	float:			left;
-	clear:			right;
-	
+div.ui-widget ui-helper-clearfix  {
+	float:				left;
+	clear:				right;
+	margin-left:		250px;	
 }
 
+a.ui-icon.ui-icon-zoomin {
+	text-decoration:	none;
+}
+
+.image_gallery {
+	margin:				5px;
+}
+
+.image_container {
+	height:				100%;
+	margin-left:		auto;
+	margin-right:		auto;
+	width:				70%;
+}

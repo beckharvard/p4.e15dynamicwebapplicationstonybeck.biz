@@ -235,7 +235,7 @@ var last_post_length = 0;
   		// and we need to add some padding, so we set a variable for the div width now
   			var a_pinch_more = $('#post_text_output').width();
   		
-			for (var i=0;i<10;i++) {
+			for (var i=0;i<16;i++) {
 				a_pinch_more += 1;
 			}
   		// set new width to the css
@@ -288,6 +288,34 @@ var last_post_length = 0;
 			$( '#post_output_text_location' ).val( "position: relative; left: " + left_pos + "px; top: " + top_pos + "px;");
 		
   	});
+  	
+  		// on mouse up add the location to which the field was moved to a hiddenfield
+	$( '.draggable_image' ).mouseup(function() {
+
+		// and we will need the location to which the text was dragged...start with a var for the div
+			var p = $( '.draggable_image' );
+		// need to also get the position of the containing div, so set a var for that div
+			var c = $( '#preview' );
+		// set new variables be the positons of those divs
+			var position = p.position();
+			var container = c.position();
+		
+		// some math to subtract out the container positions so that we are now geting positon relative to the preview area
+			var left_pos = position.left - container.left;
+			var top_pos = position.top - container.top;
+			
+			console.log( "Left is: " + left_pos + " top is: " + top_pos);
+
+		// add those to an input field so that we can save it to the db for later use
+			$( '#image_position' ).html( "position: relative; left: " + left_pos + "px; top: " + top_pos + "px;");
+			$( '#image_position' ).val( "position: relative; left: " + left_pos + "px; top: " + top_pos + "px;");
+		
+  	});
+// need to write this to try and KEEP DRY  	
+  	function storeLocationOnCanvas() {
+  	
+  			
+  	};
   		
   	// if we are editing, we populate the text box and make it draggable
     $(window).load(function populateTextBox() {	
@@ -301,8 +329,8 @@ var last_post_length = 0;
     	// size it	
     		sizeTextDiv(load_my_post);
     });
-  
-  
+  	
+  	
 	// persist automatically the fonts if they are not edited but I am not confident that it works yet work.
     $(window).load(function () {
     	
@@ -341,7 +369,8 @@ var last_post_length = 0;
 	
 /*----------------------------------------------------------------------------------------
 
-	Images
+	Images - adding image onto the canvas and then once the images are on the 
+	on the canvas have certain evens that need to be handled.
 
 ----------------------------------------------------------------------------------------*/	
 	
@@ -350,28 +379,57 @@ var last_post_length = 0;
 		// Clone the sticker that was clicked
 		var new_canvas_image = $(this).clone();
 	
-		// A class so we can position stickers on the
-		new_canvas_image.addClass('image_on_canvas');
+		// A class so we can position images on the
+		var save_existing_class = new_canvas_image.attr('class');
+		console.log("the class is " +  save_existing_class);
+		new_canvas_image.addClass('draggable_image');
+		console.log("the class became " + new_canvas_image.attr('class'));
+		
+		new_canvas_image.removeClass('user_images');
+		console.log("the class then became " + new_canvas_image.attr('class'));
+		
+		//give it a decent position
+		$(new_canvas_image).attr('style', 'position: relative; top: 50px; left: 60;');
+		
+		//new_canvas_image.addClass(save_existing_class);
 	
-		// Inject the new image into the canvas
-		$('#canvas').prepend(new_canvas_image);
+		// inject the new image into the canvas
+		$('#canvas').append(new_canvas_image);
 	
-		// Make that puppy draggable
+		// Make it draggable
 		new_canvas_image.draggable({containment: '#canvas', opacity:.35});
+		
 	
-	
-		console.log("User image added to the canvas");
-		console.log("this is " + new_canvas_image.attr('src'));
+		//console.log("this is " + new_canvas_image.attr('src'));
 		
 		$('#image_location').html(new_canvas_image.attr('src'));
 		$('#image_location').val(new_canvas_image.attr('src'));
+		
+		alert("You can drag your image around the canvas to place it. Then, double-click on an image to resize it. Shift-click to remove.");
 	});
-// this ain't working!	
-	$(function() {
-    	$( 'img.user_images.ui-resizable.image_on_canvas.ui-draggable').resizable({
-		  animate: true
+// this was working!	
+	$('.draggable_image').on("dblclick", function () {
+		console.log("double clicked!");
+    	$(this).resizable({
+		//  animate: true
 		});
+	//	$(this).addClass('draggable_image');
+	//	$(this).draggable({containment: '#canvas', opacity:.35});
   	});
   	
+  	$('.draggable_image').click(function(event) {
+		if (event.shiftKey) {
+			$(this).remove();
+			$('#image_location').html("");
+			$('#image_location').val("");
+		} 
+	});
+	
+	$('.draggable_image').click(function(event) {
+		if(event.ctrlKey) {
+		
+			alert("booya!");
+		}
+	});
 
 });
