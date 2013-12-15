@@ -3,15 +3,14 @@
 		<caption></caption>
 		<thead>
 			<tr>
-				<td>Creator
-				</td>
-				<td>Created
-				</td>
-				<td>Summary
-				</td>
-				<td>View
+				<th class="header">Creator
+				</th>
+				<th class="header">Created
+				</th>
+				<td class="header">Summary
+				</th>
+				<td class="header">View
 				</td>		
-		
 			</tr>
 		</thead>
 		<tbody>

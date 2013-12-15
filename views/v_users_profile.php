@@ -38,7 +38,7 @@ $(document).ready(function()
 			  <th class="header" >Content Text</th>
 			  <th class="header" ><strong> Created: </strong></th>
 			  <th class="header" ><strong> Modified: </strong></th>
-			  <th class="header" >Edit</th>
+			  <td class="header" >Edit</td>
 			</tr>
 		</thead>
 		<tbody>

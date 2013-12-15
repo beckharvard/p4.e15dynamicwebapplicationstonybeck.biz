@@ -394,6 +394,7 @@ var last_post_length = 0;
 		//new_canvas_image.addClass(save_existing_class);
 	
 		// inject the new image into the canvas
+	//	$('#myForm').append(new_canvas_image);
 		$('#canvas').append(new_canvas_image);
 	
 		// Make it draggable
@@ -410,26 +411,34 @@ var last_post_length = 0;
 // this was working!	
 	$('.draggable_image').on("dblclick", function () {
 		console.log("double clicked!");
+		
+		var startW = 0;
+		var startH = 0;
+		
     	$(this).resizable({
-		//  animate: true
+			start : function(event,ui) {
+				startW = $(this).outerWidth();
+				startH = $(this).outerHeight();
+			},
+			stop : function(event,ui) {
+				endW = $('.draggable_image').width();
+				endH = $('.draggable_image').height();
+				$("#image_size").html("height:" + endH + "px; width:" + endW + "px;");
+				$("#image_size").val("height:" + endH + "px; width:" + endW + "px;");
+				// set it back to the default state...
+				$('.draggable_image').resizable('destroy');
+				$('.draggable_image').draggable({containment: '#canvas', opacity:.35});
+			}
+			
 		});
-	//	$(this).addClass('draggable_image');
-	//	$(this).draggable({containment: '#canvas', opacity:.35});
   	});
-  	
+	
   	$('.draggable_image').click(function(event) {
 		if (event.shiftKey) {
 			$(this).remove();
 			$('#image_location').html("");
 			$('#image_location').val("");
 		} 
-	});
-	
-	$('.draggable_image').click(function(event) {
-		if(event.ctrlKey) {
-		
-			alert("booya!");
-		}
 	});
 
 });

@@ -11,7 +11,7 @@
 			<div id='canvas'>
 
 			
-			<form method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
+			<form id="save_post" method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
 			
 				<br>
 				<div id='post_text_output' class='post_text_output' style="<?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
@@ -37,6 +37,7 @@
 						<input id="post_text_output_width" type="hidden" name='post_text_output_width' value="<?=$post['post_text_output_width']; ?>"/>
 						<input id="image_location" type="hidden" name='image_location' value="<?=$post['image_location']; ?>"/>	
 						<input id="image_position" type="hidden" name='image_position' value="<?=$post['image_position']; ?>" />
+						<input id="image_size" type="hidden" name='image_size' value="<?=$post['image_size']; ?>"/>
 						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value=''>	
 					</div>		
 			</form>
@@ -48,8 +49,8 @@
 				<?php echo "\" alt=\"\""?>
 				<?php echo "style=\"" ?>
 				<?php echo $post['image_position']?>
+				<?php echo $post['image_size']?>
 				<?php echo "\"" ?>
-				<?php echo  "width=\"97\" height=\"74\">" ?>		
 			<?php else: ?>
 			<?php endif; ?>	
 	<!-- the tools tray where the user adds content to their post -->	

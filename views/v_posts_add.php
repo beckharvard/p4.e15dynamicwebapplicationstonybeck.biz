@@ -23,6 +23,7 @@
 						<input id="border_color_for_post" type="hidden" name='border_color_for_post' />
 						<input id="image_location" type="hidden" name='image_location' />	
 						<input id="image_position" type="hidden" name='image_position' />
+						<input id="image_size" type="hidden" name='image_size' />
 						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value='Save'>
 							
 					</div>

@@ -1,7 +1,7 @@
 	<div id='preview'>	
 	
 		<div id='canvas-background' style="background-color: <?=$post['post_background']?>">
-			<div id='canvas'>
+			<div id='canvas' style="width: 100%; height: 100%; overflow: visible;">
 
 			
 			<form method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
@@ -31,6 +31,7 @@
 				<?php echo "\" alt=\"\""?>
 				<?php echo "style=\"" ?>
 				<?php echo $post['image_position']?>
+				<?php echo $post['image_size']?>
 				<?php echo "\"" ?>
 				<?php echo  "width=\"97\" height=\"74\">" ?>		
 			<?php else: ?>
