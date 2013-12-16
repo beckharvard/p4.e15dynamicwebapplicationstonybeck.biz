@@ -34,7 +34,6 @@ class posts_controller extends base_controller {
     		'../../jquery/__jquery.tablesorter/themes/blue/style.css',
     		'../../jquery/__jquery.tablesorter/jquery.tablesorter.js',
     		'../../js/table.js',
-    		'../../js/tools.js',
   			'../../js/fonts.js',
   			'../../js/font_ajax.js',
   			'../../js/manage_images.js'

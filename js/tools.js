@@ -309,13 +309,13 @@ var last_post_length = 0;
 		
   	});
   	
-  		// on mouse up add the location to which the field was moved to a hiddenfield
-	$( '.draggable_image' ).mouseup(function() {
+  		// on mouse up add the location to which the image was moved to a hiddenfield
+	$('.draggable_image').mouseup(function() {
 
 		// and we will need the location to which the text was dragged...start with a var for the div
 			var p = $( '.draggable_image' );
 		// need to also get the position of the containing div, so set a var for that div
-			var c = $( '#preview' );
+			var c = $( '#canvas' );
 		// set new variables be the positons of those divs
 			var position = p.position();
 			var container = c.position();
@@ -408,12 +408,12 @@ var last_post_length = 0;
 	
 		// A class so we can position images on the
 		var save_existing_class = new_canvas_image.attr('class');
-		console.log("the class is " +  save_existing_class);
+	//	console.log("the class is " +  save_existing_class);
 		new_canvas_image.addClass('draggable_image');
-		console.log("the class became " + new_canvas_image.attr('class'));
+	//	console.log("the class became " + new_canvas_image.attr('class'));
 		
 		new_canvas_image.removeClass('user_images');
-		console.log("the class then became " + new_canvas_image.attr('class'));
+	//	console.log("the class then became " + new_canvas_image.attr('class'));
 		
 		//give it a decent position
 		$(new_canvas_image).attr('style', 'position: relative; top: 50px; left: 60;');
@@ -431,6 +431,8 @@ var last_post_length = 0;
 		
 		alert("You can drag your image around the canvas to place it. Then, double-click on an image to resize it. Shift-click to remove.");
 	});
+	
+
 // this was working!now it only works in edit mode?!
 	$('.draggable_image').on("dblclick", function () {
 		console.log("double clicked!");
