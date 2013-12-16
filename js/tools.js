@@ -70,10 +70,21 @@ var last_post_length = 0;
 	$('.border-colors').click(function() {
 			var border_color_clicked = $(this).css('background-color');
 		
-			$('#post_text_output').css('border', "2px solid " + border_color_clicked);
+			$('#post_text_output').css('border-color', border_color_clicked);
+			$('#post_text_output').css('border-style', 'solid;');
+			$('#post_text_output').css('border-width', '2px;');
 			$('#border_color_for_post').html(border_color_clicked);
 			$('#border_color_for_post').val(border_color_clicked);
 	});
+	
+	 $('#border_size').keyup(function() {	
+	 		var border_size_entered = $(this).val();	
+	 		
+	 		$('#post_text_output').css('border-width', border_size_entered);
+			$('#border_width_for_post').html(border_size_entered + "px;");
+			$('#border_width_for_post').val(border_size_entered + "px;");
+	 
+	 });
 	
 	
 	// apply the selected font to the text field
@@ -208,8 +219,17 @@ var last_post_length = 0;
     
     
     	// We need the length for use in sizing the div
-  			var length_of_my_post = $('#edgeless_field1').attr('value');
-  			var post_length = length_of_my_post.length;
+  			var post_length = 0;
+  			if (typeof myPost != "undefined") {
+  				var length_of_my_post = $('#edgeless_field1').attr('value');
+  				post_length = length_of_my_post.length;
+  			
+  			}
+  			else  {
+  				var length_of_content = $('#edgeless_field1').html();
+  				post_length = length_of_content.length;
+  			
+  			}
   			var font_size = $('#edgeless_field1').css('font-size');
   			
   			if(post_length < last_post_length) {
@@ -319,15 +339,21 @@ var last_post_length = 0;
   		
   	// if we are editing, we populate the text box and make it draggable
     $(window).load(function populateTextBox() {	
-    	
+		// if we have a post "myPost"
+    	if (typeof myPost != "undefined") {
     	// We can grab the text which loaded into the accordion input field
-    		var load_my_post = $('#myPost').val();	
-    		
+    		var load_my_post = $('#myPost').val();			
     	// and add that to the field on the canvas
-    		$('#edgeless_field1').attr("value", load_my_post);	
-    			
-    	// size it	
-    		sizeTextDiv(load_my_post);
+    		$('#edgeless_field1').attr("value", load_my_post);				
+    	// and then size it	
+    		sizeTextDiv(load_my_post);		
+    	}
+    	else {
+    		var load_my_text_contents = $('#edgeless_field1').html();
+    		console.log(" load_my_text_contents  is :" + load_my_text_contents );
+    		sizeTextDiv(load_my_text_contents);
+    	}
+    	
     });
   	
   	
@@ -342,6 +368,7 @@ var last_post_length = 0;
     		console.log("Font Style Loaded and should be default for font selector");
     		console.log($('#styleFont').attr("value", "selected=\"selected\""));
     	}
+    	
     });
 
 // get the above working....
@@ -394,21 +421,17 @@ var last_post_length = 0;
 		//new_canvas_image.addClass(save_existing_class);
 	
 		// inject the new image into the canvas
-	//	$('#myForm').append(new_canvas_image);
 		$('#canvas').append(new_canvas_image);
 	
 		// Make it draggable
 		new_canvas_image.draggable({containment: '#canvas', opacity:.35});
-		
-	
-		//console.log("this is " + new_canvas_image.attr('src'));
 		
 		$('#image_location').html(new_canvas_image.attr('src'));
 		$('#image_location').val(new_canvas_image.attr('src'));
 		
 		alert("You can drag your image around the canvas to place it. Then, double-click on an image to resize it. Shift-click to remove.");
 	});
-// this was working!	
+// this was working!now it only works in edit mode?!
 	$('.draggable_image').on("dblclick", function () {
 		console.log("double clicked!");
 		

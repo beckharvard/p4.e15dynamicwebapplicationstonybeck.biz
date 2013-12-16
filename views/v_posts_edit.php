@@ -14,7 +14,7 @@
 			<form id="save_post" method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
 			
 				<br>
-				<div id='post_text_output' class='post_text_output' style="<?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
+				<div id='post_text_output' class='post_text_output' style="<?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>;  border-width: <?=$post['border_width_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
 					<span class="ui-icon ui-icon-arrow-4 "></span>  
 					<!-- the next lines have the PHP necessary to style the editable version of the post --->
 					<?php echo "<input id='edgeless_field1' class='edgeless_fields' type='text' name='content' maxlength='72' "?>
@@ -34,6 +34,7 @@
 						<input id="post_background" type="hidden" name='post_background' value="<?=$post['post_background']; ?>" />
 						<input id="font_size_for_post" type="hidden" name='font_size_for_post' value="<?=$post['font_size_for_post']; ?>" />
 						<input id="border_color_for_post" type="hidden" name='border_color_for_post' value="<?=$post['border_color_for_post']; ?>"/>
+						<input id="border_width_for_post" type="hidden" name='border_width_for_post' value="<?=$post['border_width_for_post']; ?>"/>
 						<input id="post_text_output_width" type="hidden" name='post_text_output_width' value="<?=$post['post_text_output_width']; ?>"/>
 						<input id="image_location" type="hidden" name='image_location' value="<?=$post['image_location']; ?>"/>	
 						<input id="image_position" type="hidden" name='image_position' value="<?=$post['image_position']; ?>" />
@@ -49,8 +50,11 @@
 				<?php echo "\" alt=\"\""?>
 				<?php echo "style=\"" ?>
 				<?php echo $post['image_position']?>
+				<?php if(isset($post['image_size'])): ?>
 				<?php echo $post['image_size']?>
-				<?php echo "\"" ?>
+				<?php else: ?>
+				<?php echo " height: 79px; width: 94px;\"" ?>
+				<?php endif; ?>
 			<?php else: ?>
 			<?php endif; ?>	
 	<!-- the tools tray where the user adds content to their post -->	

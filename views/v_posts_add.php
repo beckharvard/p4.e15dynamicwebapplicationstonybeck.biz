@@ -19,11 +19,12 @@
 						<input id="text_color_for_post"	type="hidden" name='text_color_for_post' />
 						<input id="post_output_text_location" type="hidden" name='post_output_text_location' />
 						<input id="post_background" type="hidden" name='post_background'/>
-						<input id="font_size_for_post" type="hidden" name='font_size_for_post' />
+						<input id="font_size_for_post" type="hidden" name='font_size_for_post' value="11"/>
 						<input id="border_color_for_post" type="hidden" name='border_color_for_post' />
+						<input id="border_width_for_post" type="hidden" name='border_width_for_post' />						
 						<input id="image_location" type="hidden" name='image_location' />	
 						<input id="image_position" type="hidden" name='image_position' />
-						<input id="image_size" type="hidden" name='image_size' />
+						<input id="image_size" type="hidden" name='image_size' value="height: 79px; width: 94px;" />
 						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value='Save'>
 							
 					</div>

@@ -14,13 +14,13 @@ class posts_controller extends base_controller {
         //	'../../js/validate_posts.js',
     		'../../css/style_php.css',
     		'../../../css/style_php.css',
-    		'../../js/manage_images.js',
     		'../../jquery/__jquery.tablesorter/themes/blue/style.css',
     		'../../jquery/__jquery.tablesorter/jquery.tablesorter.js',
     		'../../js/table.js',
     		'../../js/tools.js',
   			'../../js/fonts.js',
-  			'../../js/font_ajax.js'
+  			'../../js/font_ajax.js',
+  			'../../js/manage_images.js',
     		);
     	$this->template->client_files_head = Utils::load_client_files($client_files_head);
     	
@@ -29,15 +29,15 @@ class posts_controller extends base_controller {
 		//	'../../js/validate.js',
 		//	'../js/validate_posts.js',
 		//	'../../js/validate_posts.js',
-			'../../css/style_php.css',
-			'../../../css/style_php.css',
-    		'../../js/manage_images.js',
-    	    '../../jquery/__jquery.tablesorter/themes/blue/style.css',
+    		'../../css/style_php.css',
+    		'../../../css/style_php.css',
+    		'../../jquery/__jquery.tablesorter/themes/blue/style.css',
     		'../../jquery/__jquery.tablesorter/jquery.tablesorter.js',
     		'../../js/table.js',
     		'../../js/tools.js',
   			'../../js/fonts.js',
-  			'../../js/font_ajax.js'
+  			'../../js/font_ajax.js',
+  			'../../js/manage_images.js'
     		);
     	$this->template->client_files_body = Utils::load_client_files($client_files_body); 
     	   
@@ -190,7 +190,8 @@ class posts_controller extends base_controller {
     	$author_user_id = DB::instance(DB_NAME)->insert("posts", $_POST);
     	
     	# Send them back
-       	Router::redirect('/users/profile');    	
+        Router::redirect('/users/profile');  
+        	
     }
     
     public function view($viewed)  {

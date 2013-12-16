@@ -38,7 +38,7 @@ $(document).ready(function()
 			  <th class="header" >Content Text</th>
 			  <th class="header" ><strong> Created: </strong></th>
 			  <th class="header" ><strong> Modified: </strong></th>
-			  <td class="header" >Edit</td>
+			  <th class="header" >Edit</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -67,9 +67,7 @@ $(document).ready(function()
 		</tbody>
 	</table>
 </div>
-	<br/>
-	
-	<h2> 
+	<h2>
 		Why not follow someone? <a href='/posts/users'>Other Posters</a>
 	</h2>
 

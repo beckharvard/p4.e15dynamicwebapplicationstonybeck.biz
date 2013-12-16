@@ -266,7 +266,7 @@ input.edgeless_fields {
 
 }
 
-input#edgeless_field1 {
+input#edgeless_field1, h4#edgeless_field1  {
 	margin-left:		15px;
 	font-size: 			10px;
 }

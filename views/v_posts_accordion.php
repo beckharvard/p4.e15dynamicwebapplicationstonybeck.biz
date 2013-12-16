@@ -45,18 +45,18 @@
 						<select id="styleFont">
     					</select>
 					</span>
-					<span><div>Font Size (in canvas):
-						<select class="font-size-selector">
-  							<option class="content-font-size" id="11" value="11">11</option>
-  							<option class="content-font-size" id="12" value="12">12</option>
-  							<option class="content-font-size" id="14" value="14">14</option>
-  							<option class="content-font-size" id="16" value="16">16</option>
-  							<option class="content-font-size" id="18" value="18">18</option>
-  							<option class="content-font-size" id="20" value="20">20</option>
-  							<option class="content-font-size" id="24" value="24">24</option>
-  							<option class="content-font-size" id="28" value="28">28</option>
-						</select>
-
+					<span>
+						<div>Font Size (in canvas):
+							<select class="font-size-selector">
+								<option class="content-font-size" id="11" value="11">11</option>
+								<option class="content-font-size" id="12" value="12">12</option>
+								<option class="content-font-size" id="14" value="14">14</option>
+								<option class="content-font-size" id="16" value="16">16</option>
+								<option class="content-font-size" id="18" value="18">18</option>
+								<option class="content-font-size" id="20" value="20">20</option>
+								<option class="content-font-size" id="24" value="24">24</option>
+								<option class="content-font-size" id="28" value="28">28</option>
+							</select>
 						</div>
 						<br>
 						Background Color:
@@ -87,6 +87,12 @@
 							<div class='border-colors' id='black-border'>  </div>
 							<div class='border-colors' id='gray-border'>  </div>
 						</span>
+						<span>
+							<div> Enter a border size:
+							<input id='border_size' type='text' size="3" />
+							</div> 
+						</span>
+						
 					</span>
   				</div>
   				

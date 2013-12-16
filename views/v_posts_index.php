@@ -3,25 +3,21 @@
 		<caption></caption>
 		<thead>
 			<tr>
-				<th class="header">Creator
-				</th>
-				<th class="header">Created
-				</th>
-				<td class="header">Summary
-				</th>
-				<td class="header">View
-				</td>		
+				<th class="header">Creator</th>
+				<th class="header">Created</th>
+				<th class="header">Summary</th>
+				<th class="header">View</th>		
 			</tr>
 		</thead>
 		<tbody>
 		<?php $count = 0; ?>
 			<?php foreach($posts as $post): ?>
 				<?php if ( $count % 2 > 0 ) {  $even_odd = "even"; } else { $even_odd = "odd"; } ?>	
-				<tr class="<?=$even_odd ?>" >	
-					<td>
+				<tr class="<?=$even_odd ?>" id="page-<?=$post['last_name']?>" >	
+					<td class="selection">
 						<?=$post['first_name']?> <?=$post['last_name']?>
 					</td>
-					<td class="selection" id="page-<?=$post['content']['post_id']?>">
+					<td class="selection" id="page-<?=$post['content']?>">
 						<?=$post['content']?>
 					</td>
 					<td>
