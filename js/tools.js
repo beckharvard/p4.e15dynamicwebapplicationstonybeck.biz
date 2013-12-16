@@ -385,7 +385,7 @@ var last_post_length = 0;
   	  	$('.draggable_image').draggable().css( "position", $( '#imagecanvas' ).attr('style') );
 
     });  
-// this ain't fully working!	    
+// this ain't fully working (yet)!	    
  	$('#refresh-btn').on("click", function () {
  	
 		$('#canvas').css('background-color', "");
