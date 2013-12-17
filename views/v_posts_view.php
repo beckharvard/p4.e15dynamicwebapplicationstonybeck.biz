@@ -2,7 +2,7 @@
 	<div id='canvas-background' style="background-color: <?=$post['post_background']?>">
 		<div id='canvas' style="width: 100%; height: 100%; overflow: visible;">
 			<br>
-			<div id='post_text_output' class='post_text_output' style="<?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>; border-width: <?=$post['border_width_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
+			<div id='post_text_output' class='post_text_output' style=" min-width: <?=$post['post_text_output_width']; ?>; <?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>; border-width: <?=$post['border_width_for_post']; ?> ;">
 				<span class="ui-icon ui-icon-arrow-4 "></span>  
 				<!-- the next lines have the PHP necessary to style the editable version of the post --->
 				<?php echo "<h4 id='edgeless_field1' class='edgeless_fields' type='text' name='content' maxlength='72' "?>

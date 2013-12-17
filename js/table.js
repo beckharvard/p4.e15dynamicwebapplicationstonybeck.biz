@@ -27,7 +27,7 @@ $(document).ready(function()
 					sorter: true
 				}, 
 				// assign the third column (we start counting zero) 
-				2: { 
+				1: { 
 					// disable it by setting the property sorter to false 
 					sorter: true 
 				} 

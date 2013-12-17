@@ -57,6 +57,7 @@
 				<?php endif; ?>
 			<?php else: ?>
 			<?php endif; ?>	
+		</div>
 	<!-- the tools tray where the user adds content to their post -->	
 		<div id='tools-tray'>					
 			<?=$moreContent;?><br>
