@@ -391,7 +391,7 @@ var last_post_length = 0;
 	});
 
   		// on mouse up add the location to which the image was moved to a hiddenfield
-	$('.draggable_image').mouseup(function() {
+	$('body').on('mouseup','.draggable_image', function() {
 
 		// and we will need the location to which the text was dragged...start with a var for the div
 			var p = $( '.draggable_image' );
@@ -418,8 +418,8 @@ var last_post_length = 0;
 		
   	});	
 
-// this is resizing this only works in edit mode?! 
-	$('.draggable_image').on("dblclick", function () {
+// this is resizing 
+	$('body').on('dblclick','.draggable_image', function () {
 		// start with stock variables
 		var startW = 0;
 		var startH = 0;
@@ -446,7 +446,7 @@ var last_post_length = 0;
 		});
   	});
 // we want a way to dismiss the image...when there is a click	
-  	$('.draggable_image').click(function(event) {
+  	$('body').on('click','.draggable_image', function(event) {
   	// was it a shift-click?
 		if (event.shiftKey) {
 			$(this).remove();
