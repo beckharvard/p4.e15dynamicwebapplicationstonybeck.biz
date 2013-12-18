@@ -49,6 +49,9 @@
 <div id="footer_left">
 <h2><?=APP_NAME?> features</h2>
 	<ul>
+		<li>Content creation & Styling</li>
+		<li>Image Gallery and ability to add images to posts</li>
+		<li>View Styled Content</li>
 	</ul>
 </div>
 <div id="footer_right">

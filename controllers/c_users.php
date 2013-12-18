@@ -89,7 +89,7 @@ class users_controller extends base_controller {
     	#setup for mail
     	$to = $_POST['email'];
     	$subject = "Welcome to " .APP_NAME;
-    	$message = "It's great to meet you! Thanks for joining " . APP_NAME .": you can log in at p3.e15dynamicwebapplicationstonybeck.biz";
+    	$message = "It's great to meet you! Thanks for joining " . APP_NAME .": you can log in at p4.e15dynamicwebapplicationstonybeck.biz";
     	$from = 'beck@fas.harvard.edu';
     	$headers = "From:" . $from; 	
 
