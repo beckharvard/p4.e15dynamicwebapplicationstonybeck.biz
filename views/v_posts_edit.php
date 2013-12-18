@@ -1,3 +1,4 @@
+<div id="loading_div">Loading...</div>
 <h2>Edit Content</h2>
 <!-- Buttons -->
 	<input class="buttons" type='button' id='refresh-btn' value='Clear Canvas'>
@@ -12,10 +13,10 @@
 
 			
 			<form id="save_post" method ='POST' action ='/posts/p_edit/<?=$post['post_id']; ?>'>
-			
-				<br>
+				<input id="publish_post" class="buttons" type='submit' value='Save'>	
+				
 				<div id='post_text_output' class='post_text_output' style="<?=$location ?>  border-color: <?=$post['border_color_for_post']; ?>;  border-width: <?=$post['border_width_for_post']; ?>; width: <?=$post['post_text_output_width']; ?>" >
-					<span class="ui-icon ui-icon-arrow-4 "></span>  
+					<span class="ui-icon ui-icon-arrow-4 "></span> 
 					<!-- the next lines have the PHP necessary to style the editable version of the post --->
 					<?php echo "<input id='edgeless_field1' class='edgeless_fields' type='text' name='content' maxlength='72' "?>
 							
@@ -25,7 +26,7 @@
 							<?php echo"\";" ?>
 							<?php echo "size='"; ?>
 							<?=$post['edgeless_field_size']?> 
-							<?php echo " ' required/>"; ?>
+							<?php echo " ' >"; ?>
 						
 						<input id="edgeless_field_size" class="edgeless_field_size" type='hidden' name="edgeless_field_size" value="<?=$post['edgeless_field_size'] ?>" />
 						<input id="fields_chosen_font" type="hidden" name='fields_chosen_font' value="<?=$post['fields_chosen_font'] ?>" />
@@ -39,10 +40,12 @@
 						<input id="image_location" type="hidden" name='image_location' value="<?=$post['image_location']; ?>"/>	
 						<input id="image_position" type="hidden" name='image_position' value="<?=$post['image_position']; ?>" />
 						<input id="image_size" type="hidden" name='image_size' value="<?=$post['image_size']; ?>"/>
-						<input id="publish_post" class="ui-icon ui-icon-circle-plus" type='submit' value=''>	
+
+
+						
 					</div>		
+
 			</form>
-			
 			<!--- $images for now, I will to change to use posts_images -->
 			<?php if(isset($images)): ?>
 				<?php echo "<img class=\"draggable_image\" src=\""?>
@@ -57,6 +60,7 @@
 				<?php endif; ?>
 			<?php else: ?>
 			<?php endif; ?>	
+
 		</div>
 	<!-- the tools tray where the user adds content to their post -->	
 		<div id='tools-tray'>					

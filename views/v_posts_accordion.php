@@ -19,7 +19,7 @@
   				<div >
     				<span>
     					<h3>Add your post text:</h3>
-						<input id="myPost" type='text' id='myPost' siz="72" name='content' maxlength="72" value="<? if(isset($post)) echo $post['content'] = trim($post['content'], " \t\n\r" )?>" required>
+						<input id="myPost" type='text' id='myPost' siz="72" name='content' maxlength="72" value="<? if(isset($post)) echo $post['content'] = trim($post['content'], " \t\n\r" )?>" required/>
     					<span class='error' id='text-output-error'></span>
     				</span>
     				

@@ -176,7 +176,7 @@ var last_post_length = 0;
 	// the setter for the new width
 	function setNewWidth(new_width) {
         // set new width to the css
-  			$('#post_text_output').css('min-width', ( new_width));
+  			$('#post_text_output').css('width', ( new_width));
   		// add new width to the hidden input field and presumably to the DB on save
   			$('#post_text_output_width').val( new_width );
   			$('#post_text_output_width').html( new_width);
@@ -202,7 +202,7 @@ var last_post_length = 0;
 			var string_of_content = $('#edgeless_field1').html();
 			post_length = string_of_content.length;
 			// we know we are called from view and that it doesn't work here. why?
-			console.log("where are we here? the post is " + string_of_content);
+			console.log("why are we here? the post is " + string_of_content);
 			console.log("post length is: " + post_length);
 		
 		}
@@ -228,6 +228,11 @@ var last_post_length = 0;
 		console.log( $('#edgeless_field1').outerWidth());
 		console.log("#post_text_output innerWidth is..."); 
 		console.log($('#post_text_output').innerWidth());
+		console.log("edgeless_field1 Width is..."); 
+		console.log( $('#edgeless_field1').width());
+		console.log("#post_text_output Width is..."); 
+		console.log($('#post_text_output').width());
+		
 
   		// sizing the div we get current widths and increase the width of the outer div
 		while  ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
@@ -243,7 +248,7 @@ var last_post_length = 0;
 				a_pinch_more += 1;
 			}
   		// set new width to the css
-  			$('#post_text_output').css('min-width', ( a_pinch_more));
+  			$('#post_text_output').css('width', ( a_pinch_more));
   		// add new width to the hidden input field
   			$('#post_text_output_width').val( a_pinch_more );
   			$('#post_text_output_width').html( a_pinch_more);
@@ -266,8 +271,7 @@ var last_post_length = 0;
     		return;
     	}
     };
-    
-	
+    	
 	// on mouse up add the location to which the field was moved to a hiddenfield
 	$( '#post_text_output' ).mouseup(function() {
 		// and we will need the location to which the text was dragged...start with a var for the div
@@ -303,12 +307,18 @@ var last_post_length = 0;
     		sizeTextDiv(load_my_post);		
     	}
     	else {
+    		console.log("this hapened");
     		var load_my_text_contents = $('#edgeless_field1').html();
     		sizeTextDiv(load_my_text_contents);
     	}
     	
     });
   	
+  	$(window).load(function () {
+  	
+  		$('#loading_div').remove();
+  	
+  	});
   	
 	// persist automatically the fonts if they are not edited but I am not confident that it works yet work.
     $(window).load(function () {
@@ -390,12 +400,17 @@ var last_post_length = 0;
 		// set new variables be the positons of those divs
 			var img_position = p.position();
 			var img_container = c.position();
+			
+			
+			console.log("img_container is t:" + img_position.top + " l:" + img_position.left);
+			console.log("img_position is t:" + img_container.top + " l:" + img_container.left);
+			
 		
 		// some math to subtract out the container positions so that we are now geting positon relative to the preview area
 			var img_left_pos = img_position.left - img_container.left;
 			var img_top_pos = img_position.top - img_container.top;
 			
-			console.log( "Left is: " + img_left_pos + " top is: " + img_top_pos);
+			console.log( " top is: " + img_top_pos + "Left is: " + img_left_pos);
 
 		// add those to an input field so that we can save it to the db for later use
 			$( '#image_position' ).html( "position: relative; left: " + img_left_pos + "px; top: " + img_top_pos + "px;");

@@ -12,7 +12,7 @@ time, button {
 	padding: 			0%;
 	border: 			0;
 	font-size: 			100%;
-	font-family: 		Avenir, Verdana, Geneva, sans-serif	;
+	font-family: 		Avenir, Verdana, Geneva, sans-serif;
 	vertical-align: 	baseline;
 }
 
@@ -162,6 +162,8 @@ a:visited {
 }
 
 #hide-button  {
+	float:				left;
+	clear:				right;
 
 }
 
@@ -176,80 +178,82 @@ a:visited {
 Editor Canvas
 -------------------------------------------------------------------------------------------------*/
 
+#loading_div {
+	color:				blue;
+	text-align:			center;
+	height:				100%;
+	width:				100%;
+	animation:			transistionLoad 4s;
+	-webkit-animation:	transistionLoad 4s; /* Safari and Chrome */
+}
+
+@keyframes transistionLoad
+{
+from {background:yellow;}
+to {background:white;}
+}
+
+@-webkit-keyframes transistionLoad /* Safari and Chrome */
+{
+from {background:yellow;}
+to {background:white;}
+}
 
 #wrapper, #preview {
 	width:				900px;
-
 	height:				450px;
 	float:				left;
 	clear:				both;
 	margin-right:		400px;
-
-	/* margin:0px auto; 
-	*/
 }
 
-/* Left column */
 #controls {
-	width:425px;
-	margin-right:50px;
-	float:left;
+	width:				425px;
+	margin-right:		50px;
+	float:				left;
 
 }
-/* Right column */
+
 #preview {
 	width:				800px;			
-	float:left;
-	
-/*	z-index:-1;			*/
-/*	text-align:center; */
-	
+	float:				left;
 }
 #canvas-background {
-	/* background-image:url('../images/card-background.jpg'); */
-	background-repeat:no-repeat;
-	height:600px;
-	width:800px;
-	/*margin:0px auto;
-	*/	
-/*	z-index:-1; 	*/
+	background-repeat:	no-repeat;
+	height:				600px;
+	width:				800px;
 }
 
 #content {
-	/*border-radius: 	5px;*/
 	background-color: 	#E8E8E8 ;
 }
 
 #canvas {
-	width:800px;
-	height:600px;
-	
-/*	z-index:-1; /* So we can place the stuff above */
-	overflow:			scroll;
-	
+	width:				800px;
+	height:				600px;
+	overflow:			scroll;	
 	border: 			red;
 	border-width:		2px;
-
 }
 
 #publish_post {
-
+	float:				left;
+	clear:				right;
+	position: 			absolute; 
+	top: 				144px; 
+	left: 				248px;
 
 }
 
-
 .draggable_image, .image_gallery, .clickable_image {
-	position:	relative;
-	float:		left;
-	clear:		right;
-/*	z-index:	100;		*/
-	
+	position:			relative;
+	float:				left;
+	clear:				right;
 }
 
 .draggable_image {
-/*	z-index:	100;			*/
-	padding:	1px;
-	margin:		1px;
+	padding:			1px;
+	margin:				1px;
 
 }
 
@@ -272,7 +276,6 @@ input#edgeless_field1, h4#edgeless_field1  {
 }
 
 #edgeless_field1 {
-
 	font-family: 		Avenir;
 }
 
@@ -283,10 +286,8 @@ input#edgeless_field1, h4#edgeless_field1  {
 }
 
 #post_text_output {
-
 	font-size:			30px;
-	width: 				225px;
-	border:				2px solid black;
+	width: 				300px;
 	border-radius:		5px;
 }
 
@@ -302,14 +303,10 @@ input#edgeless_field1, h4#edgeless_field1  {
 	float:				right;
 	margin:				10px;
 	border:				5px;
-	width:				180px;
-	
-	position:			absolute;
-		
+	width:				180px;	
+	position:			absolute;		
 	top:				60px;
 	right				30px;
-
-
 }
 
 #upload_results {
@@ -323,8 +320,6 @@ input#edgeless_field1, h4#edgeless_field1  {
 img .image-tray {
 	margin:				25px;
 	padding:			25px;
-
-
 }
 
 .draggable_image ui-draggable {
@@ -348,10 +343,9 @@ img .image-tray {
 #grabber hr {
 	width:				12px;
 	height:				2px;
-	background-color:				gray;
+	background-color:	gray;
 }
 .toggler, #accordion {
-
 	position:			absolute;
 	top:				65px;
 	right				30px;
@@ -376,8 +370,7 @@ img .image-tray {
 #effect { 
 	width: 				20px; 
 	height: 			20px; 
-	padding: 			0.4em;  
-	
+	padding: 			0.4em;  	
 }
 
 #effect h3 { 
@@ -386,6 +379,13 @@ img .image-tray {
 	text-align: 		center; 
 	font-size: 			12px;
 }
+
+.ui-icon.ui-icon-arrow-4 {
+	margin:				0;
+	background-color:	white;
+}
+
+
 
 /*----------------------------------------------------
 text tools 
@@ -396,7 +396,6 @@ text tools
 	border:				1px solid gray;
 	float:				left;
 	cursor:				pointer;
-
 }
 
 #myPost {
