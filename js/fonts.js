@@ -1,3 +1,4 @@
+
 $(function() {
     // run the currently selected effect
     function runEffect() {

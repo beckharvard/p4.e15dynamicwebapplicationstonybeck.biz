@@ -1,3 +1,11 @@
+<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+<script type="text/javascript">
+  WebFont.load({
+    google: {
+      families: [<?=$post['fields_chosen_font']?>]
+    }
+  });
+</script>
 <div id='preview'>	
 	<div id='canvas-background' style="background-color: <?=$post['post_background']?>">
 		<div id='canvas' style="width: 100%; height: 100%; overflow: visible;">
@@ -11,7 +19,7 @@
 					<?=$post['post_text_output_width']; ?>;
 					<?php echo "; color: " ?><?=$post['text_color_for_post']?><?php echo "; font-size: " ?>
 					<?=$post['font_size_for_post']?><?php echo "px" ?><?php echo "; font-family: " ?><?=$post['fields_chosen_font']?>
-					<?php echo"\";" ?>
+							<?php echo"\";" ?>
 					<?php echo "size='"; ?>
 					<?=$post['edgeless_field_size']?> 
 					<?php echo " ';  >"; ?><?=$post['content']?></h4>			
