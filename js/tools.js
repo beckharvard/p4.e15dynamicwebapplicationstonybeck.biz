@@ -365,11 +365,11 @@ var last_post_length = 0;
 	// Clone the sticker that was clicked
 		var new_canvas_image = $(this).clone();
 	
-		// A class so we can position images on the
+	// A class so we can position images on the
 		var save_existing_class = new_canvas_image.attr('class');
-	//	console.log("the class is " +  save_existing_class);
+	//	
 		new_canvas_image.addClass('draggable_image');
-	//	console.log("the class became " + new_canvas_image.attr('class'));
+	//	
 		
 		new_canvas_image.removeClass('user_images');
 	//	console.log("the class then became " + new_canvas_image.attr('class'));
@@ -390,7 +390,8 @@ var last_post_length = 0;
 		alert("You can drag your image around the canvas to place it. Then, double-click on an image to resize it. Shift-click to remove.");
 	});
 
-  		// on mouse up add the location to which the image was moved to a hiddenfield
+  	// on mouse up add the location to which the image was moved to a hidden field. need to bind to the body,
+	// because the image isn't on the canvas when the page is loaded (or may not be)
 	$('body').on('mouseup','.draggable_image', function() {
 
 		// and we will need the location to which the text was dragged...start with a var for the div
@@ -400,17 +401,10 @@ var last_post_length = 0;
 		// set new variables be the positons of those divs
 			var img_position = p.position();
 			var img_container = c.position();
-			
-			
-			console.log("img_container is t:" + img_position.top + " l:" + img_position.left);
-			console.log("img_position is t:" + img_container.top + " l:" + img_container.left);
-			
 		
 		// some math to subtract out the container positions so that we are now geting positon relative to the preview area
 			var img_left_pos = img_position.left - img_container.left;
 			var img_top_pos = img_position.top - img_container.top;
-			
-			console.log( " top is: " + img_top_pos + "Left is: " + img_left_pos);
 
 		// add those to an input field so that we can save it to the db for later use
 			$( '#image_position' ).html( "position: relative; left: " + img_left_pos + "px; top: " + img_top_pos + "px;");
@@ -418,7 +412,8 @@ var last_post_length = 0;
 		
   	});	
 
-// this is resizing 
+// this is resizing: need to bind to the body,
+// because the image isn't on the canvas when the page is loaded (or may not be)
 	$('body').on('dblclick','.draggable_image', function () {
 		// start with stock variables
 		var startW = 0;
@@ -445,7 +440,8 @@ var last_post_length = 0;
 			}			
 		});
   	});
-// we want a way to dismiss the image...when there is a click	
+// we want a way to dismiss the image...when there is a click. need to bind to the body,
+// because the image isn't on the canvas when the page is loaded (or may not be)
   	$('body').on('click','.draggable_image', function(event) {
   	// was it a shift-click?
 		if (event.shiftKey) {
