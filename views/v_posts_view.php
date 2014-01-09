@@ -25,7 +25,7 @@
 			</div>	
 					<!--- $images for now, though eventually I will to change to use posts_images -->
 					<?php if(isset($images)): ?>
-						<?php echo "<img class=\"draggable_image\" src=\""?>
+						<?php echo "<img src=\""?>
 						<?php echo $post['image_location']?> 
 						<?php echo "\" alt=\"\""?>
 						<?php echo "style=\"" ?>
