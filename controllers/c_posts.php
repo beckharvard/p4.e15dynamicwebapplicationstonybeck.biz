@@ -201,14 +201,14 @@ class posts_controller extends base_controller {
     	
     	# Build the query to get the post
     	$q = "SELECT *
-    	    FROM posts 
-    	    WHERE user_id = ".$this->user->user_id. " AND 
+    	    FROM posts
+    	    WHERE 
     	    post_id = ".$viewed;
     	
     	# Build the query to get the post's location
     	$position = "SELECT post_output_text_location
     				FROM posts
-    				WHERE user_id = ".$this->user->user_id. " AND 
+    				WHERE
     	    		post_id = ".$viewed;
     	    	
     	# Build the query to get the image(s)

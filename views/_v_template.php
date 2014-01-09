@@ -10,6 +10,7 @@
 	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js">
 	</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>

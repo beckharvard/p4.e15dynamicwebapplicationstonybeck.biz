@@ -148,7 +148,6 @@ var last_post_length = 0;
     };
 // the post text is shrinking, so we need to shrink the div	        
     function decreaseOutputDiv(new_font_size) {	
-    	console.log("oh my. decrease was actually called!");
     	// get the contents of the post
     		var the_post = $('#edgeless_field1').val();   	
     	// set a variable to the length
@@ -196,18 +195,11 @@ var last_post_length = 0;
 			var string_of_my_post = $('#edgeless_field1').attr('value');
 			// and set a variable with method scope to have the length of that variable
 			post_length = string_of_my_post.length;	
-			console.log("are we in edit? the post is " + string_of_my_post);
 		}
 		else  {
 			var string_of_content = $('#edgeless_field1').html();
 			post_length = string_of_content.length;
-			// we know we are called from view and that it doesn't work here. why?
-			console.log("why are we here? the post is " + string_of_content);
-			console.log("post length is: " + post_length);
-		
 		}
-  			
-  		console.log("post length is: " + post_length + " " + "last post length is: " +last_post_length);
   			
 		// I think this is stupid and I need to figure out WTF I was doing here and why. 
 		// there has to be a better way
@@ -221,24 +213,13 @@ var last_post_length = 0;
   		
   		// don't grow the div for small posts with small font sizes.
  		if (post_length < 34 && font_size < 12) {
- 			console.log("post length was " + post_length + "and font size was " + font_size + " so, return!");
 			return;
   		}
-  		console.log("edgeless_field1 outerWidth is..."); 
-		console.log( $('#edgeless_field1').outerWidth());
-		console.log("#post_text_output innerWidth is..."); 
-		console.log($('#post_text_output').innerWidth());
-		console.log("edgeless_field1 Width is..."); 
-		console.log( $('#edgeless_field1').width());
-		console.log("#post_text_output Width is..."); 
-		console.log($('#post_text_output').width());
-		
 
   		// sizing the div we get current widths and increase the width of the outer div
 		while  ( $('#edgeless_field1').outerWidth() >= $('#post_text_output').innerWidth() ) {
 			var new_width = $('#post_text_output').innerWidth();
 			new_width++;
-			console.log("width is now " + new_width);
 			$('#post_text_output').css('width', ( new_width ));
 		}
   		// and we need to add some padding, so we set a variable for the div width now
@@ -307,7 +288,6 @@ var last_post_length = 0;
     		sizeTextDiv(load_my_post);		
     	}
     	else {
-    		console.log("this hapened");
     		var load_my_text_contents = $('#edgeless_field1').html();
     		sizeTextDiv(load_my_text_contents);
     	}
@@ -372,7 +352,6 @@ var last_post_length = 0;
 	//	
 		
 		new_canvas_image.removeClass('user_images');
-	//	console.log("the class then became " + new_canvas_image.attr('class'));
 		
 		//give it a decent position
 		$(new_canvas_image).attr('style', 'position: relative; top: 50px; left: 60;');

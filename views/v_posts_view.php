@@ -1,4 +1,3 @@
-<script src="http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
 <script type="text/javascript">
   WebFont.load({
     google: {
